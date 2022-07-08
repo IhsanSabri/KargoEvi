@@ -1,0 +1,8 @@
+.row{
+    float: right;
+    width: 55%;
+    display: inline-flex;
+}
+/* .inputs{
+    width: 40%;
+} */
