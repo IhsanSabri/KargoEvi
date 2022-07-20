@@ -1,13 +1,16 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import "./style.css";
 
 function NavBar() {
   return (
-    <Container>
-      <Navbar bg="light" expand="lg">
-        <Container fluid>
-          <Navbar.Brand href="./">KargoEvi•</Navbar.Brand>
+    <Container className="container">
+      <Navbar expand="lg">
+        <Container fluid className="navbar">
+          <Navbar.Brand href="./">
+            KargoEvi <span className="dot">•</span>{" "}
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

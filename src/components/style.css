@@ -1,8 +1,94 @@
-.row{
-    float: right;
-    width: 55%;
-    display: inline-flex;
+a.nav-link{
+    font-size: 15px;
+    color: #fff !important;
+    text-decoration: none;
 }
-/* .inputs{
-    width: 40%;
-} */
+.navbar-brand {
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 1rem;
+        font-size: 1.70rem !important;
+        color: #ffffff !important;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+    body{
+        overflow: hidden;
+        background-color: #2a3541 !important;
+    }
+    .dot{
+        color: rgb(236, 5, 5);
+    }
+.checkbox{
+    margin: 0px 5px 0px 0px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.checkbox-round {
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+h2{
+        text-align: center;
+        color: #2a3541;
+        font-size: 1.5em !important;
+    }
+    .planner{
+        margin: 22px 200px 20px 20px !important;
+        border:2px #ddd;
+        border-radius:10px;
+        background-color: #f1f1f1;
+        padding: 1rem;
+        margin: 0;
+        max-width: 100%;
+    }
+.row{
+    margin: 10px 0px 10px 0px;
+    padding: 0%;
+     float: right;
+     width: 40%;
+    display: inline-flex;
+    flex-direction: row;
+}
+input{
+    width: -1%;
+}
+.inputs{
+display: inline-grid;
+max-height: 100%;
+max-width: 36%;
+margin: 0;
+padding: 0;
+border: none;
+background-color: #f1f1f1;
+border-radius: 10px;
+color: #2a3541;
+}
+.input-container{
+    display: inline-grid;
+    max-height: 100%;
+    max-width: 36%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    color: #2a3541;
+}
+.labels{
+    display:flex;
+}
+.space{
+    margin: 0px 10px 20px 0px;
+    padding: 10px 0px 10px 0px;
+}
