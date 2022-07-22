@@ -62,8 +62,8 @@ const Home = () => {
                           margin="auto"
                         >
                           <option>Nereye</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
+                          <option value="1">Almanya</option>
+                          <option value="2">Türkiye</option>
                         </Form.Select>
                       </div>
                       <div className="input-container">

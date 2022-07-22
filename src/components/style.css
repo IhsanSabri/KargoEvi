@@ -20,10 +20,11 @@ a.nav-link{
         color: rgb(236, 5, 5);
     }
 .checkbox{
-    margin: 0px 5px 0px 0px;
-    padding: 10px;
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    vertical-align: middle;
+    text-align: center;
 }
 .checkbox-round {
     display: inline-block;
@@ -91,4 +92,60 @@ color: #2a3541;
 .space{
     margin: 0px 10px 20px 0px;
     padding: 10px 0px 10px 0px;
+}
+.communicate{
+    position: fixed;
+    bottom: 15px;
+    display: flex;
+    max-height: 100%;
+    max-width: 100%;
+    margin: 10px 10px;
+    padding: 10px 10px 50px 15px;
+    border: none;
+    background-color: #6f9ba1;
+    border-radius: 30px;
+    color: #f1f1f1;
+    font-size: 3.0em;
+}
+p > button {
+    margin: 10px 20px 10px 10px;
+    padding: 5px;
+    position: fixed;
+    bottom: 15px;
+    font-size: 0.5em;
+    color: #ffffff;
+    background-color: #6f9ba1;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.bottom{
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    max-height: 100%;
+    max-width: 100%;
+    margin: 10px 25px 0px 450px;
+    padding: 4px 4px 0px 86px;
+    border: none;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    color: #131212;
+    font-size: 1.5em;
+}
+.bottom2{
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    max-height: 100%;
+    max-width: 100%;
+    margin: 10px 25px 0px 750px;
+    padding: 4px 4px 0px 86px;
+    border: none;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    color: #131212;
+    font-size: 1.5em;
 }
