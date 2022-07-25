@@ -1,12 +1,12 @@
 import React from "react";
 import BsTabs from "./BsTabs";
-import { Form } from "react-bootstrap";
+import { Container,Row, Col, Form, Button, Card } from "react-bootstrap";
 import "./style.css";
 
 const Home = () => {
   const [checked, setChecked] = React.useState(true);
   return (
-    <>
+    <div>
       <div
         style={{
           backgroundImage:
@@ -22,88 +22,103 @@ const Home = () => {
           overflow: "none",
         }}
       >
-        <div className="section>">
-          <div className="content">
-            <div className="container">
-              <div className="row">
+        
                 <div className="planner">
                   <BsTabs />
-                  <div className="form-group">
-                    <label htmlFor="">Kurye Taşıması</label>
-                    <div className="checkbox">
-                      <div className="row">
-                        <label>
-                          <input
-                            className="checkbox-round"
-                            type="checkbox"
-                            defaultChecked={checked}
-                            onChange={() => setChecked(!checked)}
-                          />
-                          Türkiye'ye Getir
-                        </label>
-                      </div>
-                      <label>
-                        <input
-                          className="checkbox-round"
-                          type="checkbox"
-                          defaultChecked={!checked}
-                          onChange={() => setChecked(!checked)}
-                        />
-                        Türkiye'den Gönder
-                      </label>
-                    </div>
-                    <div className="form">
-                      <div className="space">
-                        <Form.Select
-                          aria-label="Default select example"
-                          size="sm"
-                          width="50%"
-                          margin="auto"
-                        >
-                          <option>Nereye</option>
-                          <option value="1">Almanya</option>
-                          <option value="2">Türkiye</option>
-                        </Form.Select>
-                      </div>
-                      <div className="input-container">
-                        <div className="labels">
-                          <div className="inputs">
-                            <label>AĞRILIK</label>
-                            <input type="weight" placeholder="KG" />
-                            <label>UZUNLUK</label>
-                            <input type="height" placeholder="CM" />
-                            <label>CENSLIK</label>
-                            <input type="height" placeholder="CM" />
-                            <label> YUKSELIK</label>
-                            <input type="height" placeholder="CM" />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="total">
-                        <h2>ODENECEK TUTAR</h2>
-                      </div>
-                      <button>DEVAM ET</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <Form style={{display:"flex"}}>
+                  <Form.Check type="radio" aria-label="radio 1" />
+                  Turkiye'den gonder
+                  <Form.Check type="radio" aria-label="radio 1" />
+                  Turkiye'ye getir
+    </Form>
+    <Form.Select aria-label="Default select example">
+      <option>Nereye</option>
+      <option value="1">Almanya</option>
+      <option value="2">Turkiye</option>
+    </Form.Select>
+    <Form style={{display:"flex"}}>
+    <Form.Label htmlFor="inputPassword5">AGRILIK</Form.Label>
+      <Form.Control
+        type="password"
+        id="inputPassword5"
+        aria-describedby="passwordHelpBlock"
+      />
+      <Form.Text id="passwordHelpBlock" muted>
+       
+      </Form.Text>
+      <Form.Label htmlFor="inputPassword5">AGRILIK</Form.Label>
+      <Form.Control
+        type="password"
+        id="inputPassword5"
+        aria-describedby="passwordHelpBlock"
+      />
+      <Form.Text id="passwordHelpBlock" muted>
+       
+      </Form.Text>    <Form.Label htmlFor="inputPassword5">Uzunluk</Form.Label>
+      <Form.Control
+        type="password"
+        id="inputPassword5"
+        aria-describedby="passwordHelpBlock"
+      />
+      <Form.Text id="passwordHelpBlock" muted>
+       
+      </Form.Text>    <Form.Label htmlFor="inputPassword5">GENSLIK</Form.Label>
+      <Form.Control
+        type="password"
+        id="inputPassword5"
+        aria-describedby="passwordHelpBlock"
+      />
+      <Form.Text id="passwordHelpBlock" muted>
+       
+      </Form.Text>    <Form.Label htmlFor="inputPassword5">YUKSELIK</Form.Label>
+      <Form.Control
+        type="password"
+        id="inputPassword5"
+        aria-describedby="passwordHelpBlock"
+      />
+      <Form.Text id="passwordHelpBlock" muted>
+      </Form.Text>
+      </Form>
+      <Container style={{display:"flex"}}>
+      <Row>
+        <Col>Odenecek Tutar: 
+        21 USD</Col>
+        
+      </Row>
+      
+        <Button variant="danger" size="sm">
+        Devam ET
+        </Button>
+        </Container>
         </div>
-        <p className="communicate">
-          kurumsal müşterilerimiz <br /> ozel 15'e varan ekstra <br />{" "}
+        
+              
+        <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Text>
+        kurumsal müşterilerimiz <br /> ozel 15'e varan ekstra <br />{" "}
           indirimleri icin
-          <button>iletişim icin</button>
-        </p>
-        <label className="bottom">
-          KargoEvi <br /> Nasil Calisir?{" "}
-        </label>
-        <label htmlFor="" className="bottom2">
-          {" "}
-          Cin'den Urun <br /> Nasil Getirir?
-        </label>
-      </div>
-    </>
+        </Card.Text>
+        <Button variant="secondary">iletişim icin</Button>
+      </Card.Body>
+    </Card>
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Text>
+        KargoEvi <br /> Nasil Calisir?  > 
+      </Card.Text>
+      </Card.Body>
+    </Card>
+
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Text>
+        Cinden Urun <br /> Nasil Cetriir?  > 
+      </Card.Text>
+      </Card.Body>
+    </Card>
+        </div>
+        </div>
   );
 };
 export default Home;

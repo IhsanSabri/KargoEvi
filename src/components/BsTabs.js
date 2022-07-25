@@ -13,14 +13,14 @@ const BsTabs = () => {
             defaultActiveKey="home"
             className="mb-1 p=0"
           >
-            <Tab eventKey="home" title="Home">
-              Home
+            <Tab eventKey="kurye Tasimasi" title="Kurye Tasimasi">
+              Kurye Tasimasi
             </Tab>
-            <Tab eventKey="samePage" title="Profile">
-              Profile
+            <Tab eventKey="Hava Yolu Tasimasi" title="Hava Yolu Tasimasi">
+              Hava Yolu Tasimasi
             </Tab>
-            <Tab eventKey="contact" title="Contact">
-              Contact
+            <Tab eventKey="Deniz Yolu Tasimasi " title="Deniz Yolu Tasimasi">
+              Deniz Yolu Taşıması
             </Tab>
           </Tabs>
         </Row>
