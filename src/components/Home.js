@@ -1,5 +1,6 @@
 import React from "react";
-import { Tabs, Form } from "react-bootstrap";
+import BsTabs from "./BsTabs";
+import { Form } from "react-bootstrap";
 import "./style.css";
 
 const Home = () => {
@@ -26,8 +27,9 @@ const Home = () => {
             <div className="container">
               <div className="row">
                 <div className="planner">
-                  <Tabs />
+                  <BsTabs />
                   <div className="form-group">
+                    <label htmlFor="">Kurye Taşıması</label>
                     <div className="checkbox">
                       <div className="row">
                         <label>
@@ -37,7 +39,7 @@ const Home = () => {
                             defaultChecked={checked}
                             onChange={() => setChecked(!checked)}
                           />
-                          Türkiye'den Gönder
+                          Türkiye'ye Getir
                         </label>
                       </div>
                       <label>
@@ -47,13 +49,10 @@ const Home = () => {
                           defaultChecked={!checked}
                           onChange={() => setChecked(!checked)}
                         />
-                        Türkiye'ye Getir
+                        Türkiye'den Gönder
                       </label>
                     </div>
                     <div className="form">
-                      <div className="row">
-                        <label htmlFor="">Kurye Taşıması</label>
-                      </div>
                       <div className="space">
                         <Form.Select
                           aria-label="Default select example"
@@ -91,6 +90,18 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <p className="communicate">
+          kurumsal müşterilerimiz <br /> ozel 15'e varan ekstra <br />{" "}
+          indirimleri icin
+          <button>iletişim icin</button>
+        </p>
+        <label className="bottom">
+          KargoEvi <br /> Nasil Calisir?{" "}
+        </label>
+        <label htmlFor="" className="bottom2">
+          {" "}
+          Cin'den Urun <br /> Nasil Getirir?
+        </label>
       </div>
     </>
   );
