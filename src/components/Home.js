@@ -1,10 +1,10 @@
 import React from "react";
 import BsTabs from "./BsTabs";
 import { Container,Row, Col, Form, Button, Card } from "react-bootstrap";
+import Cards from './Cards'
 import "./style.css";
 
 const Home = () => {
-  const [checked, setChecked] = React.useState(true);
   return (
     <div>
       <div
@@ -16,8 +16,8 @@ const Home = () => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          width: "99.8vw",
-          height: "91vh",
+          width: "100%",
+          height: "120vh",
           overScroll: "none",
           overflow: "none",
         }}
@@ -25,17 +25,23 @@ const Home = () => {
         
                 <div className="planner">
                   <BsTabs />
+                  <div className="checkbox">
                   <Form style={{display:"flex"}}>
                   <Form.Check type="radio" aria-label="radio 1" />
                   Turkiye'den gonder
                   <Form.Check type="radio" aria-label="radio 1" />
                   Turkiye'ye getir
-    </Form>
+                  </Form>
+                  </div>
+                  <div className="form">
+    <div className="select">
     <Form.Select aria-label="Default select example">
       <option>Nereye</option>
       <option value="1">Almanya</option>
       <option value="2">Turkiye</option>
     </Form.Select>
+    </div>
+    <div className="input">
     <Form style={{display:"flex"}}>
     <Form.Label htmlFor="inputPassword5">AGRILIK</Form.Label>
       <Form.Control
@@ -43,15 +49,7 @@ const Home = () => {
         id="inputPassword5"
         aria-describedby="passwordHelpBlock"
       />
-      <Form.Text id="passwordHelpBlock" muted>
-       
-      </Form.Text>
-      <Form.Label htmlFor="inputPassword5">AGRILIK</Form.Label>
-      <Form.Control
-        type="password"
-        id="inputPassword5"
-        aria-describedby="passwordHelpBlock"
-      />
+      
       <Form.Text id="passwordHelpBlock" muted>
        
       </Form.Text>    <Form.Label htmlFor="inputPassword5">Uzunluk</Form.Label>
@@ -79,20 +77,25 @@ const Home = () => {
       <Form.Text id="passwordHelpBlock" muted>
       </Form.Text>
       </Form>
+      </div>
+<div className="container-bottom">
       <Container style={{display:"flex"}}>
       <Row>
-        <Col>Odenecek Tutar: 
-        21 USD</Col>
+        <Col>Odenecek Tutar: <br/>
+        0 USD</Col>
         
       </Row>
-      
-        <Button variant="danger" size="sm">
+      <div className="button">
+        <Button className="bottom-botton" variant="danger" size="sm">
         Devam ET
         </Button>
+        </div>
         </Container>
         </div>
+        </div>
+        </div>
         
-              
+{/*               
         <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Text>
@@ -116,7 +119,9 @@ const Home = () => {
         Cinden Urun <br /> Nasil Cetriir?  > 
       </Card.Text>
       </Card.Body>
-    </Card>
+    </Card> */}
+    
+<Cards/>
         </div>
         </div>
   );

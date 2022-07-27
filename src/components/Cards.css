@@ -1,0 +1,25 @@
+ .firstcard{
+    width: 453px;
+    height: 289px;
+    left: 20px;
+    top: 400px;
+    font-size: 2.5rem;
+    background-color: rgb(158, 157, 157) !important;
+    color: #ffff !important;
+    text-align: center;
+} 
+.firstbutton{
+    border: #ffff;
+    border-radius: 10px #ffff !important;
+    background-color: rgb(158, 157, 157);
+}
+.middlecard{
+    width: 200px;
+    left: 500px;
+    top: 300px;
+}
+.bottomcard{
+    width: 18rem;
+    left: 800px;
+    top: 219px;
+}
