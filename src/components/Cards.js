@@ -3,7 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import './Cards.css';
 const Cards = () => {
   return (
-    <div>
+    <div className='cards'>
         <Card className='firstcard'>
     <Card.Body >
       <Card.Text >
