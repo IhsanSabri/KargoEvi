@@ -14,7 +14,7 @@ const BsTabs = () => {
             className="mb-1 p=0"
           >
             <Tab eventKey="kurye Tasimasi" title="Kurye Tasimasi">
-            
+              Kurye Tasimasi
             </Tab>
             <Tab eventKey="Hava Yolu Tasimasi" title="Hava Yolu Tasimasi">
               Hava Yolu Tasimasi
