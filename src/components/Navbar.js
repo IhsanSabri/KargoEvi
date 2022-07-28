@@ -1,20 +1,20 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import "./style.css";
+import "./Navbar.css";
 
 function NavBar() {
   return (
-    <Container className="container">
-      <Navbar expand="lg">
+    <Container  className="container">
+      <Navbar expand="lg" className="color-nav">
         <Container fluid className="navbar">
           <Navbar.Brand href="./">
             KargoEvi <span className="dot">•</span>{" "}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-2 my-lg-0"
+            <Nav 
+              className="me-auto my-2 my-lg-0 color-nav"
               style={{ maxHeight: "100px" }}
             >
               <Nav.Link href="./services">HIZMETLERI</Nav.Link>

@@ -1,23 +1,7 @@
-a.nav-link{
-    font-size: 15px;
-    color: #fff !important;
-    text-decoration: none;
-}
-.navbar-brand {
-        padding-top: 0.3125rem;
-        padding-bottom: 0.3125rem;
-        margin-right: 1rem;
-        font-size: 1.70rem !important;
-        color: #ffffff !important;
-        text-decoration: none;
-        white-space: nowrap;
-    }
-    body{
-        /* overflow: hidden; */
+
+body{
+        overflow: hidden;
         background-color: #2a3541 !important;
-    }
-    .dot{
-        color: rgb(236, 5, 5);
     }
 
 h2{

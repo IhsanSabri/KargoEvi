@@ -11,13 +11,15 @@ const Home = () => {
         style={{
           backgroundImage:
             "url(" +
-            "https://i.pinimg.com/originals/03/c7/5f/03c75fa1c2f9c4e2cbb547b6bfb1c440.jpg" +
+            "https://i.ibb.co/M1ZfgWx/background.png" +
             ")",
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          width: "100%",
-          height: "120vh",
+          width:"100%",
+          height:"100vh",
+          // backgroundSize:"contain",
+          // backgroundPosition:"center",
           overScroll: "none",
           overflow: "none",
         }}

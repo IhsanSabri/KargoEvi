@@ -3,6 +3,9 @@ a.nav-link{
     color: #fff !important;
     text-decoration: none;
 }
+.color-nav{
+    background-color: #2a3541;
+}
 .navbar-brand {
         padding-top: 0.3125rem;
         padding-bottom: 0.3125rem;
