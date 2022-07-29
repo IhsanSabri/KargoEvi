@@ -5,7 +5,7 @@ import "./Navbar.css";
 
 function NavBar() {
   return (
-    <Container  className="container">
+    <Container className="container">
       <Navbar expand="lg" className="color-nav">
         <Container fluid className="navbar">
           <Navbar.Brand href="./">
@@ -13,7 +13,7 @@ function NavBar() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav 
+            <Nav
               className="me-auto my-2 my-lg-0 color-nav"
               style={{ maxHeight: "100px" }}
             >

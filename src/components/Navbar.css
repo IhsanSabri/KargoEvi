@@ -1,20 +1,20 @@
-a.nav-link{
-    font-size: 15px;
-    color: #fff !important;
-    text-decoration: none;
+a.nav-link {
+  font-size: 15px;
+  color: #fff !important;
+  text-decoration: none;
 }
-.color-nav{
-    background-color: #2a3541;
+.color-nav {
+  background-color: #2a3541;
 }
 .navbar-brand {
-        padding-top: 0.3125rem;
-        padding-bottom: 0.3125rem;
-        margin-right: 1rem;
-        font-size: 1.70rem !important;
-        color: #ffffff !important;
-        text-decoration: none;
-        white-space: nowrap;
-    }
-    .dot{
-        color: rgb(236, 5, 5);
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1.7rem !important;
+  color: #ffffff !important;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.dot {
+  color: rgb(236, 5, 5);
 }
