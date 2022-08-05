@@ -1,6 +1,6 @@
 import { Container, Row, Tabs, Tab } from "react-bootstrap";
 import React from "react";
-import "./Tabs.css";
+import '../styles/Tabs.css';
 
 const BsTabs = () => {
   return (

@@ -2,7 +2,8 @@ import React from "react";
 import BsTabs from "./BsTabs";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import Cards from "./Cards";
-import "./style.css";
+import '../styles/style.css';
+
 
 const Home = () => {
   return (
