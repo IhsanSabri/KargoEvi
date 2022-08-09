@@ -1,7 +1,15 @@
-a.nav-link {
+.navLink {
   font-size: 15px;
-  color: #fff !important;
+  color: #fff;
   text-decoration: none;
+}
+#brand {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 48px;
+  color: rgb(255, 255, 255);
 }
 .color-nav {
   background-color: #2a3541;
@@ -10,8 +18,8 @@ a.nav-link {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.7rem !important;
-  color: #ffffff !important;
+  font-size: 1.7rem;
+  color: #ffffff;
   text-decoration: none;
   white-space: nowrap;
 }
