@@ -26,7 +26,7 @@ const Home = () => {
               style={{
                 background: "#7c8da1",
                 padding: "23px",
-                borderRadius: "6px"
+                borderRadius: "6px",
               }}
             >
               <div className="card-body">
@@ -38,7 +38,7 @@ const Home = () => {
                     lineHeight: "44px",
                     fontSize: "28px",
                     textAlign: "left",
-                    width: "85%"
+                    width: "85%",
                   }}
                 >
                   Kurumsal müşterilerimize özel %15'e varan ekstra indirimler
@@ -51,7 +51,7 @@ const Home = () => {
                     padding: "12px 20px 12px 20px",
                     marginTop: "19px",
                     fontSize: "18px",
-                    float: "left"
+                    float: "left",
                   }}
                 >
                   İletişime Geçin
@@ -78,7 +78,7 @@ const Home = () => {
                   <div className="col-md-6" style={{ paddingRight: "0px" }}>
                     <img
                       className="img-fluid"
-                      src={ firstImage }
+                      src={firstImage}
                       style={{ borderRadius: "4px" }}
                       alt="firstImage"
                     />
@@ -101,7 +101,11 @@ const Home = () => {
                   </div>
                   <div
                     className="col d-xl-flex align-items-xl-center"
-                    style={{ fontSize: "25px", paddingRight: "0px", paddingLeft: "0px" }}
+                    style={{
+                      fontSize: "25px",
+                      paddingRight: "0px",
+                      paddingLeft: "0px",
+                    }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -128,14 +132,14 @@ const Home = () => {
                 style={{
                   background: "#ffffff",
                   borderRadius: "6px",
-                  padding: "unset"
+                  padding: "unset",
                 }}
               >
                 <div className="row">
                   <div className="col-md-6" style={{ paddingRight: "0px" }}>
                     <img
                       className="img-fluid"
-                      src={ secondImage }
+                      src={secondImage}
                       style={{ borderRadius: "4px" }}
                       alt="secondImage"
                     />
@@ -158,7 +162,11 @@ const Home = () => {
                   </div>
                   <div
                     className="col d-xl-flex align-items-xl-center"
-                    style={{ fontSize: "25px", paddingRight: "0px", paddingLeft: "0px" }}
+                    style={{
+                      fontSize: "25px",
+                      paddingRight: "0px",
+                      paddingLeft: "0px",
+                    }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

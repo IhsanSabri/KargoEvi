@@ -11,7 +11,12 @@ function NavBar() {
       }}
     >
       <div className="container" id="menu">
-        <img className="navbar-brand" src={logo} alt="brandImage" />
+        <img
+          className="navbar-brand"
+          src={logo}
+          alt="brandImage"
+          href="#Home.js"
+        />
         <button
           data-bs-toggle="collapse"
           className="navbar-toggler shadow-none"

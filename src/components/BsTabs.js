@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
-const BsTabs = () => {
+const BsTabs = (props) => {
+  const [checked, setChecked] = useState("");
+  const [sechecked, setSechecked] = useState("");
+  const [weight, setWeight] = useState("");
+  const [length, setLength] = useState("");
+  const [width, setWidth] = useState("");
+  const [height, setHeight] = useState("");
+  const [interest, setInterest] = useState("");
+
+  const getFormData = (e) => {
+    console.log(checked, sechecked, interest, weight, width, length, height);
+    e.preventDefault();
+    e.stopPropagation();
+  };
   return (
     <div
       className="container"
@@ -16,16 +29,19 @@ const BsTabs = () => {
           className="col-md-7 col-lg-4 offset-md-4 offset-lg-8"
           style={{
             paddingRight: "0",
-            paddingLeft: "0"
+            paddingLeft: "0",
           }}
         >
-          <div id="anasayfaSliderTab" style={{ width: "455px", marginLeft: "-30px" }}>
+          <div
+            id="anasayfaSliderTab"
+            style={{ width: "455px", marginLeft: "-30px" }}
+          >
             <ul
               className="nav nav-tabs nav-justified"
               role="tablist"
               style={{
                 fontSize: "12px",
-                fontWeight: "500"
+                fontWeight: "500",
               }}
             >
               <li
@@ -41,7 +57,7 @@ const BsTabs = () => {
                   style={{
                     color: "#141414",
                     padding: "15px 10px 15px 10px",
-                    background: "#d1dbe5"
+                    background: "#d1dbe5",
                   }}
                 >
                   Kurye Taşıması
@@ -60,7 +76,7 @@ const BsTabs = () => {
                   style={{
                     color: "#141414",
                     padding: "15px 10px 15px 10px",
-                    background: "#d1dbe5"
+                    background: "#d1dbe5",
                   }}
                 >
                   Havayolu Taşıması
@@ -75,7 +91,7 @@ const BsTabs = () => {
                   style={{
                     color: "#141414",
                     padding: "15px 10px 15px 10px",
-                    background: "#d1dbe5"
+                    background: "#d1dbe5",
                   }}
                 >
                   Denizyolu Taşıması
@@ -86,7 +102,7 @@ const BsTabs = () => {
               className="tab-content"
               style={{
                 padding: "25px 30px 25px 30px",
-                background: "#ffffff"
+                background: "#ffffff",
               }}
             >
               <div className="tab-pane active" role="tabpanel" id="tab-1">
@@ -94,12 +110,16 @@ const BsTabs = () => {
                   <div className="col-lg-6">
                     <div className="form-check">
                       <input
-                        className="form-check-input shadow-none"
+                        value={checked}
+                        onChange={(e) => setChecked(e.target.checked)}
                         type="radio"
+                        aria-label="radio 1"
+                        defaultChecked
+                        className="form-check-input shadow-none"
                         id="formCheck-1"
                         style={{
                           width: "23px",
-                          height: "23px"
+                          height: "23px",
                         }}
                         name="anasayfaslidertabradio"
                       />
@@ -108,7 +128,7 @@ const BsTabs = () => {
                         htmlFor="formCheck-1"
                         style={{
                           padding: "4px 0 0 8px",
-                          fontWeight: "300"
+                          fontWeight: "300",
                         }}
                       >
                         Türkiye'den Gönder
@@ -118,12 +138,18 @@ const BsTabs = () => {
                   <div className="col-lg-6">
                     <div className="form-check">
                       <input
-                        className="form-check-input shadow-none"
+                        value={sechecked}
+                        onChange={(e) => {
+                          setSechecked(e.target.sechecked);
+                          console.log(checked);
+                        }}
                         type="radio"
+                        aria-label="radio 2"
+                        className="form-check-input shadow-none"
                         id="formCheck-2"
                         style={{
                           width: "23px",
-                          height: "23px"
+                          height: "23px",
                         }}
                         name="anasayfaslidertabradio"
                       />
@@ -132,7 +158,7 @@ const BsTabs = () => {
                         htmlFor="formCheck-2"
                         style={{
                           padding: "4px 0 0 8px",
-                          fontWeight: "300"
+                          fontWeight: "300",
                         }}
                       >
                         Türkiye'ye Getir
@@ -140,15 +166,21 @@ const BsTabs = () => {
                     </div>
                   </div>
                 </div>
-                <div className="row" style={{ paddingTop: "30px", textAlign: "left" }}>
+                <div
+                  className="row"
+                  style={{ paddingTop: "30px", textAlign: "left" }}
+                >
                   <div className="col-lg-12">
                     <label
+                      value={interest}
+                      onChange={(e) => setInterest(e.target.value)}
+                      aria-label="Default select example"
                       className="form-label"
                       style={{
                         fontSize: "12px",
                         fontWeight: "500",
                         color: "var(--bs-gray)",
-                        marginBottom: "0"
+                        marginBottom: "0",
                       }}
                     >
                       NEREYE
@@ -157,17 +189,21 @@ const BsTabs = () => {
                       className="form-select shadow-none"
                       style={{
                         height: "55px",
-                        color: "var(--bs-gray)"
+                        color: "var(--bs-gray)",
                       }}
                     >
                       <option value="" defaultValue="">
                         Seçiniz
                       </option>
+                      <option value="">Turkiye</option>
                       <option value="">Almanya</option>
                     </select>
                   </div>
                 </div>
-                <div className="row" style={{ paddingTop: "30px", textAlign: "left" }}>
+                <div
+                  className="row"
+                  style={{ paddingTop: "30px", textAlign: "left" }}
+                >
                   <div className="col-md-3">
                     <label
                       className="form-label"
@@ -175,19 +211,22 @@ const BsTabs = () => {
                         fontSize: "12px",
                         fontWeight: "500",
                         color: "var(--bs-gray)",
-                        marginBottom: "0"
+                        marginBottom: "0",
                       }}
                     >
                       AĞIRLIK
                     </label>
                     <div className="input-group">
                       <input
-                        className="form-control shadow-none"
+                        id="1"
                         type="text"
+                        value={weight}
+                        onChange={(e) => setWeight(e.target.value)}
+                        className="form-control shadow-none"
                         style={{
                           borderRightWidth: "0",
                           fontSize: "15px",
-                          padding: "12px 6px 12px 9px"
+                          padding: "12px 6px 12px 9px",
                         }}
                       />
                       <span
@@ -196,7 +235,7 @@ const BsTabs = () => {
                           background: "rgb(255,255,255)",
                           borderLeftWidth: "0",
                           fontSize: "15px",
-                          padding: "0 6px 0 6px"
+                          padding: "0 6px 0 6px",
                         }}
                       >
                         KG
@@ -210,19 +249,22 @@ const BsTabs = () => {
                         fontSize: "12px",
                         fontWeight: "500",
                         color: "var(--bs-gray)",
-                        marginBottom: "0"
+                        marginBottom: "0",
                       }}
                     >
                       UZUNLUK
                     </label>
                     <div className="input-group">
                       <input
+                        id="2"
+                        value={length}
+                        onChange={(e) => setLength(e.target.value)}
                         className="form-control shadow-none"
                         type="text"
                         style={{
                           borderRightWidth: "0",
                           fontSize: "15px",
-                          padding: "12px 6px 12px 9px"
+                          padding: "12px 6px 12px 9px",
                         }}
                       />
                       <span
@@ -231,7 +273,7 @@ const BsTabs = () => {
                           background: "rgb(255,255,255)",
                           borderLeftWidth: "0",
                           fontSize: "15px",
-                          padding: "0 6px 0 6px"
+                          padding: "0 6px 0 6px",
                         }}
                       >
                         CM
@@ -245,19 +287,22 @@ const BsTabs = () => {
                         fontSize: "12px",
                         fontWeight: "500",
                         color: "var(--bs-gray)",
-                        marginBottom: "0"
+                        marginBottom: "0",
                       }}
                     >
                       GENİŞLİK
                     </label>
                     <div className="input-group">
                       <input
+                        id="3"
+                        value={width}
+                        onChange={(e) => setWidth(e.target.value)}
                         className="form-control shadow-none"
                         type="text"
                         style={{
                           borderRightWidth: "0",
                           fontSize: "15px",
-                          padding: "12px 6px 12px 9px"
+                          padding: "12px 6px 12px 9px",
                         }}
                       />
                       <span
@@ -266,7 +311,7 @@ const BsTabs = () => {
                           background: "rgb(255,255,255)",
                           borderLeftWidth: "0",
                           fontSize: "11px",
-                          padding: "0 6px 0 6px"
+                          padding: "0 6px 0 6px",
                         }}
                       >
                         CM
@@ -280,19 +325,22 @@ const BsTabs = () => {
                         fontSize: "12px",
                         fontWeight: "500",
                         color: "var(--bs-gray)",
-                        marginBottom: "0"
+                        marginBottom: "0",
                       }}
                     >
                       YÜKSEKLİK
                     </label>
                     <div className="input-group">
                       <input
+                        id="4"
+                        value={height}
+                        onChange={(e) => setHeight(e.target.value)}
                         className="form-control shadow-none"
                         type="text"
                         style={{
                           borderRightWidth: "0",
                           fontSize: "15px",
-                          padding: "12px 6px 12px 9px"
+                          padding: "12px 6px 12px 9px",
                         }}
                       />
                       <span
@@ -301,7 +349,7 @@ const BsTabs = () => {
                           background: "rgb(255,255,255)",
                           borderLeftWidth: "0",
                           fontSize: "11px",
-                          padding: "0 6px 0 6px"
+                          padding: "0 6px 0 6px",
                         }}
                       >
                         CM
@@ -309,7 +357,10 @@ const BsTabs = () => {
                     </div>
                   </div>
                 </div>
-                <div className="row" style={{ paddingTop: "30px", textAlign: "left" }}>
+                <div
+                  className="row"
+                  style={{ paddingTop: "30px", textAlign: "left" }}
+                >
                   <div className="col-md-6">
                     <label className="form-label" style={{ marginBottom: "0" }}>
                       Ödenecek Tutar
@@ -318,7 +369,7 @@ const BsTabs = () => {
                       className="form-label"
                       style={{
                         fontSize: "31px",
-                        fontWeight: "500"
+                        fontWeight: "500",
                       }}
                     >
                       USD 21,23
@@ -326,13 +377,15 @@ const BsTabs = () => {
                   </div>
                   <div className="col-md-6 d-xl-flex justify-content-xl-center align-items-xl-center">
                     <a
+                      href="./ShippingInfo.js"
+                      onClick={getFormData}
+                      variant="danger"
                       className="btn btn-danger btn-lg d-xl-flex shadow-none"
                       role="button"
-                      style= {{
+                      style={{
                         padding: "14px 35px 14px 35px",
-                        zIndex: "4"
+                        zIndex: "4",
                       }}
-                      href="urun-icerik-bilgileri.html"
                     >
                       Devam Et &gt;
                     </a>
