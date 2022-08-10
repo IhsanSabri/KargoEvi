@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
 const BsTabs = (props) => {
-  const [checked, setChecked] = useState("");
-  const [sechecked, setSechecked] = useState("");
+  const [checked, setChecked] = useState("false");
+  const [sechecked, setSechecked] = useState("false");
   const [weight, setWeight] = useState("");
   const [length, setLength] = useState("");
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
-  const [interest, setInterest] = useState("");
+  const [selected, setSelected] = useState("");
 
   const getFormData = (e) => {
-    console.log(checked, sechecked, interest, weight, width, length, height);
+    console.log(checked, sechecked, selected, weight, length, width, height);
     e.preventDefault();
     e.stopPropagation();
   };
@@ -106,7 +106,7 @@ const BsTabs = (props) => {
               }}
             >
               <div className="tab-pane active" role="tabpanel" id="tab-1">
-                <div className="row">
+                <div className="row" value={checked}>
                   <div className="col-lg-6">
                     <div className="form-check">
                       <input
@@ -141,7 +141,6 @@ const BsTabs = (props) => {
                         value={sechecked}
                         onChange={(e) => {
                           setSechecked(e.target.sechecked);
-                          console.log(checked);
                         }}
                         type="radio"
                         aria-label="radio 2"
@@ -172,9 +171,6 @@ const BsTabs = (props) => {
                 >
                   <div className="col-lg-12">
                     <label
-                      value={interest}
-                      onChange={(e) => setInterest(e.target.value)}
-                      aria-label="Default select example"
                       className="form-label"
                       style={{
                         fontSize: "12px",
@@ -186,6 +182,8 @@ const BsTabs = (props) => {
                       NEREYE
                     </label>
                     <select
+                      value={selected}
+                      onChange={(e) => setSelected(e.target.value)}
                       className="form-select shadow-none"
                       style={{
                         height: "55px",
@@ -195,8 +193,8 @@ const BsTabs = (props) => {
                       <option value="" defaultValue="">
                         Seçiniz
                       </option>
-                      <option value="">Turkiye</option>
-                      <option value="">Almanya</option>
+                      <option value="Turkiye">Turkiye</option>
+                      <option value="Almanya">Almanya</option>
                     </select>
                   </div>
                 </div>
@@ -377,7 +375,8 @@ const BsTabs = (props) => {
                   </div>
                   <div className="col-md-6 d-xl-flex justify-content-xl-center align-items-xl-center">
                     <a
-                      href="./ShippingInfo.js"
+                      href="#"
+                      target="_blank"
                       onClick={getFormData}
                       variant="danger"
                       className="btn btn-danger btn-lg d-xl-flex shadow-none"
