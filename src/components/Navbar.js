@@ -72,13 +72,14 @@ function NavBar() {
           </ul>
         </div>
         <button
-          className="btn btn-outline-light d-md-none d-lg-block d-sm-none d-md-block d-none"
+          className="btn btn-outline-light"
           type="button"
           style={{
             padding: "9px 27px 9px 22px",
             fontWeight: "300",
             borderRadius: "2px",
             marginRight: "10px",
+            display: "flex"
           }}
         >
           <svg
@@ -95,13 +96,14 @@ function NavBar() {
           &nbsp; Üyelik
         </button>
         <button
-          className="btn btn-outline-light d-md-none d-lg-block d-sm-none d-md-block d-none"
+          className="btn btn-outline-light"
           type="button"
           style={{
             padding: "9px 27px 9px 22px",
             fontWeight: "300",
             borderRadius: "2px",
             marginRight: "10px",
+            display: "flex"
           }}
         >
           <svg
