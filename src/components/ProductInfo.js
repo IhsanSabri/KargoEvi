@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ProductInfo = () => {
   return (
@@ -373,7 +374,7 @@ const ProductInfo = () => {
       </div>
       <div className="row row-cols-2 pb-[13px]">
         <div className="col-lg-6 flex items-center">
-          <a className="text-[#225386] text-[24px] flex" href="#">
+          <Link className="text-[#225386] text-[24px] flex" to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
@@ -388,7 +389,7 @@ const ProductInfo = () => {
               ></path>
             </svg>
             &nbsp; Geri
-          </a>
+          </Link>
         </div>
         <div className="col-lg-4 d-flex justify-content-end align-items-center">
           <a

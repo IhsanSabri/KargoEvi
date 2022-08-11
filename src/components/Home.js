@@ -3,6 +3,7 @@ import BsTabs from "./BsTabs";
 import "../styles/Home.css";
 import firstImage from "../assests/cin.jpg";
 import secondImage from "../assests/nasilcalisir.webp";
+import backgroundImage from "../assests/background.png";
 
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
       <div className="mainImage">
         <img
           className="h-100 w-100"
-          src="https://i.ibb.co/M1ZfgWx/background.png"
+          src={backgroundImage}
           alt="MainPageImage"
         />
       </div>

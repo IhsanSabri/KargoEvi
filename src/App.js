@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import "./App.css";
 import ProductInfoPage from "./pages/ProductInfoPage";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -11,7 +11,12 @@ function App() {
       <Router>
         <Header />
         <Navbar />
-        <ProductInfoPage />
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/page2">
+          <ProductInfoPage />
+        </Route>
       </Router>
     </div>
   );

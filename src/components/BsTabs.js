@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const BsTabs = (props) => {
   const [checked, setChecked] = useState("false");
@@ -11,8 +12,6 @@ const BsTabs = (props) => {
 
   const getFormData = (e) => {
     console.log(checked, sechecked, selected, weight, length, width, height);
-    e.preventDefault();
-    e.stopPropagation();
   };
   return (
     <div
@@ -373,22 +372,22 @@ const BsTabs = (props) => {
                       USD 21,23
                     </label>
                   </div>
-                  <div className="col-md-6 d-xl-flex justify-content-xl-center align-items-xl-center">
-                    <a
-                      href="#"
-                      target="_blank"
-                      onClick={getFormData}
-                      variant="danger"
-                      className="btn btn-danger btn-lg d-xl-flex shadow-none"
-                      role="button"
-                      style={{
-                        padding: "14px 35px 14px 35px",
-                        zIndex: "4",
-                      }}
-                    >
-                      Devam Et &gt;
-                    </a>
-                  </div>
+                  <Link className="flex flex-row-reverse mt-[-5rem] no-underline" to="/page2">
+                    <div className="col-md-6 d-xl-flex justify-content-xl-center align-items-xl-center">
+                      <div
+                        onClick={getFormData}
+                        variant="danger"
+                        className="btn btn-danger btn-lg d-xl-flex shadow-none"
+                        role="button"
+                        style={{
+                          padding: "14px 35px 14px 35px",
+                          zIndex: "4",
+                        }}
+                      >
+                        Devam Et &gt;
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </div>
               <div className="tab-pane" role="tabpanel" id="tab-2">

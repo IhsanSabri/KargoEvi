@@ -1,5 +1,6 @@
 import "../styles/Navbar.css";
 import logo from "../assests/logo.png";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -11,20 +12,14 @@ function NavBar() {
       }}
     >
       <div className="container" id="menu">
-        <img
-          className="navbar-brand"
-          src={logo}
-          alt="brandImage"
-          href="#Home.js"
-        />
-        <button
-          data-bs-toggle="collapse"
-          className="navbar-toggler shadow-none"
-          data-bs-target="#navcol-2"
-        >
-          <span className="visually-hidden">Toggle navigation</span>
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <Link to="/">
+          <img
+            className="navbar-brand"
+            src={logo}
+            alt="brandImage"
+            href="#Home.js"
+          />
+        </Link>
         <div
           className="collapse navbar-collapse"
           id="navcol-2"
@@ -79,7 +74,7 @@ function NavBar() {
             fontWeight: "300",
             borderRadius: "2px",
             marginRight: "10px",
-            display: "flex"
+            display: "flex",
           }}
         >
           <svg
@@ -103,7 +98,7 @@ function NavBar() {
             fontWeight: "300",
             borderRadius: "2px",
             marginRight: "10px",
-            display: "flex"
+            display: "flex",
           }}
         >
           <svg
