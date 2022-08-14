@@ -5,7 +5,7 @@ import firstImage from "../assests/cin.jpg";
 import secondImage from "../assests/nasilcalisir.webp";
 import backgroundImage from "../assests/background.png";
 
-const Home = () => {
+const Home = ({ nexPageLink }) => {
   return (
     <div id="mainPage">
       <div className="mainImage">
@@ -15,7 +15,7 @@ const Home = () => {
           alt="MainPageImage"
         />
       </div>
-      <BsTabs />
+      <BsTabs nextPageLink={nexPageLink}/>
       <div
         className="container d-md-none d-lg-block d-sm-none d-md-block d-none"
         id="mainPageBottomSlider"

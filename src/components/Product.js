@@ -1,6 +1,8 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 
-const Product = () => {
+const Product = ({ register }) => {
+  
   return (
     <div className="col-lg-12">
       <div className="card px-3 pb-3">
@@ -15,15 +17,19 @@ const Product = () => {
               <label className="form-label flex text-[12px] font-medium text-[#6c757d] mb-0 text-left">
                 ADET (*)
               </label>
-              <select className="form-select shadow-none h-[49px] text-[#495057] text-[15px] border-[#e5e5e7] mt-[6px]">
+              <select
+                required
+                {...register("piece")}
+                className="form-select shadow-none h-[49px] text-[#495057] text-[15px] border-[#e5e5e7] mt-[6px]"
+              >
                 <option value="" defaultValue="">
                   Seçiniz
                 </option>
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-                <option value="">5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
               </select>
             </div>
             <div className="col-xl-2">
@@ -31,6 +37,8 @@ const Product = () => {
                 ÜRÜN TANIMI (*)
               </label>
               <input
+                required
+                {...register("prodcutDescription")}
                 type="text"
                 className="form-control shadow-none py-[12px] px-2.5 text-[#6c757d] text-[15px] border-[#e5e5e7] mt-[6px]"
               ></input>
@@ -41,6 +49,8 @@ const Product = () => {
               </label>
               <div className="input-group border-[#e5e5e7]">
                 <input
+                  required
+                  {...register("weight")}
                   className="form-control shadow-none text-[15px] py-[12px] pl-2.5 text-[#6c757d] border-[#e5e5e7] mt-[6px] border-r-0"
                   type="text"
                 ></input>
@@ -65,6 +75,8 @@ const Product = () => {
                 </svg>
               </label>
               <input
+                required
+                {...register("hs(gtip)")}
                 type="text"
                 className="form-control shadow-none py-[12px] px-2.5 text-[#6c757d] text-[15px] border-[#e5e5e7] mt-[6px]"
               ></input>
@@ -73,11 +85,15 @@ const Product = () => {
               <label className="form-label flex text-[12px] font-medium text-[#6c757d] mb-0 text-left">
                 MENŞEİ (*)
               </label>
-              <select className="form-select shadow-none h-[49px] text-[#495057] text-[15px] border-[#e5e5e7] mt-[6px]">
+              <select
+                required
+                {...register("origin")}
+                className="form-select shadow-none h-[49px] text-[#495057] text-[15px] border-[#e5e5e7] mt-[6px]"
+              >
                 <option value="" defaultValue="">
                   Seçiniz
                 </option>
-                <option value="">Almanya</option>
+                <option value="Germany">Almanya</option>
               </select>
             </div>
             <div className="col-xl-2">
@@ -86,14 +102,19 @@ const Product = () => {
               </label>
               <div className="input-group border-[#e5e5e7]">
                 <input
+                  required
+                  {...register("price")}
                   className="form-control shadow-none text-[15px] py-[12px] pl-2.5 text-[#6c757d] border-[#e5e5e7] mt-[6px] border-r-0"
                   type="text"
                 ></input>
-                <select className="bg-[#E5E5E5] font-semibold text-[20px] flex justify-content-xxl-center align-items-xxl-center input-group-text border-[#e5e5e7] border-l-0 mt-[6px] p-1.5">
-                  <option value="" defaultValue="">
+                <select
+                  {...register("currency")}
+                  className="bg-[#E5E5E5] font-semibold text-[20px] flex justify-content-xxl-center align-items-xxl-center input-group-text border-[#e5e5e7] border-l-0 mt-[6px] p-1.5"
+                >
+                  <option value="€" defaultValue="€">
                     €
                   </option>
-                  <option value="">$</option>
+                  <option value="$">$</option>
                 </select>
               </div>
             </div>
