@@ -209,7 +209,7 @@ const BsTabs = ({ nextPageLink }) => {
                   type="submit"
                   variant="danger"
                   form="form-hook"
-                  className="btn btn-danger btn-lg w-[220px] h-[64px] shadow-none py-[14px] px-[35px] z-50"
+                  className="btn btn-danger btn-lg w-[210px] h-[64px] shadow-none py-[14px] px-[35px] z-50"
                 >
                   Devam Et &gt;
                 </button>
