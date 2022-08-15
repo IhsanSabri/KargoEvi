@@ -66,12 +66,12 @@ const BsTabs = ({ nextPageLink }) => {
                       <div className="form-check">
                         <input
                           {...register("fromTurkey")}
-                          type="checkbox"
+                          type="radio"
                           defaultChecked
                           aria-label="radio 1"
                           className="form-check-input shadow-none w-[23px] h-[23px] rounded-[100%]"
                           id="formCheck-1"
-                          name="fromTurkey"
+                          name="useroption"
                         />
                         <label
                           className="form-check-label py-[4px] pl-[8px]"
@@ -85,11 +85,11 @@ const BsTabs = ({ nextPageLink }) => {
                       <div className="form-check">
                         <input
                           {...register("bringFromTurkey")}
-                          type="checkbox"
+                          type="radio"
                           aria-label="radio 2"
                           className="form-check-input shadow-none w-[23px] h-[23px] rounded-[100%]"
                           id="formCheck-2"
-                          name="bringFromTurkey"
+                          name="useroption"
                         />
                         <label
                           className="form-check-label py-[4px] pl-[8px] font-light"

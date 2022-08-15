@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Footer = ({ prevPageLink }) => {
-
   return (
     <div className="row-cols-2 justify-evenly absolute pb-[13px] w-full bottom-0 p-4 md:flex md:items-center md:p-6 shadow-[0_0_10px_0_rgba(38,43,55,0.25)]">
       <div className="col-lg-6 flex items-center">
-        <Link className="text-[#225386] text-[24px] flex no-underline" to={prevPageLink}>
+        <Link
+          className="text-[#225386] text-[24px] flex no-underline"
+          to={prevPageLink}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1em"
