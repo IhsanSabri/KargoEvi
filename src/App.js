@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import ProductInfoPage from "./pages/ProductInfoPage";
 import PersonalInfoPage from "./pages/PersonalInfoPage";
 import OrderSummaryPage from "./pages/OrderSummaryPage";
+import PaymentPageContainer from "./pages/PaymentPageContainer";
 
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -34,6 +35,9 @@ function App() {
         <Route exact path="/page3">
           <OrderSummaryPage nexPageLink={"/page4"} />
           {/* <Footer prevPageLink={"/page2"} isSummaryPage={true} /> */}
+        </Route>
+        <Route exact path="/page4">
+          <PaymentPageContainer nexPageLink={"/page4"} />
         </Route>
       </Router>
     </div>
