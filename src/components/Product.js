@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const Product = ({ register }) => {
+  console.log('testtetstets')
   return (
     <div className="card-body">
       <div className="row flex justify-center">
