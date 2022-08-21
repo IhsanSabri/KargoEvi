@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 
 import "./App.css";
+import "antd/dist/antd.min.css";
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
         </Route>
         <Route exact path="/page3">
           <OrderSummaryPage nexPageLink={"/page4"} />
-          <Footer prevPageLink={"/page2"} isSummaryPage={true} />
+          {/* <Footer prevPageLink={"/page2"} isSummaryPage={true} /> */}
         </Route>
       </Router>
     </div>
