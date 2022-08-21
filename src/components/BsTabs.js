@@ -22,7 +22,6 @@ const BsTabs = ({ nextPageLink }) => {
               <li
                 className="nav-item mr-[5px]"
                 role="presentation"
-                style={{ marginRight: "5px" }}
               >
                 <a
                   className="nav-link active anasayfaSliderTab text-[#141414] py-[15px] px-[10px] bg-[#d1dbe5]"

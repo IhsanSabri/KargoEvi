@@ -12,7 +12,7 @@ import OrderSummaryPage from "./pages/OrderSummaryPage";
 function App() {
 
   return (
-    <div className="App">
+    <div className="App h-[auto]">
       <Router>
         <Header />
         <Navbar />

@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import OrderSummary from "./OrderSummary";
 import Product from "./Product";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import "../styles/ProductInfo.css";
 
 const ProductInfo = ({ nextPageLink }) => {
   let history = useHistory();
+  const [product, setProduct] = useState([]);
   const { register, handleSubmit } = useForm();
   const handleRegistration = (data) => {
     console.log(data);
     history.push(nextPageLink);
   };
 
+  const onAddBtnClick = (event) => {
+    setProduct(
+      product.concat(<Product key={product.length} register={register} />)
+    );
+  };
+
+  const slideDown = (event) => {
+    const excelListElement = document.querySelector(".accordion-collapse");
+
+    if (!excelListElement.className.includes("show")) {
+      excelListElement.classList.add("show");
+      event.currentTarget.classList.add("collapsed");
+    } else {
+      excelListElement.classList.remove("show");
+      event.currentTarget.classList.remove("collapsed");
+    }
+  };
+
   return (
-    <div className="container pt-10 font-['Poppins, sans-serif']">
+    <div className="container pt-10 font-['Poppins, sans-serif'] h-screen">
       <div className="row block">
         <div className="col-lg-10 text-center">
           <span className="badge text-[#129068] bg-[#e3eaf1] font-medium inline-flex px-4 py-3">
@@ -50,10 +70,21 @@ const ProductInfo = ({ nextPageLink }) => {
       <div className="row pt-8">
         <div className="col-lg-10 pb-10">
           <form id="hook-form" onSubmit={handleSubmit(handleRegistration)}>
-            <Product register={register} />
+            <div className="col-lg-12">
+              <div className="card px-3 pb-3">
+                <div className="card-header bg-white border-b-0 pt-8 pb-[20px]">
+                  <h1 className="display-6 text-[26px] font-normal text-left">
+                    Ürün İçerik Bilgileri
+                  </h1>
+                </div>
+                <Product key={product.length} register={register} />
+                {product}
+              </div>
+            </div>
           </form>
           <div className="col-lg-12 text-center pt-[30px]">
             <button
+              onClick={onAddBtnClick}
               className="btn btn-outline-danger btn-lg shadow-none float-lg-end items-center flex pt-[11px] pb-[12px] pr-[31px] pl-[25px]"
               type="button"
             >
@@ -80,6 +111,7 @@ const ProductInfo = ({ nextPageLink }) => {
                     data-bs-target="#accordion-1 .item-1"
                     aria-expanded="false"
                     aria-controls="accordion-1 .item-1"
+                    onClick={slideDown}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +127,7 @@ const ProductInfo = ({ nextPageLink }) => {
                   </button>
                 </h2>
                 <div
-                  className="accordion-collapse collapse item-1 mx-5"
+                  className="accordion-collapse collapse item-1 mx-5 transition-all ease-out duration-1000"
                   role="tabpanel"
                   data-bs-parent="#accordion-1"
                 >

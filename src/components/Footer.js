@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = ({ prevPageLink, isSummaryPage }) => {
   return (
-    <div className="row-cols-2 justify-evenly absolute pb-[13px] w-full bottom-0 p-4 flex md:items-center md:p-6 shadow-[0_0_10px_0_rgba(38,43,55,0.25)]">
+    <div className="row-cols-2 justify-evenly relative pb-[13px] w-full bottom-0 p-4 flex md:items-center md:p-6 shadow-[0_0_10px_0_rgba(38,43,55,0.25)]">
       <div className={isSummaryPage ? "col-lg-6 flex items-center w-[15%] justify-center ml-[5.5rem]" : "col-lg-6 flex items-center w-[15%]"}>
         <Link
           className="text-[#225386] text-[24px] flex no-underline"
@@ -53,7 +53,7 @@ const Footer = ({ prevPageLink, isSummaryPage }) => {
         </div>
       ) : (
         <button
-          className="col-lg-6 justify-center w-[11%] align-items-center btn btn-danger shadow-none py-[11px] pr-[30px] pl-[35px] text-[21px]"
+          className="col-lg-6 justify-center w-[15%] align-items-center btn btn-danger shadow-none py-[11px] pr-[30px] pl-[35px] text-[21px]"
           type="submit"
           form="hook-form"
         >
