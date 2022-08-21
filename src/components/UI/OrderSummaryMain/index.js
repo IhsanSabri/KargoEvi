@@ -1,10 +1,12 @@
 import React from "react";
-import paymentLogo from "../assests/paymentLogo.png";
+import paymentLogo from '../../../assests/paymentLogo.png'
 
-import AntModal from "./UI/AntModal";
-import Footer from "./Footer";
+import AntModal from "../AntModal";
+import Footer from "../../Footer";
 
-import { useModal } from "../config/hooks/useModal";
+import { useModal } from "../../../config/hooks/useModal";
+
+import { FooterContainer } from "./style";
 
 const OrderSummaryMain = () => {
   const { isModalVisible, openModal, closeModal } = useModal();
@@ -158,7 +160,7 @@ const OrderSummaryMain = () => {
         </div>
       </div>
       <Footer prevLink={"/page2"}>
-        <div className="w-[35%] desktopLowerScreen:w-[45%] desktopLowerScreenForLowerSize-[50%] desktopLowerScreenForEdgeSize-[55%] flex justify-start">
+        <FooterContainer>
           <button
             className="btn btn-outline-danger btn-lg shadow-none float-lg-end items-center flex pt-[11px] pb-[12px] pr-[31px] pl-[25px]"
             type="button"
@@ -183,7 +185,7 @@ const OrderSummaryMain = () => {
           >
             Siparişi Tamamla
           </button>
-        </div>
+        </FooterContainer>
       </Footer>
       <AntModal
         title="Select Categories"

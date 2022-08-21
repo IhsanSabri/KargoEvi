@@ -1,5 +1,5 @@
 import React from "react";
-import OrderSummaryMain from "../components/OrderSummaryMain";
+import OrderSummaryMain from "../components/UI/OrderSummaryMain";
 
 const OrderSummaryPage = () => {
     return (
