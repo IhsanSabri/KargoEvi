@@ -1,13 +1,16 @@
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import ProductInfoPage from "./pages/ProductInfoPage";
+import PersonalInfoPage from "./pages/PersonalInfoPage";
+import OrderSummaryPage from "./pages/OrderSummaryPage";
+
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Home from "./components/Home";
+
 import "./App.css";
-import ProductInfoPage from "./pages/ProductInfoPage";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import PersonalInfoPage from "./pages/PersonalInfoPage";
-import React from "react";
-import Footer from "./components/Footer";
-import OrderSummaryPage from "./pages/OrderSummaryPage";
 
 function App() {
 
