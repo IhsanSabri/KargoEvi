@@ -3,7 +3,7 @@ import paymentLogo from "../assests/paymentLogo.png";
 
 const OrderSummaryMain = () => {
   return (
-    <div className="container flex-col font-[Poppins, sans-serif] pt-[40px]">
+    <div className="container flex-col font-[Poppins, sans-serif] pt-[40px] h-screen">
       <div className="col-lg-12 border flex justify-center shadow-[0px_0px_8px_rgba(38,43,55,20%)]">
         <div className="card border-0 px-[12px] pb-[12px] border-[unset] w-[65%]">
           <div className="card-header bg-white pt-[30px] pb-[20px] border-b-0">
