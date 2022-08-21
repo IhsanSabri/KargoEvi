@@ -6,6 +6,7 @@ import secondImage from "../assests/nasilcalisir.webp";
 import backgroundImage from "../assests/background.png";
 
 const Home = ({ nexPageLink }) => {
+  console.log('ERAY');
   return (
     <div id="mainPage">
       <div className="mainImage">
