@@ -5,75 +5,88 @@ import {
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import React from "react";
-import { Box, Flex } from "rebass/styled-components";
+import { Box, Flex } from "rebass";
 
 import OrderSummary from "../../OrderSummary";
+import PaymentForm from "../CreditCard";
+
+import { MenuContainer } from "./style";
 
 const { SubMenu } = Menu;
 
 function PaymentPage() {
-  // function getItem(label, key, icon, children, type) {
-  //   return {
-  //     key,
-  //     icon,
-  //     children,
-  //     label,
-  //     type,
-  //   };
-  // }
-
-  // const items = [
-  //   getItem("Navigation One", "sub1", <MailOutlined />,),
-  //   getItem("Navigation Two", "sub2", <AppstoreOutlined />, [
-  //     getItem("Option 5", "5"),
-  //     getItem("Option 6", "6"),
-  //     getItem("Submenu", "sub3", null, [
-  //       getItem("Option 7", "7"),
-  //       getItem("Option 8", "8"),
-  //     ]),
-  //   ]),
-  //   getItem("Navigation Three", "sub4", <SettingOutlined />, [
-  //     getItem("Option 9", "9"),
-  //     getItem("Option 10", "10"),
-  //     getItem("Option 11", "11"),
-  //     getItem("Option 12", "12"),
-  //   ]),
-  // ];
-
   const onClick = (e) => {
     console.log("click ", e);
   };
 
   return (
-    <Flex>
-      <Box width={2 / 3}>
-        <Menu
-          onClick={onClick}
-          style={{
-            width: "100%",
-          }}
-          defaultSelectedKeys={["1"]}
-          defaultOpenKeys={["sub1"]}
-          mode="inline"
-        >
-          <SubMenu
-            key="sub1"
-            title={
-              <span>
-                <span>Navigation One</span>
-              </span>
-            }
+    <>
+      <MenuContainer justifyContent="center" width={1}>
+        <Box width={1 / 2}>
+          <Menu
+            onClick={onClick}
+            style={{
+              width: "100%",
+            }}
+            // defaultSelectedKeys={["1"]}
+            // defaultOpenKeys={["sub1"]}
+            mode="inline"
           >
-            <Menu.Item key="1">
-              <div>asd</div>
-            </Menu.Item>
-          </SubMenu>
-        </Menu>
-      </Box>
-      <Box width={1 / 3}>
+            <SubMenu
+              key="sub1"
+              title={
+                <span>
+                  <span>Kredi Kartı İle Öde</span>
+                </span>
+              }
+            >
+              <Menu.Item key="1">
+                <PaymentForm></PaymentForm>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub2"
+              title={
+                <span>
+                  <span>Cüzdanım İle Öde</span>
+                </span>
+              }
+            >
+              <Menu.Item key="2">
+                <div>cüzdan component</div>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub3"
+              title={
+                <span>
+                  <span>Havale İle Öde</span>
+                </span>
+              }
+            >
+              <Menu.Item key="3">
+                <div>havale component</div>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub4"
+              title={
+                <span>
+                  <span>Kargo Tesliminde Öde</span>
+                </span>
+              }
+            >
+              <Menu.Item key="4">
+                <div>havale component</div>
+              </Menu.Item>
+            </SubMenu>
+          </Menu>
+        </Box>
+      </MenuContainer>
+      <div style={{ position: "absolute", right: "10px", top: "104px" }}>
         <OrderSummary />
-      </Box>
-    </Flex>
+      </div>
+    </>
   );
 }
 
