@@ -1,12 +1,15 @@
 import React from "react";
-import paymentLogo from '../../../assests/paymentLogo.png'
+import paymentLogo from "../../../assests/paymentLogo.png";
 
 import AntModal from "../AntModal";
-import Footer from "../../Footer";
+import Footer from "../Footer";
+import LoginTabs from "../LoginTabs";
 
 import { useModal } from "../../../config/hooks/useModal";
+import { Button } from "antd";
 
 import { FooterContainer } from "./style";
+import { PlusOutlined } from "@ant-design/icons";
 
 const OrderSummaryMain = () => {
   const { isModalVisible, openModal, closeModal } = useModal();
@@ -40,7 +43,7 @@ const OrderSummaryMain = () => {
                     className="bi bi-arrow-right-circle w-[30px] h-[30px]"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
                     ></path>
                   </svg>
@@ -161,38 +164,26 @@ const OrderSummaryMain = () => {
       </div>
       <Footer prevLink={"/page2"}>
         <FooterContainer>
-          <button
-            className="btn btn-outline-danger btn-lg shadow-none float-lg-end items-center flex pt-[11px] pb-[12px] pr-[31px] pl-[25px]"
-            type="button"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              className="bi bi-plus"
-            >
-              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
-            </svg>
+          <Button className="newOrderButton" danger>
+            <PlusOutlined />
             Yeni Gönderi Ekle
-          </button>
-          <button
-            className="col-lg-6 ml-[5rem] justify-center align-items-center btn btn-danger shadow-none py-[11px] pr-[30px] pl-[35px] text-[21px]"
+          </Button>
+          <Button
+            className="completeOrderButton"
             type="submit"
+            danger
             form="hook-form"
             onClick={openModal}
           >
             Siparişi Tamamla
-          </button>
+          </Button>
         </FooterContainer>
       </Footer>
       <AntModal
-        title="Select Categories"
         visible={isModalVisible}
         onCancel={closeModal}
       >
-        <div>asdasdasd</div>
+        <LoginTabs />
       </AntModal>
     </>
   );

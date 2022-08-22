@@ -6,7 +6,7 @@ import PersonalInfoPage from "./pages/PersonalInfoPage";
 import OrderSummaryPage from "./pages/OrderSummaryPage";
 import PaymentPageContainer from "./pages/PaymentPageContainer";
 
-import Footer from "./components/Footer";
+import Footer from "./components/UI/Footer";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -37,7 +37,7 @@ function App() {
           {/* <Footer prevPageLink={"/page2"} isSummaryPage={true} /> */}
         </Route>
         <Route exact path="/page4">
-          <PaymentPageContainer nexPageLink={"/page4"} />
+          <PaymentPageContainer nexPageLink={"/page3"} />
         </Route>
       </Router>
     </div>

@@ -3,7 +3,12 @@ import React from "react";
 
 const AntModal = ({ children, ...rest }) => {
   return (
-    <Modal destroyOnClose footer={null} {...rest}>
+    <Modal
+      destroyOnClose
+      footer={null}
+      bodyStyle={{ padding: "64px" }}
+      {...rest}
+    >
       {children}
     </Modal>
   );
