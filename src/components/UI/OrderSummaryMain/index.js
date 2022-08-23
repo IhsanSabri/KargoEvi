@@ -11,7 +11,7 @@ import { Button } from "antd";
 import { FooterContainer } from "./style";
 import { PlusOutlined } from "@ant-design/icons";
 
-const OrderSummaryMain = () => {
+const OrderSummaryMain = ({ nexPageLink }) => {
   const { isModalVisible, openModal, closeModal } = useModal();
 
   return (
@@ -179,11 +179,8 @@ const OrderSummaryMain = () => {
           </Button>
         </FooterContainer>
       </Footer>
-      <AntModal
-        visible={isModalVisible}
-        onCancel={closeModal}
-      >
-        <LoginTabs />
+      <AntModal visible={isModalVisible} onCancel={closeModal}>
+        <LoginTabs nexPageLink={nexPageLink} />
       </AntModal>
     </>
   );

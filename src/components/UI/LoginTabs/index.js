@@ -1,8 +1,8 @@
-import { Tabs } from 'antd';
-import React from 'react';
+import { Tabs } from "antd";
+import React from "react";
 
-import Login from '../Login';
-import SignUp from '../SignUp';
+import Login from "../Login";
+import SignUp from "../SignUp";
 
 const { TabPane } = Tabs;
 
@@ -10,13 +10,13 @@ const onChange = (key) => {
   console.log(key);
 };
 
-const LoginTabs = () => (
+const LoginTabs = ({ nexPageLink }) => (
   <Tabs defaultActiveKey="1" onChange={onChange}>
     <TabPane tab="Üyelik Girişi" key="1">
-      <Login />
+      <Login nexPageLink={nexPageLink} />
     </TabPane>
     <TabPane tab="Yeni Üyelik" key="2">
-      <SignUp />
+      <SignUp nexPageLink={nexPageLink} />
     </TabPane>
   </Tabs>
 );

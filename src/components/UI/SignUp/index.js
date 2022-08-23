@@ -1,16 +1,18 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import { Checkbox, Form, Input, Select, Radio } from "antd";
 import { FormItem, ButtonRegister } from "./style";
 
 const { Option } = Select;
 
-
-const SignUp = () => {
+const SignUp = ({ nexPageLink }) => {
   const [form] = Form.useForm();
+  let history = useHistory();
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+    history.push(nexPageLink);
   };
 
   const prefixSelector = (
@@ -37,9 +39,21 @@ const SignUp = () => {
       scrollToFirstError
     >
       <Form.Item>
-        <Radio.Group>
-          <Radio style={{ fontSize: "20px" }} value="bireyselÜyelik"> Bireysel Üyelik</Radio>
-          <Radio style={{ fontSize: "20px" }} value="kurumsalÜyelik"> Kurumsal Üyelik </Radio>
+        <Radio.Group
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <Radio style={{ fontSize: "18px" }} value="bireyselÜyelik">
+            {" "}
+            Bireysel Üyelik
+          </Radio>
+          <Radio style={{ fontSize: "18px" }} value="kurumsalÜyelik">
+            {" "}
+            Kurumsal Üyelik{" "}
+          </Radio>
         </Radio.Group>
       </Form.Item>
 
@@ -176,7 +190,7 @@ const SignUp = () => {
       </FormItem>
       <FormItem>
         <ButtonRegister danger type="primary" htmlType="submit">
-          Register
+          Kayıt Ol
         </ButtonRegister>
       </FormItem>
     </Form>

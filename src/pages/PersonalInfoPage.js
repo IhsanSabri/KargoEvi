@@ -1,9 +1,10 @@
 import React from "react";
-import PersonaInfo from "../components/PersonalInfo";
+
+import PersonalInfo from "../components/UI/PersonalInfo";
 
 const PersonalInfoPage = ({ nextPageLink }) => {
     return (
-        <PersonaInfo nextPageLink= {nextPageLink} />
+        <PersonalInfo nextPageLink= {nextPageLink} />
     );
 };
 

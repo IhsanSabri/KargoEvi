@@ -4,7 +4,6 @@ export function useModal() {
   const [isModalVisible, setModalState] = useState(false);
 
   const openModal = () => {
-      console.log('opened')
     setModalState(true);
   };
 
