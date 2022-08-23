@@ -1,11 +1,14 @@
 import React from "react";
 import Cards from "react-credit-cards";
 
-import { Tabs, Checkbox, Card } from "antd";
+import { Tabs, Checkbox, Card, Radio } from "antd";
 import { Box, Flex, Image, Text } from "rebass/styled-components";
 
 import "react-credit-cards/es/styles-compiled.css";
 import { CardContainer } from "./style";
+
+import visa from "../../../assests/visa.png";
+import yapikredi from "../../../assests/yapikredi.png";
 
 const { TabPane } = Tabs;
 export default class PaymentForm extends React.Component {
@@ -33,7 +36,7 @@ export default class PaymentForm extends React.Component {
         <Tabs defaultActiveKey="1">
           <TabPane tab="Yeni Kart" key="1">
             <Flex>
-              <Box>
+              <Box px={10}>
                 <form>
                   <label>Kart Numarası</label>
                   <input
@@ -52,7 +55,7 @@ export default class PaymentForm extends React.Component {
                     onFocus={this.handleInputFocus}
                   />
                   <Flex>
-                    <Box sx={{display: 'grid'}}>
+                    <Box sx={{ display: "grid", paddingRight: "5px" }}>
                       <label>Son Kullana Tarihi</label>
                       <input
                         className="expire"
@@ -63,7 +66,7 @@ export default class PaymentForm extends React.Component {
                         onFocus={this.handleInputFocus}
                       />
                     </Box>
-                    <Box sx={{display: 'grid'}}>
+                    <Box sx={{ display: "grid" }}>
                       <label>Güvenlik Kodu</label>
                       <input
                         type="tel"
@@ -89,29 +92,49 @@ export default class PaymentForm extends React.Component {
             </Flex>
           </TabPane>
           <TabPane tab="Kayıtlı Kartlar" key="2">
-            <Flex>
-              <Card
-                style={{
-                  width: 300,
-                  borderRadius: "10px",
-                }}
-              >
-                <Image src="" width="18" height="24" />
-                <Text>5400 65** **** 5432</Text>
-                <Text>Ayşe Keskin</Text>
-                <Text>10/24</Text>
-              </Card>
-              <Card
-                style={{
-                  width: 300,
-                  borderRadius: "10px",
-                }}
-              >
-                <Image src="" width="18" height="24" />
-                <Text>5400 65** **** 5432</Text>
-                <Text>Ayşe Keskin</Text>
-                <Text>10/24</Text>
-              </Card>
+            <Flex m={10}>
+              <Radio.Group>
+                <Radio value={1}>QNB</Radio>
+                <Card
+                  style={{
+                    width: 300,
+                    borderRadius: "10px",
+                    marginRight: "10px",
+                  }}
+                >
+                  <Image
+                    src={visa}
+                    width="57"
+                    height="30"
+                    sx={{ float: "right" }}
+                  />
+                  <Box p={20}>
+                    <Text>5400 65** **** 5432</Text>
+                    <Text>Ayşe Keskin</Text>
+                    <Text>10/24</Text>
+                  </Box>
+                </Card>
+
+                <Radio value={2}>Yapı Kredi</Radio>
+                <Card
+                  style={{
+                    width: 300,
+                    borderRadius: "10px",
+                  }}
+                >
+                  <Image
+                    src={yapikredi}
+                    width="77"
+                    height="30"
+                    sx={{ float: "right" }}
+                  />
+                  <Box p={20}>
+                    <Text>5400 65** **** 5432</Text>
+                    <Text>Ayşe Keskin</Text>
+                    <Text>10/24</Text>
+                  </Box>
+                </Card>
+              </Radio.Group>
             </Flex>
           </TabPane>
         </Tabs>
