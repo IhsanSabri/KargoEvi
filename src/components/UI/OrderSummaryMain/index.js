@@ -162,7 +162,7 @@ const OrderSummaryMain = () => {
           <img className="flex" src={paymentLogo} alt="logo" />
         </div>
       </div>
-      <Footer prevLink={"/page2"}>
+      <Footer prevLink={"/personalInfo"}>
         <FooterContainer>
           <Button className="newOrderButton" danger>
             <PlusOutlined />

@@ -22,22 +22,22 @@ function App() {
         <Header />
         <Navbar />
         <Route exact path="/">
-          <Home nexPageLink={"/page1"}/>
+          <Home nexPageLink={"/productInfo"}/>
         </Route>
-        <Route exact path="/page1">
-          <ProductInfoPage nextPageLink={"/page2"} />
+        <Route exact path="/productInfo">
+          <ProductInfoPage nextPageLink={"/personalInfo"} />
           <Footer prevPageLink={"/"} isSummaryPage={false} />
         </Route>
-        <Route exact path="/page2">
-          <PersonalInfoPage nextPageLink={"/page3"} />
-          <Footer prevPageLink={"/page1"} isSummaryPage={false} />
+        <Route exact path="/personalInfo">
+          <PersonalInfoPage nextPageLink={"/orderSummary"} />
+          <Footer prevPageLink={"/productInfo"} isSummaryPage={false} />
         </Route>
-        <Route exact path="/page3">
-          <OrderSummaryPage nexPageLink={"/page4"} />
-          {/* <Footer prevPageLink={"/page2"} isSummaryPage={true} /> */}
+        <Route exact path="/orderSummary">
+          <OrderSummaryPage nexPageLink={"/paymentPage"} />
+          {/* <Footer prevPageLink={"/personalInfo"} isSummaryPage={true} /> */}
         </Route>
-        <Route exact path="/page4">
-          <PaymentPageContainer nexPageLink={"/page3"} />
+        <Route exact path="/paymentPage">
+          <PaymentPageContainer nexPageLink={"/orderSummary"} />
         </Route>
       </Router>
     </div>
