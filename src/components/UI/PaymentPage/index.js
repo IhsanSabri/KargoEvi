@@ -22,7 +22,7 @@ function PaymentPage() {
   return (
     <>
       <MenuContainer justifyContent="center" width={1}>
-        <Box width={1 / 2}>
+        <Box width='53%'>
           <Menu
             onClick={onClick}
             style={{
@@ -41,7 +41,7 @@ function PaymentPage() {
               }
             >
               <Menu.Item key="1">
-                <PaymentForm></PaymentForm>
+                <PaymentForm />
               </Menu.Item>
             </SubMenu>
             <SubMenu
