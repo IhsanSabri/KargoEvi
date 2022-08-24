@@ -16,7 +16,7 @@ import "antd/dist/antd.min.css";
 
 function App() {
   return (
-    <div className="App h-[auto]">
+    <div className="App h-screen">
       <Router>
         <Header />
         <Navbar />
@@ -30,9 +30,9 @@ function App() {
           <PersonalInfoPage nextPageLink={"/orderSummary"} />
         </Route>
         <Route exact path="/orderSummary">
-          <OrderSummaryPage nexPageLink={"/adress"} />
+          <OrderSummaryPage nexPageLink={"/address"} />
         </Route>
-        <Route exact path="/adress">
+        <Route exact path="/address">
           <AdressPage nexPageLink={"/paymentPage"} />
         </Route>
         <Route exact path="/paymentPage">
