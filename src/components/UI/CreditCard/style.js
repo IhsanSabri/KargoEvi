@@ -14,6 +14,14 @@ const CardContainer = styled.div`
     }
     }
   }
+
+  .ant-radio-group-outline {
+    display: flex;
+  }
+
+  .ant-tabs-tabpane {
+    display: flex;
+  }
 `;
 
 export { CardContainer };

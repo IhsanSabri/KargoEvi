@@ -1,11 +1,14 @@
 import React from "react";
 import Cards from "react-credit-cards";
 
-import { Tabs, Checkbox, Card, Radio } from "antd";
-import { Box, Flex, Image, Text } from "rebass/styled-components";
+import { Tabs, Checkbox, Radio } from "antd";
+import { Box, Flex } from "rebass/styled-components";
+import CardFrame from "../CardFrame";
+import NewCardFrame from "../NewCardFrame";
 
 import "react-credit-cards/es/styles-compiled.css";
 import { CardContainer } from "./style";
+import { SafetyCertificateOutlined } from "@ant-design/icons";
 
 import visa from "../../../assests/visa.png";
 import yapikredi from "../../../assests/yapikredi.png";
@@ -94,48 +97,51 @@ export default class PaymentForm extends React.Component {
           <TabPane tab="Kayıtlı Kartlar" key="2">
             <Flex m={10}>
               <Radio.Group>
-                <Radio value={1}>QNB</Radio>
-                <Card
-                  style={{
-                    width: 300,
-                    borderRadius: "10px",
-                    marginRight: "10px",
-                  }}
-                >
-                  <Image
-                    src={visa}
-                    width="57"
-                    height="30"
-                    sx={{ float: "right" }}
+                <Box>
+                  <CardFrame
+                    value={1}
+                    IconContainer={{
+                      src: visa,
+                      width: "57",
+                      heigth: "30",
+                    }}
+                    UserInfo={{
+                      cardNumber: "5400 65** **** 5432",
+                      name: "Ayşe Keskin",
+                      expire: "10/24",
+                    }}
+                    BankName="QNB Finansbank"
                   />
-                  <Box p={20}>
-                    <Text>5400 65** **** 5432</Text>
-                    <Text>Ayşe Keskin</Text>
-                    <Text>10/24</Text>
-                  </Box>
-                </Card>
-
-                <Radio value={2}>Yapı Kredi</Radio>
-                <Card
-                  style={{
-                    width: 300,
-                    borderRadius: "10px",
+                  <Checkbox
+                    style={{ marginTop: "10px" }}
+                    onChange={(e) => console.log(e)}
+                  >
+                    <SafetyCertificateOutlined
+                      style={{
+                        fontSize: "21px",
+                        marginRight: "3px",
+                      }}
+                    />
+                    3D secure ile Ödemek İstiyorum
+                  </Checkbox>
+                </Box>
+                <CardFrame
+                  value={2}
+                  IconContainer={{
+                    src: yapikredi,
+                    width: "77",
+                    heigth: "30",
                   }}
-                >
-                  <Image
-                    src={yapikredi}
-                    width="77"
-                    height="30"
-                    sx={{ float: "right" }}
-                  />
-                  <Box p={20}>
-                    <Text>5400 65** **** 5432</Text>
-                    <Text>Ayşe Keskin</Text>
-                    <Text>10/24</Text>
-                  </Box>
-                </Card>
+                  UserInfo={{
+                    cardNumber: "5400 65** **** 5432",
+                    name: "Ayşe Keskin",
+                    expire: "10/24",
+                  }}
+                  BankName="Yapı Kredi Bankası"
+                />
               </Radio.Group>
             </Flex>
+            <NewCardFrame />
           </TabPane>
         </Tabs>
       </CardContainer>

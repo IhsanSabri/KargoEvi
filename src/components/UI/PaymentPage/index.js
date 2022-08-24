@@ -1,14 +1,10 @@
-import {
-  AppstoreOutlined,
-  MailOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
 import { Menu } from "antd";
 import React from "react";
-import { Box, Flex } from "rebass";
+import { Box } from "rebass";
 
 import OrderSummary from "../../OrderSummary";
 import PaymentForm from "../CreditCard";
+import WalletPayment from "../WalletPayment";
 
 import { MenuContainer } from "./style";
 
@@ -22,7 +18,7 @@ function PaymentPage() {
   return (
     <>
       <MenuContainer justifyContent="center" width={1}>
-        <Box width='53%'>
+        <Box width="60%">
           <Menu
             onClick={onClick}
             style={{
@@ -53,7 +49,7 @@ function PaymentPage() {
               }
             >
               <Menu.Item key="2">
-                <div>cüzdan component</div>
+                <WalletPayment />
               </Menu.Item>
             </SubMenu>
             <SubMenu
