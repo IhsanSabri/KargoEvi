@@ -24,13 +24,27 @@ const ColumnBox = styled(Col)`
   height: 150px;
   background: white;
   border-radius: 4px;
+  display: flex;
+  padding-bottom: 5px;
+  align-items: end;
 `;
 
 const ColumnBoxAddres = styled(Col)`
+  background: #f9fbfd;
   height: 104px;
-  background: white;
-  border: 1px solid #e7e7e7;
+  border: 1px dashed #e7e7e7;
   border-radius: 4px;
+  width: 100%;
+  display: flex;
+  color: #225386;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 22px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 const BoxMain = styled(Box)`
@@ -48,6 +62,13 @@ const TitleAddress = styled.div`
   display: flex;
   margin-bottom: 2rem;
   justify-content: space-between;
+`;
+
+const PaymentImage = styled.div`
+  height: 32px;
+  max-width: 100%;
+  text-align: -webkit-center;
+  margin-bottom: 2rem;
 `;
 
 const AdressSelectionTab = styled.div`
@@ -99,5 +120,6 @@ export {
   CheckboxMain,
   ColumnBoxAddres,
   AdressSelectionTab,
-  UpdateText
+  UpdateText,
+  PaymentImage,
 };

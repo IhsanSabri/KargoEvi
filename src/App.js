@@ -16,7 +16,7 @@ import "antd/dist/antd.min.css";
 
 function App() {
   return (
-    <div className="App h-screen">
+    <div className="App h-screen bg-[#f0f2f5]">
       <Router>
         <Header />
         <Navbar />

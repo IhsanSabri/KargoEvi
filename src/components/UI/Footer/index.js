@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import { FooterMain } from "./style";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
-
 const Footer = ({ children, ...rest }) => {
   return (
-    <div width={"100%"}>
+    <div style={{ width: "100%", background: "white" }}>
       <FooterMain alignItems="center" justifyContent={"space-evenly"}>
         <Link
           className="text-[#225386] text-[24px] flex no-underline items-center"

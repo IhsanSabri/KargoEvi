@@ -2,10 +2,11 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import OrderSummary from "../../OrderSummary";
+import AddressColumn from "../AddressColumn";
 import Footer from "../Footer";
 
 import { Layout, Button, Form, Row, Radio } from "antd";
-import { CheckOutlined } from "@ant-design/icons";
+import { CheckOutlined, PlusOutlined } from "@ant-design/icons";
 import {
   FooterContainer,
   ColumnBox,
@@ -13,9 +14,9 @@ import {
   TitleAddress,
   CheckboxMain,
   ColumnBoxAddres,
-  AdressSelectionTab,
-  UpdateText
+  PaymentImage,
 } from "./style";
+import paymentLogo from "../../../assests/paymentLogo.png";
 
 const { Content } = Layout;
 
@@ -28,6 +29,33 @@ const AddressMain = ({ nexPageLink }) => {
     history.push(nexPageLink);
   };
 
+  const dummyAddressData = [
+    {
+      id: 1,
+      addressName: "Çağlayan Ofis",
+      userName: "Ayşe Keskin",
+      phoneNumber: "+90 505 *** ** 55",
+      address:
+        "Akevler Mahallesi, Reşat Nuri Güntekin Sokak, 1065 Apt Adalar, İstanbul, Türkiye",
+    },
+    {
+      id: 2,
+      addressName: "Harbiye Ofis",
+      userName: "Ayşe Keskin",
+      phoneNumber: "+90 505 *** ** 55",
+      address:
+        "Akevler Mahallesi, Reşat Nuri Güntekin Sokak, 1065 Apt Adalar, İstanbul, Türkiye",
+    },
+    {
+      id: 3,
+      addressName: "Harbiye Ofis",
+      userName: "Ayşe Keskin",
+      phoneNumber: "+90 505 *** ** 55",
+      address:
+        "Akevler Mahallesi, Reşat Nuri Güntekin Sokak, 1065 Apt Adalar, İstanbul, Türkiye",
+    },
+  ];
+
   return (
     <>
       <Layout style={{ height: "100vh" }}>
@@ -35,10 +63,10 @@ const AddressMain = ({ nexPageLink }) => {
           <div className="col-lg-10 text-center">
             <span className="badge text-[#129068] bg-[#e3eaf1] font-medium inline-flex px-4 py-3">
               <CheckOutlined />
-              &nbsp; 1- Gönderi Bilgileri
+              &nbsp; 1- Üyelik Girişi
             </span>
             <span className="badge text-[#129068] bg-[#212529] bg-[#ced9e5] font-medium inline-flex px-4 py-3 ml-[-5px] text-xs">
-              2- Ürün İçerik Bilgileri
+              2- Adres Seçimi
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +79,7 @@ const AddressMain = ({ nexPageLink }) => {
               <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
             </svg>
             <span className="badge text-[#129068] bg-[#e3eaf1] font-medium inline-flex px-6 py-3 ml-[-10px]">
-              3-Alıcı Bilgileri
+              3- Ödeme
             </span>
           </div>
         </div>
@@ -62,6 +90,8 @@ const AddressMain = ({ nexPageLink }) => {
             marginTop: 64,
             display: "flex",
             marginBottom: "5%",
+            minHeight: "665px",
+            justifyContent: "center",
           }}
         >
           <Form
@@ -75,7 +105,7 @@ const AddressMain = ({ nexPageLink }) => {
               border: "1px solid rgba(0,0,0,.125)",
               background: "white",
               marginRight: "3%",
-              width: "75%",
+              width: "60%",
               flexDirection: "column",
             }}
           >
@@ -83,28 +113,25 @@ const AddressMain = ({ nexPageLink }) => {
               <BoxMain orientation="left">Adres Seçiniz</BoxMain>
               <CheckboxMain>Fatura Adresim Aynı</CheckboxMain>
             </TitleAddress>
-            <Radio.Group>
+            <Radio.Group defaultValue={1}>
               <Row gutter={[24, 24]} style={{ padding: "15px" }}>
+                {dummyAddressData.map((address, id) => {
+                  return <AddressColumn key={id} address={address} />;
+                })}
                 <ColumnBox span={11}>
-                  <AdressSelectionTab>
-                    <Radio style={{ fontSize: "18px" }} value="firstAddress">
-                      Çağlayan Ofis
-                    </Radio>
-                    <UpdateText>Düzenle</UpdateText>
-                  </AdressSelectionTab>
-                  <ColumnBoxAddres></ColumnBoxAddres>
+                  <ColumnBoxAddres>
+                    <PlusOutlined />
+                    <div>Yeni Adres Ekle</div>
+                  </ColumnBoxAddres>
                 </ColumnBox>
-                <ColumnBox span={11}>
-                  <Radio style={{ fontSize: "18px" }} value="secondAddress">
-                    Harbiye Ofis
-                  </Radio>
-                </ColumnBox>
-                <ColumnBox span={11} />
               </Row>
             </Radio.Group>
           </Form>
           <OrderSummary />
         </Content>
+        <PaymentImage>
+          <img src={paymentLogo} />
+        </PaymentImage>
         <Footer prevLink={"/"}>
           <FooterContainer>
             <button
