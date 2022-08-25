@@ -12,8 +12,9 @@ import {
 
 const AddressColumn = (props) => {
   const changeStyle = (e) => {
-    const selectedElement = document.querySelectorAll(".addressColumn")[(e.target.value -1)];
-    
+    const selectedElement =
+      document.querySelectorAll(".addressColumn")[e.target.value - 1];
+
     console.log(selectedElement.className);
   };
 
@@ -34,7 +35,7 @@ const AddressColumn = (props) => {
           <div className="userInfo">
             <div className="userName">
               <Avatar size="small" icon={<UserOutlined />} />
-              <div>{props.address.userName}</div>
+                <div>{props.address.userName}</div>
             </div>
             <div className="userPhone">
               <PhoneOutlined />

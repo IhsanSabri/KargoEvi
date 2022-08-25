@@ -4,7 +4,10 @@ import { useHistory } from "react-router-dom";
 import OrderSummary from "../../OrderSummary";
 import AddressColumn from "../AddressColumn";
 import Footer from "../Footer";
+import AntModal from "../AntModal";
+import AddAddress from "../AddAddress";
 
+import { useModal } from "../../../config/hooks/useModal";
 import { Layout, Button, Form, Row, Radio } from "antd";
 import { CheckOutlined, PlusOutlined } from "@ant-design/icons";
 import {
@@ -21,6 +24,7 @@ import paymentLogo from "../../../assests/paymentLogo.png";
 const { Content } = Layout;
 
 const AddressMain = ({ nexPageLink }) => {
+  const { isModalVisible, openModal, closeModal } = useModal();
   const [form] = Form.useForm();
   let history = useHistory();
 
@@ -98,6 +102,7 @@ const AddressMain = ({ nexPageLink }) => {
             form={form}
             name="register"
             onFinish={onFinish}
+            id="hook-form"
             style={{
               display: "flex",
               padding: 24,
@@ -121,7 +126,7 @@ const AddressMain = ({ nexPageLink }) => {
                 <ColumnBox span={11}>
                   <ColumnBoxAddres>
                     <PlusOutlined />
-                    <div>Yeni Adres Ekle</div>
+                    <div onClick={openModal}>Yeni Adres Ekle</div>
                   </ColumnBoxAddres>
                 </ColumnBox>
               </Row>
@@ -144,6 +149,9 @@ const AddressMain = ({ nexPageLink }) => {
             </button>
           </FooterContainer>
         </Footer>
+        <AntModal visible={isModalVisible} onCancel={closeModal}>
+        <AddAddress event={closeModal}/>
+      </AntModal>
       </Layout>
     </>
   );
