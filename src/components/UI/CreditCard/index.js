@@ -8,7 +8,7 @@ import NewCardFrame from "../NewCardFrame";
 
 import "react-credit-cards/es/styles-compiled.css";
 import { CardContainer } from "./style";
-import { SafetyCertificateOutlined } from "@ant-design/icons";
+import { SafetyCertificateOutlined, PlusOutlined } from "@ant-design/icons";
 
 import visa from "../../../assests/visa.png";
 import yapikredi from "../../../assests/yapikredi.png";
@@ -141,7 +141,17 @@ export default class PaymentForm extends React.Component {
                 />
               </Radio.Group>
             </Flex>
-            <NewCardFrame />
+            <NewCardFrame
+              icon={
+                <PlusOutlined
+                  style={{
+                    position: "relative",
+                    margin: "4px",
+                  }}
+                />
+              }
+              text={"Yeni Kart Ekle"}
+            />
           </TabPane>
         </Tabs>
       </CardContainer>

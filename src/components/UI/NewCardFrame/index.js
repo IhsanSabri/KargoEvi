@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Text, Flex } from "rebass";
 
-import { CreditCardOutlined, PlusOutlined } from "@ant-design/icons";
+import { CreditCardOutlined } from "@ant-design/icons";
 
-const NewCardFrame = () => {
+const NewCardFrame = ({ icon, text }) => {
   return (
     <Box
       sx={{
@@ -27,13 +27,8 @@ const NewCardFrame = () => {
           }}
         />
         <Flex sx={{ justifyContent: "center", marginTop: "10px" }}>
-          <PlusOutlined
-            style={{
-              position: "relative",
-              margin: "4px",
-            }}
-          />
-          <Text>Yeni Kart Ekle</Text>
+          {icon}
+          <Text>{text}</Text>
         </Flex>
       </Box>
     </Box>

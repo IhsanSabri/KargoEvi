@@ -10,8 +10,8 @@ const CardContainer = styled.div`
       height: 50px;
 
       &.expire {
-      margin-right: 5px;
-    }
+        margin-right: 5px;
+      }
     }
   }
 

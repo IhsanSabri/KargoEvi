@@ -5,6 +5,8 @@ import { Box } from "rebass";
 import OrderSummary from "../../OrderSummary";
 import PaymentForm from "../CreditCard";
 import WalletPayment from "../WalletPayment";
+import PayWithTransfer from "../PayWithTransfer";
+import PayOnDelivery from "../PayOnDelivery";
 
 import { MenuContainer } from "./style";
 
@@ -61,7 +63,7 @@ function PaymentPage() {
               }
             >
               <Menu.Item key="3">
-                <div>havale component</div>
+                <PayWithTransfer />
               </Menu.Item>
             </SubMenu>
             <SubMenu
@@ -73,7 +75,7 @@ function PaymentPage() {
               }
             >
               <Menu.Item key="4">
-                <div>havale component</div>
+                <PayOnDelivery />
               </Menu.Item>
             </SubMenu>
           </Menu>

@@ -53,8 +53,12 @@ const WalletPayment = () => {
                   }}
                 />
                 <Box>
-                  <Text fontSize={'10px'} lineHeight={'2'}>Güncel Cüzdan Bakiyesi</Text>
-                  <Text fontWeight={'bold'} lineHeight={'1'}>1.240,50 TL</Text>
+                  <Text fontSize={"10px"} lineHeight={"2"}>
+                    Güncel Cüzdan Bakiyesi
+                  </Text>
+                  <Text fontWeight={"bold"} lineHeight={"1"}>
+                    1.240,50 TL
+                  </Text>
                 </Box>
               </Flex>
             </Box>
@@ -63,33 +67,18 @@ const WalletPayment = () => {
       </Box>
       <Divider />
       <Box>
-          <Box>
-              <Text fontWeight={'bold'}>Korgo Evi. Cüzdanıma yükle ve kullan</Text>
-          </Box>
-          <Flex >
+        <Box>
+          <Text fontWeight={"bold"}>Korgo Evi. Cüzdanıma yükle ve kullan</Text>
+        </Box>
+        <Flex>
           <Flex m={10}>
-              <Radio.Group style={{display: 'flex'}}>
-                <Box>
-                  <CardFrame
-                    value={1}
-                    IconContainer={{
-                      src: visa,
-                      width: "57",
-                      heigth: "30",
-                    }}
-                    UserInfo={{
-                      cardNumber: "5400 65** **** 5432",
-                      name: "Ayşe Keskin",
-                      expire: "10/24",
-                    }}
-                    BankName="QNB Finansbank"
-                  />
-                </Box>
+            <Radio.Group style={{ display: "flex" }}>
+              <Box>
                 <CardFrame
-                  value={2}
+                  value={1}
                   IconContainer={{
-                    src: yapikredi,
-                    width: "77",
+                    src: visa,
+                    width: "57",
                     heigth: "30",
                   }}
                   UserInfo={{
@@ -97,12 +86,27 @@ const WalletPayment = () => {
                     name: "Ayşe Keskin",
                     expire: "10/24",
                   }}
-                  BankName="Yapı Kredi Bankası"
+                  BankName="QNB Finansbank"
                 />
-              </Radio.Group>
-            </Flex>
-            <NewCardFrame />
+              </Box>
+              <CardFrame
+                value={2}
+                IconContainer={{
+                  src: yapikredi,
+                  width: "77",
+                  heigth: "30",
+                }}
+                UserInfo={{
+                  cardNumber: "5400 65** **** 5432",
+                  name: "Ayşe Keskin",
+                  expire: "10/24",
+                }}
+                BankName="Yapı Kredi Bankası"
+              />
+            </Radio.Group>
           </Flex>
+          <NewCardFrame text={"Başka bir kartla ödeme yap"} />
+        </Flex>
       </Box>
     </>
   );
