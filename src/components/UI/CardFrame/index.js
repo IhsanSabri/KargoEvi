@@ -3,13 +3,16 @@ import React from "react";
 import { Card, Radio } from "antd";
 import { Box, Image, Text } from "rebass/styled-components";
 
+import { CardFrameContainer } from "./style";
+
 const CardFrame = ({ value, IconContainer, UserInfo, BankName }) => {
   return (
-    <Box>
-      <Radio value={value}>{BankName} Kartım</Radio>
+    <CardFrameContainer m={"0 10% 0 6px"}>
+      <Radio value={value} style={{ marginBottom: "10px" }}>
+        {BankName} Kartım
+      </Radio>
       <Card
         style={{
-          width: 300,
           borderRadius: "10px",
           marginRight: "10px",
         }}
@@ -20,13 +23,15 @@ const CardFrame = ({ value, IconContainer, UserInfo, BankName }) => {
           height={IconContainer?.height}
           sx={{ float: "right" }}
         />
-        <Box p={20}>
+        <Box p={"18% 0 4% 10%"}>
           <Text>{UserInfo?.cardNumber}</Text>
-          <Text>{UserInfo?.name}</Text>
-          <Text>{UserInfo?.expire}</Text>
+          <Text fontSize={12} color={"gray"}>
+            {UserInfo?.name}
+          </Text>
+          <Text mt={"15px"}>{UserInfo?.expire}</Text>
         </Box>
       </Card>
-    </Box>
+    </CardFrameContainer>
   );
 };
 

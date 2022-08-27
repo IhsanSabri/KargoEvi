@@ -6,15 +6,19 @@ import { CreditCardOutlined } from "@ant-design/icons";
 const NewCardFrame = ({ icon, text }) => {
   return (
     <Box
+      width={"98%"}
+      m={"0 10% 0 5px"}
+      p={"13%"}
       sx={{
-        height: "154px",
-        width: "298px",
         border: "1px dashed #eaeff4",
-        top: "35px",
+        top: "40px",
         position: "relative",
         borderRadius: "10px",
         backgroundColor: "#fafbfd",
         color: "#225386",
+        whiteSpace: "break-spaces",
+        textAlign: "center",
+        lineHeight: "1.3",
       }}
     >
       <Box>
@@ -23,7 +27,7 @@ const NewCardFrame = ({ icon, text }) => {
             fontSize: "40px",
             display: "block",
             justifyContent: "center",
-            marginTop: "25px",
+            marginTop: "10px",
           }}
         />
         <Flex sx={{ justifyContent: "center", marginTop: "10px" }}>

@@ -5,6 +5,10 @@ const TransferContainer = styled.div`
     width: 100%;
   }
 
+  .ant-radio {
+    top: 2px;
+  }
+
   .ant-collapse-item {
     border: 1px solid lightgray;
     border-radius: 10px;
@@ -19,7 +23,7 @@ const TransferContainer = styled.div`
 
   .ant-collapse-header-text {
     position: relative;
-    top: 18px;
+    top: 10px;
   }
 
   .soft_text {
@@ -33,6 +37,10 @@ const TransferContainer = styled.div`
 
   .ant-collapse-content > .ant-collapse-content-box {
     padding: 20px 120px 0px !important;
+  }
+
+  .ant-collapse>.ant-collapse-item>.ant-collapse-header {
+    padding: 0px 16px 12px;
   }
 `;
 

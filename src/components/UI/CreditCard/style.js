@@ -1,18 +1,39 @@
 import styled from "@emotion/styled";
 
 const CardContainer = styled.div`
+  .rccs {
+    width: 100%;
+    max-width: 290px;
+  }
+
+  .rccs__card {
+    width: 100%;
+  }
+
   form {
     display: flex;
     flex-direction: column;
 
-    input {
-      margin: 10px 0;
-      height: 50px;
-
-      &.expire {
-        margin-right: 5px;
-      }
+    label {
+      font-size: 12px;
+      color: gray;
+      text-transform: uppercase;
     }
+
+    input {
+      margin: 3px 0 15px;
+      height: 50px;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+
+  .ant-card {
+    width: 100% !important;
+    box-shadow: -1px 1px 5px 4px #eeeeee;
+    min-width: 175px;
   }
 
   .ant-radio-group-outline {

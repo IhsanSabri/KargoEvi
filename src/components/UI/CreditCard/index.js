@@ -14,7 +14,7 @@ import visa from "../../../assests/visa.png";
 import yapikredi from "../../../assests/yapikredi.png";
 
 const { TabPane } = Tabs;
-export default class PaymentForm extends React.Component {
+export default class CreditCard extends React.Component {
   state = {
     cvc: "",
     expiry: "",
@@ -38,10 +38,10 @@ export default class PaymentForm extends React.Component {
       <CardContainer id="PaymentForm">
         <Tabs defaultActiveKey="1">
           <TabPane tab="Yeni Kart" key="1">
-            <Flex>
-              <Box px={10}>
+            <Flex width={1}>
+              <Box width={1 / 2} px={10}>
                 <form>
-                  <label>Kart Numarası</label>
+                  <label>kart numarası</label>
                   <input
                     type="tel"
                     name="number"
@@ -49,7 +49,7 @@ export default class PaymentForm extends React.Component {
                     onChange={this.handleInputChange}
                     onFocus={this.handleInputFocus}
                   />
-                  <label>Kart Üzerindeki İsim</label>
+                  <label>kart üzerindeki isim</label>
                   <input
                     type="tel"
                     name="name"
@@ -57,9 +57,12 @@ export default class PaymentForm extends React.Component {
                     onChange={this.handleInputChange}
                     onFocus={this.handleInputFocus}
                   />
-                  <Flex>
-                    <Box sx={{ display: "grid", paddingRight: "5px" }}>
-                      <label>Son Kullana Tarihi</label>
+                  <Flex width={1}>
+                    <Box
+                      width={1 / 2}
+                      sx={{ display: "grid", paddingRight: "5px" }}
+                    >
+                      <label>son kullana tarihi</label>
                       <input
                         className="expire"
                         type="tel"
@@ -69,8 +72,8 @@ export default class PaymentForm extends React.Component {
                         onFocus={this.handleInputFocus}
                       />
                     </Box>
-                    <Box sx={{ display: "grid" }}>
-                      <label>Güvenlik Kodu</label>
+                    <Box width={1 / 2} sx={{ display: "grid" }}>
+                      <label>güvenlik kodu</label>
                       <input
                         type="tel"
                         name="cvc"
@@ -85,73 +88,85 @@ export default class PaymentForm extends React.Component {
                   Kart Bilgilerimi Sonraki Siparişler için sakla
                 </Checkbox>
               </Box>
-              <Cards
-                cvc={this.state.cvc}
-                expiry={this.state.expiry}
-                focused={this.state.focus}
-                name={this.state.name}
-                number={this.state.number}
-              />
+              <Box width={1 / 2} mt={20}>
+                <Cards
+                  cvc={this.state.cvc}
+                  expiry={this.state.expiry}
+                  focused={this.state.focus}
+                  name={this.state.name}
+                  number={this.state.number}
+                />
+              </Box>
             </Flex>
           </TabPane>
           <TabPane tab="Kayıtlı Kartlar" key="2">
-            <Flex m={10}>
-              <Radio.Group>
-                <Box>
-                  <CardFrame
-                    value={1}
-                    IconContainer={{
-                      src: visa,
-                      width: "57",
-                      heigth: "30",
-                    }}
-                    UserInfo={{
-                      cardNumber: "5400 65** **** 5432",
-                      name: "Ayşe Keskin",
-                      expire: "10/24",
-                    }}
-                    BankName="QNB Finansbank"
-                  />
-                  <Checkbox
-                    style={{ marginTop: "10px" }}
-                    onChange={(e) => console.log(e)}
-                  >
-                    <SafetyCertificateOutlined
+            <Flex width={1}>
+              <Box width={2 / 3}>
+                <Flex width={1} mt={10}>
+                  <Radio.Group style={{width: '100%'}}>
+                    <Flex width={1}>
+                      <Box width={1 / 2}>
+                        <CardFrame
+                          value={1}
+                          IconContainer={{
+                            src: visa,
+                            width: "57",
+                            heigth: "30",
+                          }}
+                          UserInfo={{
+                            cardNumber: "5400 65** **** 5432",
+                            name: "Ayşe Keskin",
+                            expire: "10/24",
+                          }}
+                          BankName="QNB Finansbank"
+                        />
+                        <Checkbox
+                          style={{ marginTop: "30px" }}
+                          onChange={(e) => console.log(e)}
+                        >
+                          <SafetyCertificateOutlined
+                            style={{
+                              fontSize: "21px",
+                              marginRight: "3px",
+                            }}
+                          />
+                          3D secure ile Ödemek İstiyorum
+                        </Checkbox>
+                      </Box>
+                      <Box width={1 / 2}>
+                        <CardFrame
+                          value={2}
+                          IconContainer={{
+                            src: yapikredi,
+                            width: "77",
+                            heigth: "30",
+                          }}
+                          UserInfo={{
+                            cardNumber: "5400 65** **** 5432",
+                            name: "Ayşe Keskin",
+                            expire: "10/24",
+                          }}
+                          BankName="Yapı Kredi Bankası"
+                        />
+                      </Box>
+                    </Flex>
+                  </Radio.Group>
+                </Flex>
+              </Box>
+              <Box width={1 / 3}>
+                <NewCardFrame
+                  icon={
+                    <PlusOutlined
                       style={{
-                        fontSize: "21px",
-                        marginRight: "3px",
+                        position: "relative",
+                        margin: "4px",
                       }}
                     />
-                    3D secure ile Ödemek İstiyorum
-                  </Checkbox>
-                </Box>
-                <CardFrame
-                  value={2}
-                  IconContainer={{
-                    src: yapikredi,
-                    width: "77",
-                    heigth: "30",
-                  }}
-                  UserInfo={{
-                    cardNumber: "5400 65** **** 5432",
-                    name: "Ayşe Keskin",
-                    expire: "10/24",
-                  }}
-                  BankName="Yapı Kredi Bankası"
+                  }
+                  text={"Yeni Kart Ekle"}
                 />
-              </Radio.Group>
+              </Box>
             </Flex>
-            <NewCardFrame
-              icon={
-                <PlusOutlined
-                  style={{
-                    position: "relative",
-                    margin: "4px",
-                  }}
-                />
-              }
-              text={"Yeni Kart Ekle"}
-            />
           </TabPane>
         </Tabs>
       </CardContainer>
