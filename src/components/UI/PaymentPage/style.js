@@ -60,4 +60,21 @@ const Title = styled.span`
   font-weight: 400;
 `;
 
-export { MenuContainer, Title };
+const PaymentPageMainWrapper = styled.div`
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #225386;
+    border-color: #225386;
+  }
+  .ant-checkbox-inner {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+
+    &::after {
+      width: 8px;
+      height: 13px;
+    }
+  }
+`;
+
+export { MenuContainer, Title, PaymentPageMainWrapper };

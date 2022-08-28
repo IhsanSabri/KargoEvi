@@ -69,18 +69,21 @@ const AddressMain = ({ nextPageLink }) => {
       text: "1- Üyelik Girişi",
       isChecked: true,
       isActive: false,
+      isNextStepExist: false,
     },
     {
       id: 2,
       text: "2- Adres Seçimi",
       isChecked: false,
       isActive: true,
+      isNextStepExist: true,
     },
     {
       id: 3,
       text: "3- Ödeme",
       isChecked: false,
       isActive: false,
+      isNextStepExist: false,
     },
   ];
 

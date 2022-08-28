@@ -11,7 +11,7 @@ const Steps = ({ steps }) => {
           {steps.isChecked && <CheckOutlined />}
           &nbsp; {steps.text}
         </StepBadge>
-        {steps.isActive && <Triangle />}
+        {steps.isNextStepExist && <Triangle />}
       </MainCol>
     </StepsMain>
   );

@@ -7,7 +7,7 @@ const StepsMain = styled(Flex)`
   padding-top: 1rem;
 
   .selected {
-    color: #129068;
+    color: black;
     background: #ced9e5;
     font-weight: 500;
     display: inline-flex;
