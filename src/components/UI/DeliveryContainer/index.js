@@ -5,15 +5,31 @@ import { Radio } from "antd";
 
 import { DeliveryDesignContainer } from "./style";
 
-const DeliveryContainer = ({ icon, mainText, text }) => {
+const DeliveryContainer = ({
+  icon,
+  mainText,
+  text,
+  selectedValue,
+  setSelectedValue,
+}) => {
+  const handleOnClick = () => {
+    setSelectedValue(text);
+  };
+
   return (
-    <DeliveryDesignContainer>
+    <DeliveryDesignContainer
+      onClick={handleOnClick}
+      style={{
+        border:
+          selectedValue === text ? "1px solid #50749c" : "1px solid #f0f0f0",
+      }}
+    >
       <Flex>
         <Radio value={text}></Radio>
         {icon}
         <Box sx={{ lineHeight: "initial" }}>
           <Text fontSize={"13px"}>{mainText}</Text>
-          <Text color={"lightgray"} fontSize={"12px"} padding={'3px 0'}>
+          <Text color={"lightgray"} fontSize={"12px"} padding={"3px 0"}>
             {text}
           </Text>
         </Box>

@@ -21,6 +21,7 @@ export default class CreditCard extends React.Component {
     focus: "",
     name: "",
     number: "",
+    borderedValue: 0,
   };
 
   handleInputFocus = (e) => {
@@ -31,6 +32,10 @@ export default class CreditCard extends React.Component {
     const { name, value } = e.target;
 
     this.setState({ [name]: value });
+  };
+
+  handleOnChange = (event) => {
+    this.setState({ borderedValue: event.target.value });
   };
 
   render() {
@@ -103,11 +108,19 @@ export default class CreditCard extends React.Component {
             <Flex width={1}>
               <Box width={2 / 3}>
                 <Flex width={1} mt={10}>
-                  <Radio.Group style={{width: '100%'}}>
+                  <Radio.Group
+                    style={{ width: "100%" }}
+                    onChange={this.handleOnChange}
+                    value={this.state.borderedValue}
+                  >
                     <Flex width={1}>
                       <Box width={1 / 2}>
                         <CardFrame
                           value={1}
+                          borderedValue={this.state.borderedValue}
+                          setBorderedValue={(value) =>
+                            this.setState({ borderedValue: value })
+                          }
                           IconContainer={{
                             src: visa,
                             width: "57",
@@ -136,6 +149,10 @@ export default class CreditCard extends React.Component {
                       <Box width={1 / 2}>
                         <CardFrame
                           value={2}
+                          borderedValue={this.state.borderedValue}
+                          setBorderedValue={(value) =>
+                            this.setState({ borderedValue: value })
+                          }
                           IconContainer={{
                             src: yapikredi,
                             width: "77",

@@ -5,14 +5,28 @@ import { Box, Image, Text } from "rebass/styled-components";
 
 import { CardFrameContainer } from "./style";
 
-const CardFrame = ({ value, IconContainer, UserInfo, BankName }) => {
+const CardFrame = ({
+  value,
+  borderedValue,
+  setBorderedValue,
+  IconContainer,
+  UserInfo,
+  BankName,
+}) => {
+  const handleOnClick = () => {
+    setBorderedValue(value);
+  };
+
   return (
     <CardFrameContainer m={"0 10% 0 6px"}>
       <Radio value={value} style={{ marginBottom: "10px" }}>
         {BankName} Kartım
       </Radio>
       <Card
+        onClick={handleOnClick}
         style={{
+          border:
+            borderedValue === value ? "1px solid #50749c" : "1px solid #f0f0f0",
           borderRadius: "10px",
           marginRight: "10px",
         }}

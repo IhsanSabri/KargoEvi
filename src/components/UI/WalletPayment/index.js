@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Divider, Checkbox, Radio } from "antd";
 import { Box, Flex, Text } from "rebass";
@@ -12,6 +12,12 @@ import visa from "../../../assests/visa.png";
 import yapikredi from "../../../assests/yapikredi.png";
 
 const WalletPayment = () => {
+  const [borderedValue, setBorderedValue] = useState(0);
+
+  const handleOnChange = (event) => {
+    setBorderedValue(event.target.value);
+  };
+
   return (
     <WalletContainer>
       <Box width={1}>
@@ -87,11 +93,17 @@ const WalletPayment = () => {
         <Flex width={1}>
           <Box width={2 / 3}>
             <Flex width={1} mt={10}>
-              <Radio.Group style={{ width: "100%" }}>
+              <Radio.Group
+                style={{ width: "100%" }}
+                value={borderedValue}
+                onChange={handleOnChange}
+              >
                 <Flex width={1}>
                   <Box width={1 / 2}>
                     <CardFrame
                       value={1}
+                      borderedValue={borderedValue}
+                      setBorderedValue={(value) => setBorderedValue(value)}
                       IconContainer={{
                         src: visa,
                         width: "57",
@@ -108,6 +120,8 @@ const WalletPayment = () => {
                   <Box width={1 / 2}>
                     <CardFrame
                       value={2}
+                      borderedValue={borderedValue}
+                      setBorderedValue={(value) => setBorderedValue(value)}
                       IconContainer={{
                         src: yapikredi,
                         width: "77",

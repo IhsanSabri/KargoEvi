@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Collapse, Radio } from "antd";
 import { Flex, Image, Text } from "rebass/styled-components";
 
@@ -12,10 +12,15 @@ import { Box } from "rebass";
 const { Panel } = Collapse;
 
 const PayWithTransfer = () => {
+  const [selectedValue, setSelectedValue] = useState("");
   const icons = {
     akbank: akbank,
     isbankasi: isbankasi,
     ziraat: ziraat,
+  };
+
+  const handleOnChange = (key) => {
+    setSelectedValue(key);
   };
 
   return (
@@ -24,9 +29,10 @@ const PayWithTransfer = () => {
         Havale bilgilerini görmek için banka seçiniz
       </Text>
       <TransferContainer>
-        <Radio.Group>
+        <Radio.Group value={selectedValue}>
           <Collapse
             ghost
+            onChange={handleOnChange}
             accordion
             expandIcon={({ panelKey }) => (
               <Flex>
@@ -49,6 +55,12 @@ const PayWithTransfer = () => {
                 </>
               }
               key="akbank"
+              style={{
+                border:
+                  selectedValue === "akbank"
+                    ? "1px solid #50749c"
+                    : "1px solid #f0f0f0",
+              }}
             >
               <Box className="IBAN_Soft">
                 Server Global Lojistik Tic. Ltd. Şti.
@@ -68,6 +80,12 @@ const PayWithTransfer = () => {
                 </>
               }
               key="isbankasi"
+              style={{
+                border:
+                  selectedValue === "isbankasi"
+                    ? "1px solid #50749c"
+                    : "1px solid #f0f0f0",
+              }}
             >
               <Box className="IBAN_Soft">
                 Server Global Lojistik Tic. Ltd. Şti.
@@ -87,6 +105,12 @@ const PayWithTransfer = () => {
                 </>
               }
               key="ziraat"
+              style={{
+                border:
+                  selectedValue === "ziraat"
+                    ? "1px solid #50749c"
+                    : "1px solid #f0f0f0",
+              }}
             >
               <Box className="IBAN_Soft">
                 Server Global Lojistik Tic. Ltd. Şti.
