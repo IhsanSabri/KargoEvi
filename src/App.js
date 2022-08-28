@@ -6,6 +6,7 @@ import PersonalInfoPage from "./pages/PersonalInfoPage";
 import OrderSummaryPage from "./pages/OrderSummaryPage";
 import PaymentPageContainer from "./pages/PaymentPageContainer";
 import AdressPage from "./pages/AdressPage";
+import ThankYouPage from "./pages/ThankYouPage";
 
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
@@ -33,10 +34,13 @@ function App() {
           <OrderSummaryPage nexPageLink={"/address"} />
         </Route>
         <Route exact path="/address">
-          <AdressPage nexPageLink={"/paymentPage"} />
+          <AdressPage nextPageLink={"/paymentPage"} />
         </Route>
         <Route exact path="/paymentPage">
-          <PaymentPageContainer nexPageLink={"/orderSummary"} />
+          <PaymentPageContainer nexPageLink={"/thankYouPage"} />
+        </Route>
+        <Route exact path="/thankYouPage">
+          <ThankYouPage />
         </Route>
       </Router>
     </div>

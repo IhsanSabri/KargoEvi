@@ -6,10 +6,11 @@ import AddressColumn from "../AddressColumn";
 import Footer from "../Footer";
 import AntModal from "../AntModal";
 import AddAddress from "../AddAddress";
+import Steps from "../Steps";
 
 import { useModal } from "../../../config/hooks/useModal";
 import { Layout, Button, Form, Row, Radio } from "antd";
-import { CheckOutlined, PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined } from "@ant-design/icons";
 import {
   FooterContainer,
   ColumnBox,
@@ -19,18 +20,20 @@ import {
   ColumnBoxAddres,
   PaymentImage,
 } from "./style";
+import { StepsMain, MainCol } from "../Steps/style";
 import paymentLogo from "../../../assests/paymentLogo.png";
 
 const { Content } = Layout;
 
-const AddressMain = ({ nexPageLink }) => {
+const AddressMain = ({ nextPageLink }) => {
+  console.log(nextPageLink);
   const { isModalVisible, openModal, closeModal } = useModal();
   const [form] = Form.useForm();
   let history = useHistory();
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    history.push(nexPageLink);
+    history.push(nextPageLink);
   };
 
   const dummyAddressData = [
@@ -60,33 +63,37 @@ const AddressMain = ({ nexPageLink }) => {
     },
   ];
 
+  const stepsInfo = [
+    {
+      id: 1,
+      text: "1- Üyelik Girişi",
+      isChecked: true,
+      isActive: false,
+    },
+    {
+      id: 2,
+      text: "2- Adres Seçimi",
+      isChecked: false,
+      isActive: true,
+    },
+    {
+      id: 3,
+      text: "3- Ödeme",
+      isChecked: false,
+      isActive: false,
+    },
+  ];
+
   return (
     <>
       <Layout style={{ height: "100vh" }}>
-        <div className="block">
-          <div className="col-lg-10 text-center">
-            <span className="badge text-[#129068] bg-[#e3eaf1] font-medium inline-flex px-4 py-3">
-              <CheckOutlined />
-              &nbsp; 1- Üyelik Girişi
-            </span>
-            <span className="badge text-[#129068] bg-[#212529] bg-[#ced9e5] font-medium inline-flex px-4 py-3 ml-[-5px] text-xs">
-              2- Adres Seçimi
-            </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              className="bi bi-caret-right-fill text-[#ced9e5] ml-[-6px] relative z-1 inline-flex"
-            >
-              <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
-            </svg>
-            <span className="badge text-[#129068] bg-[#e3eaf1] font-medium inline-flex px-6 py-3 ml-[-10px]">
-              3- Ödeme
-            </span>
-          </div>
-        </div>
+        <StepsMain>
+          <MainCol flex={4}>
+            {stepsInfo.map((step) => {
+              return <Steps key={step.id} steps={step} />;
+            })}
+          </MainCol>
+        </StepsMain>
         <Content
           className="site-layout"
           style={{
@@ -150,8 +157,8 @@ const AddressMain = ({ nexPageLink }) => {
           </FooterContainer>
         </Footer>
         <AntModal visible={isModalVisible} onCancel={closeModal}>
-        <AddAddress event={closeModal}/>
-      </AntModal>
+          <AddAddress event={closeModal} />
+        </AntModal>
       </Layout>
     </>
   );

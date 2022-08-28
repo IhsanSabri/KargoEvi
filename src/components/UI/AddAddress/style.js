@@ -16,10 +16,18 @@ const FormItem = styled(Form.Item)`
   .ant-form-item-explain-error {
     text-align-last: initial;
   }
+
+  .cancel {
+    &:hover {
+      color: #fff;
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+  }
 `;
 
 const ButtonRegister = styled(Button)`
-  width: 20%;
+  width: 25%;
   text-align-last: center;
 }
 `;

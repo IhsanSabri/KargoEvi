@@ -176,7 +176,7 @@ const AddAddress = ({ event }) => {
         <Input.TextArea rows={4} />
       </FormItem>
       <FormItem style={{ marginTop: "4rem", marginBottom: "unset" }}>
-        <ButtonRegister danger onClick={event}>
+        <ButtonRegister className="cancel" danger onClick={event}>
           Vazgeç
         </ButtonRegister>
         <ButtonRegister danger type="primary" htmlType="submit">

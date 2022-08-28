@@ -68,7 +68,7 @@ const PaymentImage = styled.div`
   height: 32px;
   max-width: 100%;
   text-align: -webkit-center;
-  margin-bottom: 2rem;
+  padding-bottom: 3rem;
 `;
 
 const AdressSelectionTab = styled.div`
