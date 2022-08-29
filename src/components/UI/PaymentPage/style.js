@@ -77,4 +77,21 @@ const PaymentPageMainWrapper = styled.div`
   }
 `;
 
-export { MenuContainer, Title, PaymentPageMainWrapper };
+const FooterContainer = styled(Flex)`
+  .completePayment {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    width: 14rem;
+    height: 64px;
+    font-size: 24px;
+
+    &:hover {
+      color: #fff;
+      background-color: #bb2d3b;
+      border-color: #b02a37;
+    }
+  }
+`;
+
+export { MenuContainer, Title, PaymentPageMainWrapper, FooterContainer };
