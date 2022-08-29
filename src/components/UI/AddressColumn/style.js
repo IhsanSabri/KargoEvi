@@ -3,14 +3,14 @@ import { Col } from "antd";
 
 const ColumnBox = styled(Col)`
   margin-left: 20px;
-  height: 150px;
+  min-height: 150px;
   background: white;
   border-radius: 4px;
 `;
 
 const ColumnBoxAddres = styled(Col)`
   display: flex;
-  height: 104px;
+  min-height: 104px;
   background: white;
   border: 1px solid #e7e7e7;
   border-radius: 4px;
@@ -37,6 +37,7 @@ const UserInfos = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
+  overflow: hidden;
 
   .userInfo {
     align-items: center;
@@ -88,6 +89,8 @@ const UserInfos = styled.div`
     text-align: left;
     font-weight: 400;
     font-size: 12px;
+    min-height: 40px;
+}
   }
 `;
 

@@ -21,7 +21,7 @@ const FooterContainer = styled(Flex)`
 
 const ColumnBox = styled(Col)`
   margin-left: 20px;
-  height: 150px;
+  min-height: 150px;
   background: white;
   border-radius: 4px;
   display: flex;
@@ -31,7 +31,7 @@ const ColumnBox = styled(Col)`
 
 const ColumnBoxAddres = styled(Col)`
   background: #f9fbfd;
-  height: 104px;
+  min-height: 104px;
   border: 1px dashed #e7e7e7;
   border-radius: 4px;
   width: 100%;
@@ -65,6 +65,7 @@ const TitleAddress = styled.div`
 `;
 
 const PaymentImage = styled.div`
+  background: #f0f2f5;
   height: 32px;
   max-width: 100%;
   text-align: -webkit-center;

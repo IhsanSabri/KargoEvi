@@ -35,16 +35,14 @@ const AddressColumn = (props) => {
           <div className="userInfo">
             <div className="userName">
               <Avatar size="small" icon={<UserOutlined />} />
-                <div>{props.address.userName}</div>
+              {props.address.userName}
             </div>
             <div className="userPhone">
               <PhoneOutlined />
-              <div>{props.address.phoneNumber}</div>
+              {props.address.phoneNumber}
             </div>
           </div>
-          <div className="userAddress">
-            <div>{props.address.address}</div>
-          </div>
+          <div className="userAddress">{props.address.address}</div>
         </UserInfos>
       </ColumnBoxAddres>
     </ColumnBox>

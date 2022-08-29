@@ -18,7 +18,7 @@ const PersonalInfo = ({ nextPageLink }) => {
 
   return (
     <>
-      <div className="container pt-10 font-['Poppins, sans-serif'] h-screen bg-[#f0f2f5]">
+      <div className="pt-10 font-['Poppins, sans-serif'] h-screen bg-[#f0f2f5]">
         <div className="row d-none d-sm-block">
           <div className="col-lg-10 text-center">
             <span className="badge text-[#129068] bg-[#e3eaf1] font-medium inline-flex px-4 py-3">
@@ -52,9 +52,9 @@ const PersonalInfo = ({ nextPageLink }) => {
             </span>
           </div>
         </div>
-        <div className="row pt-[30px]">
-          <div className="col pb-[40px]">
-            <div className="card px-[12px]">
+        <div className="row flex pt-[30px] w-[90%]">
+          <div className="col pb-[40px] flex justify-center">
+            <div className="card px-[12px] w-[80%]">
               <div className="card-header pt-[30px] pb-[20px] bg-white border-b-0">
                 <h1 className="display-6 text-[26px] font-normal">
                   Alıcı Bilgileri
@@ -66,7 +66,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                   onSubmit={handleSubmit(handleRegistration)}
                 >
                   <div className="row d-flex justify-center">
-                    <div className="col-xl-4">
+                    <div className="col-xl-4 text-left">
                       <label className="form-label text-[12px] font-medium text-[#495057] mb-[0]">
                         ALICI ADI, SOYADI
                       </label>
@@ -77,7 +77,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                         className="form-control shadow-none py-[12px] text-[#495057] text-[15px] border-[#e5e5e7]"
                       />
                     </div>
-                    <div className="col-xl-4">
+                    <div className="col-xl-4 text-left">
                       <label className="form-label text-[12px] font-medium text-[#6c757d] mb-[0]">
                         ALICI TELEFON NUMARASI
                       </label>
@@ -96,7 +96,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                         />
                       </div>
                     </div>
-                    <div className="col-xl-4">
+                    <div className="col-xl-4 text-left">
                       <label className="form-label text-[12px] font-medium text-[#6c757d] mb-[0]">
                         ALICI E-POSTA ADRESİ
                       </label>
@@ -109,7 +109,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                     </div>
                   </div>
                   <div className="row d-flex justify-content-center pt-[30px]">
-                    <div className="col-xl-4">
+                    <div className="col-xl-4 text-left">
                       <label className="form-label text-[12px] font-medium text-[#6c757d] mb-[0]">
                         ALICI ÜLKE
                       </label>
@@ -125,7 +125,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                         <option value="Netherland">Hollanda</option>
                       </select>
                     </div>
-                    <div className="col-xl-4">
+                    <div className="col-xl-4 text-left">
                       <label className="form-label text-[12px] font-medium text-[#6c757d] mb-[0]">
                         ALICI ŞEHİR
                       </label>
@@ -140,7 +140,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                         <option value="Istanbul">İstanbul</option>
                       </select>
                     </div>
-                    <div className="col-xl-4">
+                    <div className="col-xl-4 text-left">
                       <label className="form-label text-[12px] font-medium text-[#6c757d] mb-[0]">
                         ALICI İLÇE
                       </label>
@@ -157,7 +157,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                     </div>
                   </div>
                   <div className="row d-flex justify-content-center pt-[30px]">
-                    <div className="col-xl-4">
+                    <div className="col-xl-4 text-left">
                       <label className="form-label text-[12px] font-medium text-[#6c757d] mb-[0]">
                         POSTA KODU
                       </label>

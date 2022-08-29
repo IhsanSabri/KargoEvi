@@ -39,7 +39,7 @@ const ProductInfo = ({ nextPageLink }) => {
 
   return (
     <>
-      <div className="container pt-10 font-['Poppins, sans-serif'] h-screen bg-[#f0f2f5]">
+      <div className="pt-10 font-['Poppins, sans-serif'] h-screen bg-[#f0f2f5]">
         <div className="row block">
           <div className="col-lg-10 text-center">
             <span className="badge text-[#129068] bg-[#e3eaf1] font-medium inline-flex px-4 py-3">
@@ -73,8 +73,8 @@ const ProductInfo = ({ nextPageLink }) => {
             </span>
           </div>
         </div>
-        <div className="row pt-8">
-          <div className="col-lg-10 pb-10">
+        <div className="row pt-8 justify-center">
+          <div className="col-lg-10 pb-10 w-[70%]">
             <form id="hook-form" onSubmit={handleSubmit(handleRegistration)}>
               <div className="col-lg-12">
                 <div className="card px-3 pb-3">
