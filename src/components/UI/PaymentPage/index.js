@@ -18,7 +18,11 @@ import {
   PaymentPageMainWrapper,
   FooterContainer,
 } from "./style";
-import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+import {
+  PlusOutlined,
+  MinusOutlined,
+  SafetyCertificateOutlined,
+} from "@ant-design/icons";
 
 const { SubMenu } = Menu;
 
@@ -49,13 +53,16 @@ function PaymentPage() {
   ];
 
   return (
-      <PaymentPageMainWrapper>
+    <>
+      <PaymentPageMainWrapper
+        style={{ minHeight: "100%", backgroundColor: "#eff2f5" }}
+      >
         <Flex justifyContent={"center"}>
           {stepsInfo.map((step) => {
             return <Steps key={step.id} steps={step} />;
           })}
         </Flex>
-        <Flex width={"70%"} m={"50px 15%"}>
+        <Flex width={"70%"} m={"50px 15% 0"}>
           <Box width={1}>
             <MenuContainer justifyContent="center" width={1}>
               <Box width={1}>
@@ -167,21 +174,27 @@ function PaymentPage() {
             </Box>
           </Box>
         </Flex>
-        <Footer prevLink={"/personalInfo"} >
-          <FooterContainer>
-            <Button
-              className="completePayment"
-              type="submit"
-              danger
-              form="hook-form"
-              onClick={() => history.push("/thankYouPage")}
-            >
-              <PlusOutlined />
-              Ödeme Yap
-            </Button>
-          </FooterContainer>
-        </Footer>
       </PaymentPageMainWrapper>
+      <Footer prevLink={"/personalInfo"}>
+        <FooterContainer>
+          <Button
+            className="completePayment"
+            type="submit"
+            danger
+            form="hook-form"
+            onClick={() => history.push("/thankYouPage")}
+          >
+            <SafetyCertificateOutlined
+              style={{
+                position: "relative",
+                top: "-5px",
+              }}
+            />
+            Ödeme Yap
+          </Button>
+        </FooterContainer>
+      </Footer>
+    </>
   );
 }
 
