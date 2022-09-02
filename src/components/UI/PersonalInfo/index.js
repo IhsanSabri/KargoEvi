@@ -18,7 +18,7 @@ const PersonalInfo = ({ nextPageLink }) => {
 
   return (
     <>
-      <div className="pt-10 font-['Poppins, sans-serif'] h-screen bg-[#f0f2f5]">
+      <div className="font-['Poppins, sans-serif']">
         <div className="row d-none d-sm-block">
           <div className="col-lg-10 text-center">
             <span className="badge text-[#129068] bg-[#e3eaf1] font-medium inline-flex px-4 py-3">

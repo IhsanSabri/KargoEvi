@@ -89,7 +89,6 @@ const AddressMain = ({ nextPageLink }) => {
 
   return (
     <>
-      <Layout style={{ height: "100vh" }}>
         <StepsMain>
           <MainCol flex={4}>
             {stepsInfo.map((step) => {
@@ -162,7 +161,6 @@ const AddressMain = ({ nextPageLink }) => {
         <AntModal visible={isModalVisible} onCancel={closeModal}>
           <AddAddress event={closeModal} />
         </AntModal>
-      </Layout>
     </>
   );
 };

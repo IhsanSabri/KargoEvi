@@ -4,8 +4,6 @@ import { Col } from "antd";
 import { Flex } from "rebass";
 
 const StepsMain = styled(Flex)`
-  padding-top: 1rem;
-
   .selected {
     color: black;
     background: #ced9e5;

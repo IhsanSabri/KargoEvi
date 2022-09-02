@@ -16,7 +16,7 @@ const OrderSummaryMain = ({ nexPageLink }) => {
 
   return (
     <>
-      <div className="flex flex-col font-[Poppins, sans-serif] pt-[40px] h-screen bg-[#f0f2f5] items-center">
+      <div className="flex flex-col font-[Poppins, sans-serif] items-center">
         <div className="col-lg-12 border flex justify-center shadow-[0px_0px_8px_rgba(38,43,55,20%)] bg-white w-[60%]">
           <div className="card border-0 px-[12px] pb-[12px] border-[unset] w-[65%]">
             <div className="card-header bg-white pt-[30px] pb-[20px] border-b-0">

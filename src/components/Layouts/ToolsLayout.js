@@ -4,15 +4,15 @@ import { Box } from "rebass";
 
 import Header from "../Header";
 
-const DefaultLayout = () => {
+const ToolsLayout = () => {
   return (
     <Box height="100vh" bg="#f0f2f5">
       <Header />
-      <Box p={"120px 0 120px"} bg="#f0f2f5">
+      <Box p={"50px 0 120px"} bg="#f0f2f5">
         <Outlet />
       </Box>
     </Box>
   );
 };
 
-export default DefaultLayout;
+export default ToolsLayout;

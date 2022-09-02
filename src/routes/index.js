@@ -2,6 +2,8 @@ import React, { lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import DefaultLayout from "../components/Layouts/DefaultLayout";
+import MainLayout from "../components/Layouts/MainLayout";
+import ToolsLayout from "../components/Layouts/ToolsLayout";
 import CustomSuspense from "../components/UI/ComponentRender/CustomSuspense";
 
 const Home = lazy(() => import("../components/Home"));
@@ -18,7 +20,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<DefaultLayout />}>
+        <Route element={<MainLayout />}>
           <Route
             path="/"
             element={
@@ -27,6 +29,9 @@ const Router = () => {
               </CustomSuspense>
             }
           />
+        </Route>
+
+        <Route element={<ToolsLayout />}>
           <Route
             path="/productInfo"
             element={
@@ -44,14 +49,6 @@ const Router = () => {
             }
           />
           <Route
-            path="/orderSummary"
-            element={
-              <CustomSuspense>
-                <OrderSummaryPage nexPageLink={"/address"} />
-              </CustomSuspense>
-            }
-          />
-          <Route
             path="/address"
             element={
               <CustomSuspense>
@@ -64,6 +61,17 @@ const Router = () => {
             element={
               <CustomSuspense>
                 <PaymentPageContainer nexPageLink={"/thankYouPage"} />
+              </CustomSuspense>
+            }
+          />
+        </Route>
+
+        <Route element={<DefaultLayout />}>
+          <Route
+            path="/orderSummary"
+            element={
+              <CustomSuspense>
+                <OrderSummaryPage nexPageLink={"/address"} />
               </CustomSuspense>
             }
           />
