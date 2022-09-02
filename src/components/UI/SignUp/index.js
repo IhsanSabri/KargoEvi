@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Checkbox, Form, Input, Select, Radio } from "antd";
 import { FormItem, ButtonRegister } from "./style";
@@ -8,11 +8,11 @@ const { Option } = Select;
 
 const SignUp = ({ nexPageLink }) => {
   const [form] = Form.useForm();
-  let history = useHistory();
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    history.push(nexPageLink);
+    navigate(nexPageLink);
   };
 
   const prefixSelector = (

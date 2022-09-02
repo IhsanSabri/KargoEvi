@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Menu, Checkbox, Button } from "antd";
 import { Box, Flex, Text } from "rebass";
@@ -27,7 +27,7 @@ import {
 const { SubMenu } = Menu;
 
 function PaymentPage() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const stepsInfo = [
     {
       id: 1,
@@ -182,7 +182,7 @@ function PaymentPage() {
             type="submit"
             danger
             form="hook-form"
-            onClick={() => history.push("/thankYouPage")}
+            onClick={() => navigate("/thankYouPage")}
           >
             <SafetyCertificateOutlined
               style={{

@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import OrderSummary from "../../OrderSummary";
 import AddressColumn from "../AddressColumn";
@@ -29,11 +29,11 @@ const AddressMain = ({ nextPageLink }) => {
   console.log(nextPageLink);
   const { isModalVisible, openModal, closeModal } = useModal();
   const [form] = Form.useForm();
-  let history = useHistory();
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    history.push(nextPageLink);
+    navigate(nextPageLink);
   };
 
   const dummyAddressData = [

@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import OrderSummary from "../../OrderSummary";
 import Footer from "../Footer";
@@ -9,11 +9,11 @@ import { Button } from "antd";
 import { FooterContainer } from "./style";
 
 const PersonalInfo = ({ nextPageLink }) => {
-  let history = useHistory();
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const handleRegistration = (data) => {
     console.log(data);
-    history.push(nextPageLink);
+    navigate(nextPageLink);
   };
 
   return (

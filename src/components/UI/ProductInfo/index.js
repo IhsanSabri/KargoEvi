@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import OrderSummary from "../../OrderSummary";
 import Product from "../Product";
@@ -11,12 +11,12 @@ import { FooterContainer } from "./style";
 import "../../../styles/ProductInfo.css";
 
 const ProductInfo = ({ nextPageLink }) => {
-  let history = useHistory();
+  const navigate = useNavigate();
   const [product, setProduct] = useState([]);
   const { register, handleSubmit } = useForm();
   const handleRegistration = (data) => {
     console.log(data);
-    history.push(nextPageLink);
+    navigate(nextPageLink);
   };
 
   const onAddBtnClick = (event) => {

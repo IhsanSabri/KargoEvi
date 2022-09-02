@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Checkbox, Form, Input } from "antd";
@@ -7,11 +7,11 @@ import { Checkbox, Form, Input } from "antd";
 import { FormItem, ButtonSubmit } from "./style";
 
 const Login = ({ nexPageLink }) => {
-  let history = useHistory();
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    history.push(nexPageLink);
+    navigate(nexPageLink);
   };
 
   return (
