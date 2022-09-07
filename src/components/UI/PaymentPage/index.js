@@ -62,7 +62,7 @@ function PaymentPage() {
             return <Steps key={step.id} steps={step} />;
           })}
         </Flex>
-        <Flex width={"70%"} m={"50px 15% 0"}>
+        <Flex justifyContent="center" width={"70%"} m="30px auto" px={"50px"}>
           <Box width={1}>
             <MenuContainer justifyContent="center" width={1}>
               <Box width={1}>
@@ -136,44 +136,44 @@ function PaymentPage() {
               </Box>
             </MenuContainer>
           </Box>
+        </Flex>
+        <OrderSummary />
+        <Box
+          sx={{
+            position: "absolute",
+            top: "460px",
+            right: "25px",
+            minWidth: "290px",
+          }}
+        >
           <Box
+            width={"290px"}
+            mt={20}
+            p={10}
             sx={{
-              left: "30px",
-              position: "relative",
+              background: "white",
+              border: "1px solid lightgray",
+              borderRadius: "5px",
             }}
           >
-            <Box>
-              <OrderSummary />
-            </Box>
-            <Box
-              width={"290px"}
-              mt={20}
-              p={10}
-              sx={{
-                background: "white",
-                border: "1px solid lightgray",
-                borderRadius: "5px",
-              }}
-            >
-              <Checkbox onChange={(e) => console.log(e)}>
-                <Text
-                  fontSize={13}
-                  textAlign={"left"}
-                  sx={{ top: "-12px", position: "relative" }}
-                >
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    Ön Bilgilendirme Koşulları
-                  </a>
-                  'nı ve{" "}
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    Mesafeli Satış Sözleşmesini
-                  </a>{" "}
-                  okudum, onaylıyorum.
-                </Text>
-              </Checkbox>
-            </Box>
+            <Checkbox onChange={(e) => console.log(e)}>
+              <Text
+                fontSize={13}
+                textAlign={"left"}
+                sx={{ top: "-12px", position: "relative" }}
+              >
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  Ön Bilgilendirme Koşulları
+                </a>
+                'nı ve{" "}
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  Mesafeli Satış Sözleşmesini
+                </a>{" "}
+                okudum, onaylıyorum.
+              </Text>
+            </Checkbox>
           </Box>
-        </Flex>
+        </Box>
       </PaymentPageMainWrapper>
       <Footer prevLink={"/personalInfo"}>
         <FooterContainer>

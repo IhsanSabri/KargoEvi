@@ -4,6 +4,7 @@ import paymentLogo from "../../../assests/paymentLogo.png";
 import AntModal from "../AntModal";
 import Footer from "../Footer";
 import LoginTabs from "../LoginTabs";
+import { Flex } from "rebass";
 
 import { useModal } from "../../../config/hooks/useModal";
 import { Button } from "antd";
@@ -16,8 +17,8 @@ const OrderSummaryMain = ({ nexPageLink }) => {
 
   return (
     <>
-      <div className="flex flex-col font-[Poppins, sans-serif] items-center">
-        <div className="col-lg-12 border flex justify-center shadow-[0px_0px_8px_rgba(38,43,55,20%)] bg-white w-[60%]">
+      <Flex justifyContent="center" width={"70%"} m="auto">
+        <div className="col-lg-10 border flex justify-center shadow-[0px_0px_8px_rgba(38,43,55,20%)] bg-white">
           <div className="card border-0 px-[12px] pb-[12px] border-[unset] w-[65%]">
             <div className="card-header bg-white pt-[30px] pb-[20px] border-b-0">
               <h1 className="display-6 text-[26px] font-medium">
@@ -158,9 +159,9 @@ const OrderSummaryMain = ({ nexPageLink }) => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center w-full mt-[20px]">
-          <img className="flex" src={paymentLogo} alt="logo" />
-        </div>
+      </Flex>
+      <div className="flex justify-center w-full mt-[20px]">
+        <img className="flex" src={paymentLogo} alt="logo" />
       </div>
       <Footer prevLink={"/personalInfo"}>
         <FooterContainer>

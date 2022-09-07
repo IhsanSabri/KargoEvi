@@ -8,6 +8,8 @@ import AntModal from "../AntModal";
 import AddAddress from "../AddAddress";
 import Steps from "../Steps";
 
+import { Flex } from "rebass";
+
 import { useModal } from "../../../config/hooks/useModal";
 import { Layout, Button, Form, Row, Radio } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
@@ -89,18 +91,16 @@ const AddressMain = ({ nextPageLink }) => {
 
   return (
     <>
-        <StepsMain>
-          <MainCol flex={4}>
-            {stepsInfo.map((step) => {
-              return <Steps key={step.id} steps={step} />;
-            })}
-          </MainCol>
-        </StepsMain>
+      <Flex justifyContent={"center"}>
+        {stepsInfo.map((step) => {
+          return <Steps key={step.id} steps={step} />;
+        })}
+      </Flex>
+      <Flex justifyContent="center" width={"70%"} m="30px auto">
         <Content
           className="site-layout"
           style={{
-            padding: "0 50px",
-            marginTop: 64,
+            padding: "0 75px",
             display: "flex",
             marginBottom: "5%",
             minHeight: "665px",
@@ -119,7 +119,6 @@ const AddressMain = ({ nextPageLink }) => {
               border: "1px solid rgba(0,0,0,.125)",
               background: "white",
               marginRight: "3%",
-              width: "60%",
               flexDirection: "column",
             }}
           >
@@ -141,26 +140,27 @@ const AddressMain = ({ nextPageLink }) => {
               </Row>
             </Radio.Group>
           </Form>
-          <OrderSummary />
         </Content>
-        <PaymentImage>
-          <img src={paymentLogo} />
-        </PaymentImage>
-        <Footer prevLink={"/"}>
-          <FooterContainer>
-            <button
-              as={Button}
-              className="submitAndContinueButton"
-              type="submit"
-              form="hook-form"
-            >
-              Devam Et
-            </button>
-          </FooterContainer>
-        </Footer>
-        <AntModal visible={isModalVisible} onCancel={closeModal}>
-          <AddAddress event={closeModal} />
-        </AntModal>
+      </Flex>
+      <OrderSummary />
+      <PaymentImage>
+        <img src={paymentLogo} />
+      </PaymentImage>
+      <Footer prevLink={"/"}>
+        <FooterContainer>
+          <button
+            as={Button}
+            className="submitAndContinueButton"
+            type="submit"
+            form="hook-form"
+          >
+            Devam Et
+          </button>
+        </FooterContainer>
+      </Footer>
+      <AntModal visible={isModalVisible} onCancel={closeModal}>
+        <AddAddress event={closeModal} />
+      </AntModal>
     </>
   );
 };

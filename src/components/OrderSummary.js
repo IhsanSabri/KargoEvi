@@ -1,9 +1,18 @@
 import React from "react";
 
+import { Box } from "rebass";
+
 const OrderSummary = () => {
   return (
-    <div className="col-lg-2 d-md-none d-lg-block d-sm-none d-md-block d-none">
-      <div className="card min-w-[290px]">
+    <Box
+      sx={{
+        position: "absolute",
+        top: "227px",
+        right: "25px",
+        minWidth: "290px",
+      }}
+    >
+      <div className="card">
         <div className="card-body">
           <h4 className="card-title text-[14px] text-[#373c47]">
             SİPARİŞ ÖZET
@@ -70,7 +79,7 @@ const OrderSummary = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Box>
   );
 };
 

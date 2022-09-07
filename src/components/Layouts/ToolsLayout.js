@@ -3,12 +3,14 @@ import { Outlet } from "react-router-dom";
 import { Box } from "rebass";
 
 import Header from "../Header";
+import NavBar from "../Navbar";
 
 const ToolsLayout = () => {
   return (
     <Box height="100vh" bg="#f0f2f5">
       <Header />
-      <Box p={"50px 0 120px"} bg="#f0f2f5">
+      <NavBar />
+      <Box p={"50px 70px 120px 0"} bg="#f0f2f5">
         <Outlet />
       </Box>
     </Box>
