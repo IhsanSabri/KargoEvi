@@ -14,15 +14,6 @@
 .color-nav {
   background-color: #2a3541;
 }
-.navbar-brand {
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
-  margin-right: 1rem;
-  font-size: 1.7rem;
-  color: #ffffff;
-  text-decoration: none;
-  white-space: nowrap;
-}
 .dot {
   color: rgb(236, 5, 5);
 }
