@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { Flex } from "rebass";
+import { Flex, Box } from "rebass";
 
 import OrderSummary from "../../OrderSummary";
 import Footer from "../Footer";
@@ -50,9 +50,9 @@ const PersonalInfo = ({ nextPageLink }) => {
           return <Steps key={step.id} steps={step} />;
         })}
       </Flex>
-      <Flex justifyContent="center" width={"70%"} m="30px auto">
-        <div className="col-lg-10 pb-[40px]">
-          <div className="card px-[12px]">
+      <Flex justifyContent="center" width={"60%"} m="30px auto">
+        <Box>
+          <div className="card">
             <div className="card-header pt-[30px] pb-[20px] bg-white border-b-0">
               <h1 className="display-6 text-[26px] font-normal">
                 Alıcı Bilgileri
@@ -280,7 +280,7 @@ const PersonalInfo = ({ nextPageLink }) => {
               </form>
             </div>
           </div>
-        </div>
+        </Box>
       </Flex>
       <OrderSummary />
       <Footer prevLink={"/"}>

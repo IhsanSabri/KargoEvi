@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Menu, Checkbox, Button } from "antd";
+import { Checkbox, Button } from "antd";
 import { Box, Flex, Text } from "rebass";
 
 import Steps from "../Steps";
@@ -11,22 +11,12 @@ import WalletPayment from "../WalletPayment";
 import PayWithTransfer from "../PayWithTransfer";
 import PayOnDelivery from "../PayOnDelivery";
 import Footer from "../Footer";
+import AntMenu from "../CollapseMenu";
 
-import {
-  MenuContainer,
-  Title,
-  PaymentPageMainWrapper,
-  FooterContainer,
-} from "./style";
-import {
-  PlusOutlined,
-  MinusOutlined,
-  SafetyCertificateOutlined,
-} from "@ant-design/icons";
+import { PaymentPageMainWrapper, FooterContainer } from "./style";
+import { SafetyCertificateOutlined } from "@ant-design/icons";
 
-const { SubMenu } = Menu;
-
-function PaymentPage() {
+const PaymentPage = () => {
   const navigate = useNavigate();
   const stepsInfo = [
     {
@@ -52,6 +42,33 @@ function PaymentPage() {
     },
   ];
 
+  const menus = [
+    {
+      subKey: "creditCard",
+      title: "Kredi Kartı İle Öde",
+      itemKey: "card",
+      component: <CreditCard />,
+    },
+    {
+      subKey: "walletPayment",
+      title: "Cüzdanım İle Öde",
+      itemKey: "wallet",
+      component: <WalletPayment />,
+    },
+    {
+      subKey: "payWithTransfer",
+      title: "Havale İle Öde",
+      itemKey: "transfer",
+      component: <PayWithTransfer />,
+    },
+    {
+      subKey: "payOnDelivery",
+      title: "Kargo Tesliminde Öde",
+      itemKey: "delivery",
+      component: <PayOnDelivery />,
+    },
+  ];
+
   return (
     <>
       <PaymentPageMainWrapper
@@ -64,77 +81,7 @@ function PaymentPage() {
         </Flex>
         <Flex justifyContent="center" width={"70%"} m="30px auto" px={"50px"}>
           <Box width={1}>
-            <MenuContainer justifyContent="center" width={1}>
-              <Box width={1}>
-                <Menu
-                  style={{
-                    width: "100%",
-                  }}
-                  mode="inline"
-                >
-                  <SubMenu
-                    key="sub1"
-                    expandIcon={(props) =>
-                      props.isOpen ? <MinusOutlined /> : <PlusOutlined />
-                    }
-                    title={
-                      <span>
-                        <Title>Kredi Kartı İle Öde</Title>
-                      </span>
-                    }
-                  >
-                    <Menu.Item key="1">
-                      <CreditCard />
-                    </Menu.Item>
-                  </SubMenu>
-                  <SubMenu
-                    key="sub2"
-                    expandIcon={(props) =>
-                      props.isOpen ? <MinusOutlined /> : <PlusOutlined />
-                    }
-                    title={
-                      <span>
-                        <Title>Cüzdanım İle Öde</Title>
-                      </span>
-                    }
-                  >
-                    <Menu.Item key="2">
-                      <WalletPayment />
-                    </Menu.Item>
-                  </SubMenu>
-                  <SubMenu
-                    key="sub3"
-                    expandIcon={(props) =>
-                      props.isOpen ? <MinusOutlined /> : <PlusOutlined />
-                    }
-                    title={
-                      <span>
-                        <Title>Havale İle Öde</Title>
-                      </span>
-                    }
-                  >
-                    <Menu.Item key="3">
-                      <PayWithTransfer />
-                    </Menu.Item>
-                  </SubMenu>
-                  <SubMenu
-                    key="sub4"
-                    expandIcon={(props) =>
-                      props.isOpen ? <MinusOutlined /> : <PlusOutlined />
-                    }
-                    title={
-                      <span>
-                        <Title>Kargo Tesliminde Öde</Title>
-                      </span>
-                    }
-                  >
-                    <Menu.Item key="4">
-                      <PayOnDelivery />
-                    </Menu.Item>
-                  </SubMenu>
-                </Menu>
-              </Box>
-            </MenuContainer>
+            <AntMenu menus={menus} />
           </Box>
         </Flex>
         <OrderSummary />
@@ -196,6 +143,6 @@ function PaymentPage() {
       </Footer>
     </>
   );
-}
+};
 
 export default PaymentPage;
