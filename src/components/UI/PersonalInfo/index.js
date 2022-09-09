@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Flex, Box } from "rebass";
 
-import OrderSummary from "../../OrderSummary";
+import OrderSummary from "../OrderSummary";
 import Footer from "../Footer";
 import Steps from "../Steps";
 

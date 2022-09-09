@@ -37,7 +37,7 @@ const items1 = [
   ),
 }));
 
-const NavBarNew = () => {
+const NavBar = () => {
   return (
     <Navbar className="header">
       <Link to="/" style={{ alignSelf: "center", marginRight: "1rem" }}>
@@ -56,4 +56,4 @@ const NavBarNew = () => {
   );
 };
 
-export default NavBarNew;
+export default NavBar;

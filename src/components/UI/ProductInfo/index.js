@@ -6,12 +6,12 @@ import { Flex, Box, Text } from "rebass";
 import { Card, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
-import OrderSummary from "../../OrderSummary";
 import Product from "../Product";
 import Footer from "../Footer";
 import Steps from "../Steps";
 import ExcelImporting from "../ExcelImporting";
 import AntCollapse from "../CollapseMenu";
+import OrderSummary from "../OrderSummary";
 
 import { FooterContainer } from "./style";
 import { DiffOutlined } from "@ant-design/icons";

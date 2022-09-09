@@ -5,7 +5,7 @@ import { Checkbox, Button } from "antd";
 import { Box, Flex, Text } from "rebass";
 
 import Steps from "../Steps";
-import OrderSummary from "../../OrderSummary";
+import OrderSummary from "../OrderSummary";
 import CreditCard from "../CreditCard";
 import WalletPayment from "../WalletPayment";
 import PayWithTransfer from "../PayWithTransfer";

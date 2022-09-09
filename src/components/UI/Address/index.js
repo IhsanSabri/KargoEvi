@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import OrderSummary from "../../OrderSummary";
+import OrderSummary from "../OrderSummary";
 import AddressColumn from "../AddressColumn";
 import Footer from "../Footer";
 import AntModal from "../AntModal";
