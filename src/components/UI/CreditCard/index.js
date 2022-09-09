@@ -89,7 +89,9 @@ export default class CreditCard extends React.Component {
                     </Box>
                   </Flex>
                 </form>
-                <Checkbox onChange={(e) => console.log(e)}>
+                <Checkbox
+                  onChange={(e) => console.log(e)}
+                >
                   Kart Bilgilerimi Sonraki Siparişler için sakla
                 </Checkbox>
               </Box>

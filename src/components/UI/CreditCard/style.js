@@ -43,6 +43,21 @@ const CardContainer = styled.div`
   .ant-tabs-tabpane {
     display: flex;
   }
+
+  .ant-tabs-tab {
+    font-size: 19px;
+    color: lightgray;
+    font-weight: 300;
+  }
+
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: black;
+  }
+
+  .ant-checkbox {
+    position: relative;
+    top: 9px;
+  }
 `;
 
 export { CardContainer };

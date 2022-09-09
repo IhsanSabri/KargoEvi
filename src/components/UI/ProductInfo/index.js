@@ -11,9 +11,10 @@ import Product from "../Product";
 import Footer from "../Footer";
 import Steps from "../Steps";
 import ExcelImporting from "../ExcelImporting";
-import AntMenu from "../CollapseMenu";
+import AntCollapse from "../CollapseMenu";
 
 import { FooterContainer } from "./style";
+import { DiffOutlined } from "@ant-design/icons";
 
 const ProductInfo = ({ nextPageLink }) => {
   const navigate = useNavigate();
@@ -58,8 +59,17 @@ const ProductInfo = ({ nextPageLink }) => {
     {
       subKey: "excellImporting",
       title: "Excel Yükle",
-      itemKey: "excel",
       component: <ExcelImporting />,
+      headerIcon: (
+        <DiffOutlined
+          style={{
+            fontSize: "25px",
+            position: "relative",
+            top: "-4px",
+            marginRight: "5px",
+          }}
+        />
+      ),
     },
   ];
 
@@ -101,7 +111,7 @@ const ProductInfo = ({ nextPageLink }) => {
             </Button>
           </Flex>
           <Box>
-            <AntMenu menus={menus} />
+            <AntCollapse menus={menus} />
           </Box>
         </Box>
       </Flex>

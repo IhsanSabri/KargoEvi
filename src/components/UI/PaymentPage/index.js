@@ -11,7 +11,7 @@ import WalletPayment from "../WalletPayment";
 import PayWithTransfer from "../PayWithTransfer";
 import PayOnDelivery from "../PayOnDelivery";
 import Footer from "../Footer";
-import AntMenu from "../CollapseMenu";
+import AntCollapse from "../CollapseMenu";
 
 import { PaymentPageMainWrapper, FooterContainer } from "./style";
 import { SafetyCertificateOutlined } from "@ant-design/icons";
@@ -46,25 +46,21 @@ const PaymentPage = () => {
     {
       subKey: "creditCard",
       title: "Kredi Kartı İle Öde",
-      itemKey: "card",
       component: <CreditCard />,
     },
     {
       subKey: "walletPayment",
       title: "Cüzdanım İle Öde",
-      itemKey: "wallet",
       component: <WalletPayment />,
     },
     {
       subKey: "payWithTransfer",
       title: "Havale İle Öde",
-      itemKey: "transfer",
       component: <PayWithTransfer />,
     },
     {
       subKey: "payOnDelivery",
       title: "Kargo Tesliminde Öde",
-      itemKey: "delivery",
       component: <PayOnDelivery />,
     },
   ];
@@ -81,11 +77,11 @@ const PaymentPage = () => {
         </Flex>
         <Flex justifyContent="center" width={"70%"} m="30px auto" px={"50px"}>
           <Box width={1}>
-            <AntMenu menus={menus} />
+            <AntCollapse menus={menus} />
           </Box>
         </Flex>
-        <OrderSummary />
-        <Box
+        {/* <OrderSummary /> */}
+        {/* <Box
           sx={{
             position: "absolute",
             top: "460px",
@@ -120,7 +116,7 @@ const PaymentPage = () => {
               </Text>
             </Checkbox>
           </Box>
-        </Box>
+        </Box> */}
       </PaymentPageMainWrapper>
       <Footer prevLink={"/personalInfo"}>
         <FooterContainer>

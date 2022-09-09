@@ -1,57 +1,40 @@
 import styled from "@emotion/styled";
 import { Flex } from "rebass";
 
-const MenuContainer = styled(Flex)`
-  .ant-menu-inline {
-    background-color: #eff2f5;
+const CollepseContainer = styled(Flex)`
+  .ant-collapse {
+    background-color: #eff2f5 !important;
+    border: none !important;
   }
 
-  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-    background-color: white;
+  .ant-collapse-header {
+    background-color: #f6f7f8 !important;
+    border: 1px solid lightgray !important;
+    border-radius: 10px !important;
   }
 
-  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color: black;
+  .ant-collapse-item {
+    margin-bottom: 20px !important;
+    border: none !important;
   }
 
-  .ant-menu-submenu {
-    border-bottom: 10px solid #eff2f5;
+  .ant-collapse-content {
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    border-top: none !important;
   }
 
-  .ant-tabs-tab-btn {
-    font-size: 19px;
-    font-weight: 300;
+  .ant-collapse-item-active > .ant-collapse-header {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
   }
 
-  .ant-menu-submenu-title {
-    background: #f6f7f8;
-    margin: 0;
-    padding: 27px;
-    border-radius: 10px;
-    border: 1px solid lightgray;
+  .ant-collapse > .ant-collapse-item:last-child {
+    border-radius: unset !important;
   }
 
-  .ant-menu-sub.ant-menu-inline > .ant-menu-item {
-    height: inherit;
-    background-color: white;
-    margin-top: -10px;
-    border-bottom: 1px solid lightgray;
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-
-  .ant-menu-title-content {
-    color: black;
-  }
-
-  .ant-menu-item {
-    padding: 10px 45px 25px;
-
-    &:after {
-      border-right: none;
-    }
+  .ant-collapse-content > .ant-collapse-content-box {
+    padding: 16px 40px;
   }
 `;
 
@@ -60,4 +43,4 @@ const Title = styled.span`
   font-weight: 400;
 `;
 
-export { MenuContainer, Title };
+export { CollepseContainer, Title };

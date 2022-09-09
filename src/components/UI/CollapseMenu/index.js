@@ -1,42 +1,45 @@
 import React from "react";
 
 import { Box } from "rebass";
-import { Menu } from "antd";
+import { Collapse } from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 
-import { MenuContainer, Title } from "./style";
+import { CollepseContainer, Title } from "./style";
 
-const { SubMenu } = Menu;
+const { Panel } = Collapse;
 
-const AntMenu = ({ menus }) => {
+const AntCollapse = ({ menus }) => {
+  const onChange = (key) => {
+    console.log(key);
+  };
+
   return (
-    <MenuContainer justifyContent="center" width={1}>
+    <CollepseContainer justifyContent="center" width={1}>
       <Box width={1}>
-        <Menu
-          style={{
-            width: "100%",
-          }}
-          mode="inline"
+        <Collapse
+          onChange={onChange}
+          expandIconPosition="end"
+          expandIcon={({ isActive }) =>
+            isActive ? <MinusOutlined /> : <PlusOutlined />
+          }
         >
           {menus?.map((eachMenu) => (
-            <SubMenu
+            <Panel
+              header={
+                <Title>
+                  {eachMenu.headerIcon}
+                  {eachMenu.title}
+                </Title>
+              }
               key={eachMenu.subKey}
-              expandIcon={(props) =>
-                props.isOpen ? <MinusOutlined /> : <PlusOutlined />
-              }
-              title={
-                <span>
-                  <Title>{eachMenu.title}</Title>
-                </span>
-              }
             >
-              <Menu.Item key={eachMenu.itemKey}>{eachMenu.component}</Menu.Item>
-            </SubMenu>
+              <div>{eachMenu.component}</div>
+            </Panel>
           ))}
-        </Menu>
+        </Collapse>
       </Box>
-    </MenuContainer>
+    </CollepseContainer>
   );
 };
 
-export default AntMenu;
+export default AntCollapse;
