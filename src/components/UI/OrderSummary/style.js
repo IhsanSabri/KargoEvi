@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { Box, Image, Flex } from "rebass";
+import { Box, Flex } from "rebass";
 
 const MainOrderSummry = styled(Box)`
   position: absolute;
