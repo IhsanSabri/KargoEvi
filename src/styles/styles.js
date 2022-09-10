@@ -38,4 +38,21 @@ const SelectOption = styled.select`
   color: #262b37;
 `;
 
-export { LabelText, InputText, SelectOption };
+const WeightFormatSpan = styled.span`
+  border: 1px solid rgba(38, 43, 55, 0.24);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 14px;
+  color: #666666;
+  background: white;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem;
+  margin-top: 6px;
+  display: flex;
+  border-left-width: 0;
+  margin-left: -5px;
+`;
+
+export { LabelText, InputText, SelectOption, WeightFormatSpan };

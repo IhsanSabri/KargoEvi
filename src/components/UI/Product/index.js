@@ -3,13 +3,14 @@ import React from "react";
 import { Box, Flex } from "rebass";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 
-import {
-  MainProductCover,
-  WeightFormatSpan,
-  PriceSelect,
-} from "./style";
+import { MainProductCover, PriceSelect } from "./style";
 
-import { LabelText, InputText, SelectOption } from "../../../styles/styles";
+import {
+  LabelText,
+  InputText,
+  SelectOption,
+  WeightFormatSpan,
+} from "../../../styles/styles";
 
 const Product = ({ register }) => {
   return (
