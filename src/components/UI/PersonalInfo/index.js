@@ -130,31 +130,19 @@ const PersonalInfo = ({ nextPageLink }) => {
                   </SelectOption>
                 </Box>
               </Flex>
-              <Flex className="justify-content-center pt-[30px]">
-                <div className="col-xl-4 text-left">
-                  <label className="form-label text-[12px] font-medium text-[#6c757d] mb-[0]">
-                    POSTA KODU
-                  </label>
-                  <input
-                    required
-                    {...register("code")}
-                    type="text"
-                    className="form-control shadow-none text-[15px] py-[12px] text-[#495057] border-[#e5e5e7]"
-                  />
-                </div>
-                <div className="col-xl-8">
-                  <label className="form-label text-[12px] font-medium text-[#6c757d] mb-[0]">
+              <Flex paddingTop={"30px"}>
+                <Box width={1 / 3} textAlign={"left"} marginRight={"10px"}>
+                  <LabelText style={{ color: "#000000" }}>POSTA KODU</LabelText>
+                  <InputText required {...register("code")} type="text" />
+                </Box>
+                <Box width={2 / 3} textAlign={"left"} marginRight={"10px"}>
+                  <LabelText style={{ color: "#000000" }}>
                     ALICI AÇIK ADRES
-                  </label>
-                  <input
-                    required
-                    {...register("address")}
-                    type="text"
-                    className="form-control shadow-none text-[15px] py-[12px] text-[#495057] border-[#e5e5e7]"
-                  />
-                </div>
+                  </LabelText>
+                  <InputText required {...register("address")} type="text" />
+                </Box>
               </Flex>
-              <Flex className="justify-content-center pt-[50px] pl-[12px]">
+              <Flex paddingTop={"50px"} paddingLeft={"12px"}>
                 <div className="col-lg-12">
                   <div className="form-check text-left">
                     <input
@@ -171,7 +159,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                   </div>
                 </div>
               </Flex>
-              <div className="row pl-[12px] py-[25px] hidden" id="etgbpanel">
+              <div className="row pl-[12px] py-[25px]" id="etgbpanel">
                 <div className="col-lg-12">
                   <p className="mb-0 text-[#373c47]">
                     ETGB'li gönderinin yapılabilmesi için 'Resmi Satış
