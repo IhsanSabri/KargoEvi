@@ -1,5 +1,47 @@
 import styled from "@emotion/styled";
-import { Flex } from "rebass";
+import { Box, Flex } from "rebass";
+
+const PersonalInfoContainer = styled(Box)`
+  background: #ffffff;
+  border: 1px solid #e7e7e7;
+  border-radius: 8px;
+  width: 100%;
+  font-family: "Manrope";
+  font-style: normal;
+`;
+
+const ContainerTitle = styled(Box)`
+  padding-top: 30px;
+  padding-bottom: 20px;
+  background: white;
+  border-bottom: 0;
+
+  h1 {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 33px;
+    color: #262b37;
+  }
+`;
+
+const ContainerInfo = styled(Box)`
+  padding: 1rem 1rem;
+`;
+
+const PhoneSelect = styled.select`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #262b37;
+  background: #ffffff;
+  border: 1px solid rgba(38, 43, 55, 0.24);
+  border-radius: 4px;
+  margin-top: 6px;
+  border-right-width: 0;
+  margin-right: -2px;
+  padding: 5px;
+`;
 
 const FooterContainer = styled(Flex)`
   .submitAndContinueButton {
@@ -18,4 +60,10 @@ const FooterContainer = styled(Flex)`
   }
 `;
 
-export { FooterContainer };
+export {
+  FooterContainer,
+  PersonalInfoContainer,
+  ContainerTitle,
+  ContainerInfo,
+  PhoneSelect,
+};

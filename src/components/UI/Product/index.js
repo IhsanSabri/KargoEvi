@@ -5,12 +5,11 @@ import { QuestionCircleOutlined } from "@ant-design/icons";
 
 import {
   MainProductCover,
-  LabelText,
-  SelectOption,
-  InputText,
   WeightFormatSpan,
   PriceSelect,
 } from "./style";
+
+import { LabelText, InputText, SelectOption } from "../../../styles/styles";
 
 const Product = ({ register }) => {
   return (
