@@ -1,12 +1,13 @@
 import React from "react";
-import BsTabs from "./BsTabs";
-import "../styles/Home.css";
-import firstImage from "../assests/cin.jpg";
-import secondImage from "../assests/nasilcalisir.webp";
-import backgroundImage from "../assests/background.png";
+
+import DeliveryTabs from "../DeliveryTabs";
+
+import "../../../styles/Home.css";
+import firstImage from "../../../assests/cin.jpg";
+import secondImage from "../../../assests/nasilcalisir.webp";
+import backgroundImage from "../../../assests/background.png";
 
 const Home = ({ nexPageLink }) => {
-  console.log('testson');
   return (
     <div id="mainPage">
       <div className="mainImage">
@@ -16,7 +17,7 @@ const Home = ({ nexPageLink }) => {
           alt="MainPageImage"
         />
       </div>
-      <BsTabs nextPageLink={nexPageLink}/>
+      <DeliveryTabs nextPageLink={nexPageLink} />
       <div
         className="container d-md-none d-lg-block d-sm-none d-md-block d-none"
         id="mainPageBottomSlider"

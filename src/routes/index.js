@@ -6,7 +6,7 @@ import MainLayout from "../components/Layouts/MainLayout";
 import ToolsLayout from "../components/Layouts/ToolsLayout";
 import CustomSuspense from "../components/UI/ComponentRender/CustomSuspense";
 
-const Home = lazy(() => import("../components/Home"));
+const Home = lazy(() => import("../pages/Home"));
 const ProductInfoPage = lazy(() => import("../pages/ProductInfoPage"));
 const PersonalInfoPage = lazy(() => import("../pages/PersonalInfoPage"));
 const OrderSummaryPage = lazy(() => import("../pages/OrderSummaryPage"));
