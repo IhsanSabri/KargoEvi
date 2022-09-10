@@ -86,7 +86,7 @@ const ProductInfo = ({ nextPageLink }) => {
             <Card
               style={{ border: "1px solid lightgrey", borderRadius: "5px" }}
             >
-              <Text fontSize={3} mb={2}>
+              <Text fontSize={"24px"} mb={4} fontWeight={"500"}>
                 Ürün İçerik Bilgileri
               </Text>
               <Product key={product.length} register={register} />
