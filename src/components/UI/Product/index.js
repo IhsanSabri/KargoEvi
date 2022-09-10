@@ -3,7 +3,7 @@ import React from "react";
 import { Box, Flex } from "rebass";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 
-import { MainProductCover, PriceSelect } from "./style";
+import { MainProductCover, PriceFormatSelect } from "./style";
 
 import {
   LabelText,
@@ -37,15 +37,10 @@ const Product = ({ register }) => {
             type="text"
           ></InputText>
         </Box>
-        <Box width={1 / 6} mr={2}>
+        <Box width={1 / 6}>
           <LabelText>AĞIRLIK (*)</LabelText>
           <Flex>
-            <InputText
-              required
-              {...register("weight")}
-              type="text"
-              style={{ borderRightWidth: "0" }}
-            ></InputText>
+            <InputText required {...register("weight")} type="text"></InputText>
             <WeightFormatSpan>KG</WeightFormatSpan>
           </Flex>
         </Box>
@@ -68,22 +63,17 @@ const Product = ({ register }) => {
             <option value="Germany">Almanya</option>
           </SelectOption>
         </Box>
-        <Box width={1 / 6} mr={2}>
+        <Box width={1 / 6}>
           <LabelText>BİRİM DEĞERİ</LabelText>
-          <Flex>
-            <InputText
-              required
-              {...register("price")}
-              type="text"
-              style={{ borderRightWidth: "0" }}
-            ></InputText>
-            <PriceSelect {...register("currency")}>
+          <Box style={{ display: "-webkit-box" }}>
+            <InputText required {...register("price")} type="text"></InputText>
+            <PriceFormatSelect {...register("currency")}>
               <option value="$" defaultValue="$">
                 $
               </option>
               <option value="€">€</option>
-            </PriceSelect>
-          </Flex>
+            </PriceFormatSelect>
+          </Box>
         </Box>
       </MainProductCover>
     </Box>

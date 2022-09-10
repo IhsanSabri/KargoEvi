@@ -9,23 +9,19 @@ const MainProductCover = styled(Flex)`
   margin-top: 15px;
 `;
 
-
-
-const PriceSelect = styled.select`
+const PriceFormatSelect = styled.select`
   background: #e5e5e5;
-  border: 1px solid rgba(38, 43, 55, 0.24);
   border-radius: 4px;
   border-left-width: 0;
-  margin-left: -5px;
   font-weight: 600;
   font-size: 20px;
   line-height: 27px;
   color: #262b37;
-  margin-top: 6px;
   padding: 0.375rem;
+  position: relative;
+  top: 0.485rem;
+  height: 46px;
+  right: 45px;
 `;
 
-export {
-  MainProductCover,
-  PriceSelect,
-};
+export { MainProductCover, PriceFormatSelect };

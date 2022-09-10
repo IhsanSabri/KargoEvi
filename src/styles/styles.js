@@ -39,8 +39,6 @@ const SelectOption = styled.select`
 `;
 
 const WeightFormatSpan = styled.span`
-  border: 1px solid rgba(38, 43, 55, 0.24);
-  border-radius: 4px;
   font-weight: 600;
   font-size: 10px;
   line-height: 14px;
@@ -49,10 +47,13 @@ const WeightFormatSpan = styled.span`
   align-items: center;
   justify-content: center;
   padding: 0.375rem;
-  margin-top: 6px;
   display: flex;
   border-left-width: 0;
-  margin-left: -5px;
+  position: relative;
+  right: 25px;
+  height: 0;
+  top: 25px;
+  width: 0;
 `;
 
 export { LabelText, InputText, SelectOption, WeightFormatSpan };
