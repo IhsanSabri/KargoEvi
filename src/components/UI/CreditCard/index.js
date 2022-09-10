@@ -178,7 +178,7 @@ export default class CreditCard extends React.Component {
                     <PlusOutlined
                       style={{
                         position: "relative",
-                        margin: "4px",
+                        margin: "1px",
                       }}
                     />
                   }

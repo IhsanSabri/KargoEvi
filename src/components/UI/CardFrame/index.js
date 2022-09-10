@@ -19,7 +19,7 @@ const CardFrame = ({
 
   return (
     <CardFrameContainer m={"0 10% 0 6px"}>
-      <Radio value={value} style={{ marginBottom: "10px" }}>
+      <Radio value={value} style={{ marginBottom: "10px", minWidth: "200px" }}>
         {BankName} Kartım
       </Radio>
       <Card

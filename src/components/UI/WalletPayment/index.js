@@ -25,7 +25,6 @@ const WalletPayment = () => {
           <Box width={1}>
             <Box width={1}>
               <Checkbox
-                style={{ width: "20px" }}
                 onChange={(e) => console.log(e)}
               >
                 <span style={{ fontSize: "18px", fontWeight: 500 }}>
@@ -40,7 +39,7 @@ const WalletPayment = () => {
                 color={"black"}
                 fontSize={13}
                 fontWeight={300}
-                style={{ whiteSpace: "break-spaces", padding: "0 10px" }}
+                style={{ whiteSpace: "break-spaces", padding: "10px" }}
               >
                 Kargo Evi Cüzdan ile sipariş tamamlamak için{" "}
                 <span style={{ fontWeight: "bold" }}>'Ödeme Yap' </span>

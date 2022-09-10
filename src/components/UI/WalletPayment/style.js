@@ -17,6 +17,10 @@ const WalletContainer = styled(Box)`
     }
   }
 
+  .ant-checkbox {
+    top: 8px;
+  }
+
   .ant-card {
     width: 100% !important;
     box-shadow: -1px 1px 5px 4px #eeeeee;

@@ -3,12 +3,11 @@ import { Flex } from "rebass";
 
 const CollepseContainer = styled(Flex)`
   .ant-collapse {
-    background-color: #eff2f5 !important;
+    background-color: #eff2f5;
     border: none !important;
-  }
 
-  .ant-collapse-header {
-    background-color: #f6f7f8 !important;
+    .ant-collapse-header {
+    background-color: #f6f7f8;
     border: 1px solid lightgray !important;
     border-radius: 10px !important;
   }
@@ -35,6 +34,7 @@ const CollepseContainer = styled(Flex)`
 
   .ant-collapse-content > .ant-collapse-content-box {
     padding: 16px 40px;
+  }
   }
 `;
 

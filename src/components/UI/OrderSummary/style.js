@@ -4,11 +4,13 @@ import { Box, Flex } from "rebass";
 
 const MainOrderSummry = styled(Box)`
   position: absolute;
-  top: 14rem;
+  top: 14.3rem;
   right: 5rem;
   background: white;
   font-family: Manrope;
   font-style: normal;
+  border: 1px solid lightgray;
+  border-radius: 5px;
 `;
 
 const MainOrderSummryBox = styled(Box)`

@@ -8,10 +8,10 @@ const NewCardFrame = ({ icon, text }) => {
     <Box
       width={"98%"}
       m={"0 10% 0 5px"}
-      p={"13%"}
+      p={"12.5%"}
       sx={{
         border: "1px dashed #eaeff4",
-        top: "40px",
+        top: "43px",
         position: "relative",
         borderRadius: "10px",
         backgroundColor: "#fafbfd",
@@ -30,9 +30,15 @@ const NewCardFrame = ({ icon, text }) => {
             marginTop: "10px",
           }}
         />
-        <Flex sx={{ justifyContent: "center", marginTop: "10px" }}>
+        <Flex
+          sx={{
+            justifyContent: "center",
+            marginTop: "10px",
+            minWidth: "175px",
+          }}
+        >
           {icon}
-          <Text>{text}</Text>
+          <Text style={{ fontSize: "13px" }}>{text}</Text>
         </Flex>
       </Box>
     </Box>

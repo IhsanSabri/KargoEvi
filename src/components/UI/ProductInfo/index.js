@@ -83,7 +83,9 @@ const ProductInfo = ({ nextPageLink }) => {
       <Flex justifyContent="center" width={"60%"} m="30px auto">
         <Box>
           <form id="hook-form" onSubmit={handleSubmit(handleRegistration)}>
-            <Card>
+            <Card
+              style={{ border: "1px solid lightgrey", borderRadius: "5px" }}
+            >
               <Text fontSize={3} mb={2}>
                 Ürün İçerik Bilgileri
               </Text>

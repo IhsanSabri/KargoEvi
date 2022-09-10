@@ -5,6 +5,22 @@ const TransferContainer = styled.div`
     width: 100%;
   }
 
+  .ant-collapse-ghost {
+    background-color: white;
+
+    .ant-collapse-header {
+      background-color: white;
+    }
+
+    .ant-collapse-content-active {
+      border: 1px solid lightgrey;
+    }
+
+    .ant-collapse-content > .ant-collapse-content-box {
+      padding: 20px 120px;
+    }
+  }
+
   .ant-radio {
     top: 2px;
   }
@@ -35,11 +51,7 @@ const TransferContainer = styled.div`
     font-size: 13px;
   }
 
-  .ant-collapse-content > .ant-collapse-content-box {
-    padding: 20px 120px 0px !important;
-  }
-
-  .ant-collapse>.ant-collapse-item>.ant-collapse-header {
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
     padding: 0px 16px 12px;
   }
 `;
