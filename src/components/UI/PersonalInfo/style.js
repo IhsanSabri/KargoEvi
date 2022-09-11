@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Flex } from "rebass";
+import { Checkbox, Collapse } from "antd";
 
 const PersonalInfoContainer = styled(Box)`
   background: #ffffff;
@@ -38,8 +39,6 @@ const PhoneSelect = styled.select`
   border: 1px solid rgba(38, 43, 55, 0.24);
   border-radius: 4px;
   margin-top: 6px;
-  border-right-width: 0;
-  margin-right: -2px;
   padding: 5px;
 `;
 
@@ -60,10 +59,47 @@ const FooterContainer = styled(Flex)`
   }
 `;
 
+const InputCheckBox = styled(Checkbox)`
+  color: #373c47;
+  float: left;
+  margin-left: -1.5em;
+  margin-top: 0.25em;
+
+  .ant-checkbox-inner {
+    width: 25px;
+    height: 25px;
+
+    &:after {
+      top: 45%;
+      width: 6.714286px;
+      height: 14.142857px;
+    }
+  }
+`;
+
+const CheckBoxLabel = styled.label`
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  color: #262b37;
+  margin-top: 0.25em;
+`;
+
+const CollapseMain = styled(Collapse)`
+  background: #F9FBFD;
+
+  .ant-collapse-header {
+    display: none !important;;
+  }
+`;
+
 export {
   FooterContainer,
   PersonalInfoContainer,
   ContainerTitle,
   ContainerInfo,
   PhoneSelect,
+  InputCheckBox,
+  CheckBoxLabel,
+  CollapseMain,
 };

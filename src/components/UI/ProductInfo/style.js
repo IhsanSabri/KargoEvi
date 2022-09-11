@@ -18,4 +18,8 @@ const FooterContainer = styled(Flex)`
   }
 `;
 
-export { FooterContainer };
+const Download = styled.a`
+  color: #1a926b;
+`;
+
+export { FooterContainer, Download };

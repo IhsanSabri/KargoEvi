@@ -13,7 +13,7 @@ import ExcelImporting from "../ExcelImporting";
 import AntCollapse from "../CollapseMenu";
 import OrderSummary from "../OrderSummary";
 
-import { FooterContainer } from "./style";
+import { FooterContainer, Download } from "./style";
 import { DiffOutlined } from "@ant-design/icons";
 
 const ProductInfo = ({ nextPageLink }) => {
@@ -55,11 +55,26 @@ const ProductInfo = ({ nextPageLink }) => {
     },
   ];
 
+  const excelTemplate = {
+    title: (
+      <Text p={1} style={{ whiteSpace: "break-spaces", lineHeight: "1.5" }}>
+        Toplu gönderilerinizi tek seferde yüklemek için excel formları
+        kullanarak işlemlerinizi hızlandırabilirsiniz. Öncelikle hazır Excel
+        Şablon Formu{" "}
+        <Download href="#" download>
+          indirip
+        </Download>{" "}
+        doldurmanız ve daha sonra yüklemeniz gerekmektedir.
+      </Text>
+    ),
+    isDownloadTemplate: true,
+  };
+
   const menus = [
     {
       subKey: "excellImporting",
       title: "Excel Yükle",
-      component: <ExcelImporting />,
+      component: <ExcelImporting template={excelTemplate} />,
       headerIcon: (
         <DiffOutlined
           style={{
