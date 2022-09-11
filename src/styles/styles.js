@@ -56,4 +56,10 @@ const WeightFormatSpan = styled.span`
   width: 0;
 `;
 
-export { LabelText, InputText, SelectOption, WeightFormatSpan };
+const RadioInput = styled.input`
+  width: 20px;
+  height: 20px;
+  margin: 0 5px
+`;
+
+export { LabelText, InputText, SelectOption, WeightFormatSpan, RadioInput };

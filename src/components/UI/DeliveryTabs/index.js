@@ -1,35 +1,45 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 
-import { Tabs, Button } from "antd";
+import { Tabs } from "antd";
 import { Box, Flex, Text } from "rebass";
 
 import CourierDelivery from "../CourierDelivery";
 import AirlineTransport from "../AirlineTransport";
 import ShippingTransport from "../ShippingTransport";
 
-import { TabsContainer } from "./style";
+import { TabsContainer, SubmitButton } from "./style";
 import { RightOutlined } from "@ant-design/icons";
 
 const { TabPane } = Tabs;
 
 const DeliveryTabs = ({ nextPageLink }) => {
+  const { register, handleSubmit } = useForm();
   const onChange = (key) => {
     console.log(key);
   };
 
+  const handleTabs = (data) => {
+    console.log("data", data);
+
+    /*TODO: axios POST request */
+  };
+
   return (
     <TabsContainer>
-      <Tabs onChange={onChange} type="card">
-        <TabPane tab="Kurye Taşıması" key="1">
-          <CourierDelivery />
-        </TabPane>
-        <TabPane tab="Hava Yolu Taşıması" key="2">
-          <AirlineTransport />
-        </TabPane>
-        <TabPane tab="Deniz Yolu Taşıması" key="3">
-          <ShippingTransport />
-        </TabPane>
-      </Tabs>
+      <form id="hook-form" onSubmit={handleSubmit(handleTabs)}>
+        <Tabs onChange={onChange} type="card">
+          <TabPane tab="Kurye Taşıması" key="1">
+            <CourierDelivery register={register} />
+          </TabPane>
+          <TabPane tab="Hava Yolu Taşıması" key="2">
+            <AirlineTransport register={register} />
+          </TabPane>
+          <TabPane tab="Deniz Yolu Taşıması" key="3">
+            <ShippingTransport register={register} />
+          </TabPane>
+        </Tabs>
+      </form>
       <Flex
         justifyContent="space-between"
         p={3}
@@ -43,17 +53,7 @@ const DeliveryTabs = ({ nextPageLink }) => {
             USD 0
           </Text>
         </Box>
-        <Button
-          type="primary"
-          danger
-          size="large"
-          style={{
-            width: "170px",
-            height: "50px",
-            borderColor: "#d84148",
-            background: "#d5353b",
-          }}
-        >
+        <SubmitButton type="submit" form="hook-form">
           Devam Et
           <RightOutlined
             style={{
@@ -62,7 +62,7 @@ const DeliveryTabs = ({ nextPageLink }) => {
               top: "-3px",
             }}
           />
-        </Button>
+        </SubmitButton>
       </Flex>
     </TabsContainer>
   );
