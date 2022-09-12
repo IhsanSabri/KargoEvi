@@ -13,6 +13,7 @@ const MenuMain = styled(Menu)`
   border-bottom: unset;
   color: white;
   justify-content: flex-end;
+  width: 90%;
   height: inherit;
   align-items: center;
 
