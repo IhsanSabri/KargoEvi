@@ -25,7 +25,7 @@ const Router = () => {
             path="/"
             element={
               <CustomSuspense>
-                <Home nexPageLink={"/productInfo"} />
+                <Home nextPageLink={"/productInfo"} />
               </CustomSuspense>
             }
           />

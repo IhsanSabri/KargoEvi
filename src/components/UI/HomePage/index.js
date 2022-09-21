@@ -19,7 +19,7 @@ import firstImage from "../../../assests/cin.jpg";
 import secondImage from "../../../assests/nasilcalisir.webp";
 import backgroundImage from "../../../assests/background.png";
 
-const Home = ({ nexPageLink }) => {
+const Home = ({ nextPageLink }) => {
   return (
     <Flex
       id="mainPage"
@@ -30,7 +30,7 @@ const Home = ({ nexPageLink }) => {
         src={backgroundImage}
         alt="MainPageImage"
       ></MainBackgroundImage>
-      <DeliveryTabs nextPageLink={nexPageLink} />
+      <DeliveryTabs nextPageLink={nextPageLink} />
       <MainBottomTabs p={5}>
         <Flex width={1 / 3} justifyContent={"center"}>
           <BottomTabsCardFirst>

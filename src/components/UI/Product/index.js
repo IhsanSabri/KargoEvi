@@ -12,13 +12,13 @@ import {
   WeightFormatSpan,
 } from "../../../styles/styles";
 
-const Product = ({ register }) => {
+const Product = ({ register, indexNum }) => {
   return (
     <Box>
       <MainProductCover>
         <Box width={1 / 6} mr={2}>
           <LabelText>ADET (*)</LabelText>
-          <SelectOption required {...register("piece")}>
+          <SelectOption required {...register(`${indexNum}.piece.value`)}>
             <option value="" defaultValue="">
               Seçiniz
             </option>
@@ -33,14 +33,18 @@ const Product = ({ register }) => {
           <LabelText>ÜRÜN TANIMI (*)</LabelText>
           <InputText
             required
-            {...register("prodcutDescription")}
+            {...register(`${indexNum}.prodcutDescription.value`)}
             type="text"
           ></InputText>
         </Box>
         <Box width={1 / 6}>
           <LabelText>AĞIRLIK (*)</LabelText>
           <Flex>
-            <InputText required {...register("weight")} type="text"></InputText>
+            <InputText
+              required
+              {...register(`${indexNum}.weight.value`)}
+              type="text"
+            ></InputText>
             <WeightFormatSpan>KG</WeightFormatSpan>
           </Flex>
         </Box>
@@ -51,11 +55,15 @@ const Product = ({ register }) => {
               style={{ fontSize: "14px", marginLeft: "5px" }}
             />
           </LabelText>
-          <InputText required {...register("hs(gtip)")} type="text"></InputText>
+          <InputText
+            required
+            {...register(`${indexNum}.hs(gtip).value`)}
+            type="text"
+          ></InputText>
         </Box>
         <Box width={1 / 6} mr={2}>
           <LabelText>MENŞEİ (*)</LabelText>
-          <SelectOption required {...register("origin")}>
+          <SelectOption required {...register(`${indexNum}.origin.value`)}>
             <option value="" defaultValue="">
               Seçiniz
             </option>
@@ -66,12 +74,14 @@ const Product = ({ register }) => {
         <Box width={1 / 6}>
           <LabelText>BİRİM DEĞERİ</LabelText>
           <Box style={{ display: "-webkit-box" }}>
-            <InputText required {...register("price")} type="text"></InputText>
-            <PriceFormatSelect {...register("currency")}>
-              <option value="$" defaultValue="$">
-                $
-              </option>
-              <option value="€">€</option>
+            <InputText
+              required
+              {...register(`${indexNum}.price.value`)}
+              type="text"
+            ></InputText>
+            <PriceFormatSelect {...register(`${indexNum}.currency.value`)}>
+              <option defaultValue="$">$</option>
+              <option>€</option>
             </PriceFormatSelect>
           </Box>
         </Box>

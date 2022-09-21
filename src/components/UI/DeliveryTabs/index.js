@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { Tabs } from "antd";
 import { Box, Flex, Text } from "rebass";
@@ -8,20 +10,28 @@ import CourierDelivery from "../CourierDelivery";
 import AirlineTransport from "../AirlineTransport";
 import ShippingTransport from "../ShippingTransport";
 
+import { modifiedData } from "../../../store/DeliveryDetail";
+
 import { TabsContainer, SubmitButton } from "./style";
 import { RightOutlined } from "@ant-design/icons";
 
 const { TabPane } = Tabs;
 
 const DeliveryTabs = ({ nextPageLink }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
+
   const onChange = (key) => {
     console.log(key);
   };
 
   const handleTabs = (data) => {
-    console.log("data", data);
+    console.log("delivery tabs data", data);
 
+    dispatch(modifiedData({ name: "deliveryDetail", data }));
+
+    navigate(nextPageLink);
     /*TODO: axios POST request */
   };
 

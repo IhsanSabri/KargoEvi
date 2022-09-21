@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -18,16 +18,32 @@ import { DiffOutlined } from "@ant-design/icons";
 
 const ProductInfo = ({ nextPageLink }) => {
   const navigate = useNavigate();
-  const [product, setProduct] = useState([]);
   const { register, handleSubmit } = useForm();
+
+  const [product, setProduct] = useState([]);
+  const productArr = [
+    <Product
+      key={product.length}
+      register={register}
+      indexNum={product.length}
+    />,
+  ];
+
   const handleRegistration = (data) => {
     console.log(data);
+
     navigate(nextPageLink);
   };
 
   const handleProductAdd = (event) => {
     setProduct(
-      product.concat(<Product key={product.length} register={register} />)
+      product.concat(
+        <Product
+          key={product.length}
+          register={register}
+          indexNum={product.length}
+        />
+      )
     );
   };
 
@@ -88,6 +104,10 @@ const ProductInfo = ({ nextPageLink }) => {
     },
   ];
 
+  useEffect(() => {
+    setProduct(productArr);
+  }, []);
+
   return (
     <>
       <Flex justifyContent={"center"}>
@@ -104,7 +124,6 @@ const ProductInfo = ({ nextPageLink }) => {
               <Text fontSize={"24px"} mb={4} fontWeight={"500"}>
                 Ürün İçerik Bilgileri
               </Text>
-              <Product key={product.length} register={register} />
               {product}
             </Card>
           </form>
