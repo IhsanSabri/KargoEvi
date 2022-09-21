@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Tabs } from "antd";
 import { Box, Flex, Text } from "rebass";
@@ -21,6 +21,7 @@ const DeliveryTabs = ({ nextPageLink }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
+  const { deliveryPrice } = useSelector(({ delivery }) => delivery);
 
   const onChange = (key) => {
     console.log(key);
@@ -60,7 +61,7 @@ const DeliveryTabs = ({ nextPageLink }) => {
             Ödenecek Tutar
           </Text>
           <Text fontSize={4} fontWeight="600">
-            USD 0
+            {`USD ${deliveryPrice}`}
           </Text>
         </Box>
         <SubmitButton type="submit" form="hook-form">

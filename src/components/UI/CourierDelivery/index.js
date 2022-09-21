@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 import { Box, Flex } from "rebass";
+
+import { calculatePrice } from "../../../config/utils";
+import { modifiedData } from "../../../store/DeliveryDetail";
 
 import {
   LabelText,
@@ -12,8 +16,21 @@ import {
 } from "../../../styles/styles";
 
 const CourierDelivery = ({ register }) => {
+  const dispatch = useDispatch();
   const [directions, setDirections] = useState({});
   const [selectedDirections, setSelectedDirections] = useState("");
+  const inputValues = useRef({});
+
+  const handleInputChange = (event) => {
+    inputValues.current = {
+      ...inputValues.current,
+      [event.target.name]: Number(event.target.value),
+    };
+
+    let totalPrice = calculatePrice(inputValues.current);
+
+    dispatch(modifiedData({ name: "deliveryPrice", data: totalPrice }));
+  };
 
   useEffect(() => {
     axios
@@ -59,9 +76,7 @@ const CourierDelivery = ({ register }) => {
       <Box width={1} textAlign={"left"}>
         <LabelText style={{ color: "#000000" }}>NEREYE</LabelText>
         <SelectOption required {...register("city")}>
-          <option hidden>
-            Seçiniz
-          </option>
+          <option hidden>Seçiniz</option>
           {directions[selectedDirections] &&
             directions[selectedDirections].map((citie) => (
               <option key={citie} value={citie}>
@@ -74,28 +89,48 @@ const CourierDelivery = ({ register }) => {
         <Box width={1 / 4} mr={2}>
           <LabelText>AĞIRLIK</LabelText>
           <Flex>
-            <InputText required {...register("weight")} type="text"></InputText>
+            <InputText
+              required
+              {...register("weight")}
+              type="text"
+              onChange={handleInputChange}
+            ></InputText>
             <WeightFormatSpan>KG</WeightFormatSpan>
           </Flex>
         </Box>
         <Box width={1 / 4} mr={2}>
           <LabelText>UZUNLUK</LabelText>
           <Flex>
-            <InputText required {...register("length")} type="text"></InputText>
+            <InputText
+              required
+              {...register("length")}
+              type="text"
+              onChange={handleInputChange}
+            ></InputText>
             <WeightFormatSpan>CM</WeightFormatSpan>
           </Flex>
         </Box>
         <Box width={1 / 4} mr={2}>
           <LabelText>GENİŞLİK</LabelText>
           <Flex>
-            <InputText required {...register("width")} type="text"></InputText>
+            <InputText
+              required
+              {...register("width")}
+              type="text"
+              onChange={handleInputChange}
+            ></InputText>
             <WeightFormatSpan>CM</WeightFormatSpan>
           </Flex>
         </Box>
         <Box width={1 / 4} mr={2}>
           <LabelText>YÜKSEKLİK</LabelText>
           <Flex>
-            <InputText required {...register("height")} type="text"></InputText>
+            <InputText
+              required
+              {...register("height")}
+              type="text"
+              onChange={handleInputChange}
+            ></InputText>
             <WeightFormatSpan>CM</WeightFormatSpan>
           </Flex>
         </Box>

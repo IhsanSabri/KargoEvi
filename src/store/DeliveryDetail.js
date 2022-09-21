@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   deliveryDetail: {},
+  deliveryPrice: 0,
 };
 
 const DeliveryDetail = createSlice({
