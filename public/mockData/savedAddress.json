@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "addressName": "Çağlayan Ofis",
+    "userName": "Ayşe Keskin",
+    "phoneNumber": "+90 505 *** ** 55",
+    "address": "Akevler Mahallesi, Reşat Nuri Güntekin Sokak, 1065 Apt Adalar, İstanbul, Türkiye"
+  },
+  {
+    "id": 2,
+    "addressName": "Çağlayan Ofis",
+    "userName": "Ayşe Keskin",
+    "phoneNumber": "+90 505 *** ** 55",
+    "address": "Akevler Mahallesi, Reşat Nuri Güntekin Sokak, 1065 Apt Adalar, İstanbul, Türkiye"
+  },
+  {
+    "id": 3,
+    "addressName": "Çağlayan Ofis",
+    "userName": "Ayşe Keskin",
+    "phoneNumber": "+90 505 *** ** 55",
+    "address": "Akevler Mahallesi, Reşat Nuri Güntekin Sokak, 1065 Apt Adalar, İstanbul, Türkiye"
+  }
+]

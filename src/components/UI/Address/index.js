@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import OrderSummary from "../OrderSummary";
 import AddressColumn from "../AddressColumn";
@@ -28,7 +29,7 @@ import paymentLogo from "../../../assests/paymentLogo.png";
 const { Content } = Layout;
 
 const AddressMain = ({ nextPageLink }) => {
-  console.log(nextPageLink);
+  const [addressData, setAddressData] = useState([]);
   const { isModalVisible, openModal, closeModal } = useModal();
   const [form] = Form.useForm();
   const navigate = useNavigate();
@@ -37,33 +38,6 @@ const AddressMain = ({ nextPageLink }) => {
     console.log("Received values of form: ", values);
     navigate(nextPageLink);
   };
-
-  const dummyAddressData = [
-    {
-      id: 1,
-      addressName: "Çağlayan Ofis",
-      userName: "Ayşe Keskin",
-      phoneNumber: "+90 505 *** ** 55",
-      address:
-        "Akevler Mahallesi, Reşat Nuri Güntekin Sokak, 1065 Apt Adalar, İstanbul, Türkiye",
-    },
-    {
-      id: 2,
-      addressName: "Harbiye Ofis",
-      userName: "Ayşe Keskin",
-      phoneNumber: "+90 505 *** ** 55",
-      address:
-        "Akevler Mahallesi, Reşat Nuri Güntekin Sokak, 1065 Apt Adalar, İstanbul, Türkiye",
-    },
-    {
-      id: 3,
-      addressName: "Harbiye Ofis",
-      userName: "Ayşe Keskin",
-      phoneNumber: "+90 505 *** ** 55",
-      address:
-        "Akevler Mahallesi, Reşat Nuri Güntekin Sokak, 1065 Apt Adalar, İstanbul, Türkiye",
-    },
-  ];
 
   const stepsInfo = [
     {
@@ -88,6 +62,17 @@ const AddressMain = ({ nextPageLink }) => {
       isNextStepExist: false,
     },
   ];
+
+  useEffect(() => {
+    axios
+      .get("/mockData/savedAddress.json")
+      .then(function (response) {
+        setAddressData(response?.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
@@ -128,7 +113,7 @@ const AddressMain = ({ nextPageLink }) => {
             </TitleAddress>
             <Radio.Group defaultValue={1}>
               <Row gutter={[24, 24]} style={{ padding: "15px" }}>
-                {dummyAddressData.map((address, id) => {
+                {addressData.map((address, id) => {
                   return <AddressColumn key={id} address={address} />;
                 })}
                 <ColumnBox span={11}>

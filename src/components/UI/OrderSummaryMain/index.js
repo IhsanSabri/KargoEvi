@@ -1,18 +1,25 @@
 import React from "react";
-import paymentLogo from "../../../assests/paymentLogo.png";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Flex } from "rebass";
+import { Button } from "antd";
 
 import AntModal from "../AntModal";
 import Footer from "../Footer";
 import LoginTabs from "../LoginTabs";
-import { Flex } from "rebass";
 
 import { useModal } from "../../../config/hooks/useModal";
-import { Button } from "antd";
 
 import { FooterContainer } from "./style";
 import { PlusOutlined } from "@ant-design/icons";
+import paymentLogo from "../../../assests/paymentLogo.png";
 
 const OrderSummaryMain = ({ nexPageLink }) => {
+  const {
+    deliveryPrice,
+    deliveryDetail: { weight, length, width, height },
+    receiverInfo: { name, number, address },
+  } = useSelector(({ delivery }) => delivery);
   const { isModalVisible, openModal, closeModal } = useModal();
 
   return (
@@ -89,7 +96,7 @@ const OrderSummaryMain = ({ nexPageLink }) => {
                 </div>
                 <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px] text-right">
                   <label className="col-form-label text-[16px] font-medium">
-                    12 x 15 x16
+                    {`${length} x ${width} x ${height}`}
                   </label>
                 </div>
               </div>
@@ -101,7 +108,7 @@ const OrderSummaryMain = ({ nexPageLink }) => {
                 </div>
                 <div className="col-sm-6 col-lg-6 text-right	rounded-[3px] pt-[3px]">
                   <label className="col-form-label text-[16px] font-medium">
-                    31 KG
+                    {weight} KG
                   </label>
                 </div>
               </div>
@@ -113,7 +120,7 @@ const OrderSummaryMain = ({ nexPageLink }) => {
                 </div>
                 <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px] text-right">
                   <label className="col-form-label text-[16px] font-medium">
-                    Ayşe Keskin
+                    {name}
                   </label>
                 </div>
               </div>
@@ -125,7 +132,7 @@ const OrderSummaryMain = ({ nexPageLink }) => {
                 </div>
                 <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px] text-right">
                   <label className="col-form-label text-[16px] font-medium">
-                    İstanbul Akevler
+                    {address}
                   </label>
                 </div>
               </div>
@@ -137,7 +144,7 @@ const OrderSummaryMain = ({ nexPageLink }) => {
                 </div>
                 <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px] text-right">
                   <label className="col-form-label text-[16px] font-medium">
-                    +90 000 000 00 00
+                    {number}
                   </label>
                 </div>
                 <div className="col-lg-12 px-0">
@@ -152,7 +159,7 @@ const OrderSummaryMain = ({ nexPageLink }) => {
                 </div>
                 <div className="col-sm-6 col-lg-6 py-[3px] rounded-[3px] text-right">
                   <label className="col-form-label text-[27px] font-medium">
-                    USD 21,33
+                    USD {deliveryPrice}
                   </label>
                 </div>
               </div>

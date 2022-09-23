@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { Flex, Box, Text } from "rebass";
 
@@ -8,6 +9,8 @@ import OrderSummary from "../OrderSummary";
 import ExcelImporting from "../ExcelImporting";
 import Footer from "../Footer";
 import Steps from "../Steps";
+
+import { modifiedData } from "../../../store/DeliveryDetail";
 
 import { Button, Collapse } from "antd";
 import {
@@ -18,7 +21,7 @@ import {
   PhoneSelect,
   InputCheckBox,
   CheckBoxLabel,
-  CollapseMain
+  CollapseMain,
 } from "./style";
 import { LabelText, InputText, SelectOption } from "../../../styles/styles";
 
@@ -26,10 +29,14 @@ const { Panel } = Collapse;
 
 const PersonalInfo = ({ nextPageLink }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const [isChecked, setIsChecked] = useState(false);
   const handleRegistration = (data) => {
     console.log(data);
+
+    dispatch(modifiedData({ name: "receiverInfo", data }));
+
     navigate(nextPageLink);
   };
   const isCheckboxChecked = (event) => {
@@ -177,7 +184,10 @@ const PersonalInfo = ({ nextPageLink }) => {
                     onChange={isCheckboxChecked}
                   />
                   <CheckBoxLabel>&nbsp; ETGB ile Gönder</CheckBoxLabel>
-                  <CollapseMain activeKey={isChecked ? ["1"] : ["0"]} ghost={true}>
+                  <CollapseMain
+                    activeKey={isChecked ? ["1"] : ["0"]}
+                    ghost={true}
+                  >
                     <Panel key="1" showArrow={false}>
                       <ExcelImporting template={fileTemplate} />
                     </Panel>

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   deliveryDetail: {},
   deliveryPrice: 0,
+  receiverInfo: {},
 };
 
 const DeliveryDetail = createSlice({
