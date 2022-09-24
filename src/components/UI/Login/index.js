@@ -4,14 +4,34 @@ import { useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Checkbox, Form, Input } from "antd";
 
+import { AuthService } from "../../../services";
+
 import { FormItem, ButtonSubmit } from "./style";
+
+const authService = new AuthService();
 
 const Login = ({ nexPageLink }) => {
   const navigate = useNavigate();
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    navigate(nexPageLink);
+    const { username, password } = values;
+
+    authService
+      .login({
+        email: username,
+        password,
+      })
+      .then((res) => {
+        console.log("res", res);
+
+        if (res.success) {
+          navigate(nexPageLink);
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
   };
 
   return (
