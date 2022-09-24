@@ -1,0 +1,472 @@
+{
+	"info": {
+		"_postman_id": "7d3e1317-c4d2-4e9c-b479-4c45ec19c9ac",
+		"name": "Kargo Evi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5361525"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"acayemre@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user/singleuser",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"singleuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/user/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"acayemre@gmail.com\",\r\n    \"password\" : \"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"6318b8121a86525a180dad0f\",\r\n    \"name\" : \"emre acay\",\r\n    \"description\" : \"emreacay\",\r\n    \"password\" : \"\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user/editUser",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"editUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var object = pm.response.json();\r",
+									"pm.environment.set(\"access_token\",object.access_token);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"emre acay\",\r\n    \"email\" : \"acayemre@gmail.com\",\r\n    \"password\" : \"123456\"\r\n\r\n}\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User Adress",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"6318b8121a86525a180dad0f\",\r\n    \"adress\" : [{\r\n        \"adressDesc\" : \"emre\",\r\n        \"adressName\" : \"maltepe\"         \r\n                }]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user/editUserAdress",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"editUserAdress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Adress",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"6318e8619418d45d244d805c\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user/userAdress",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"userAdress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User Adress",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"6318e8619418d45d244d805c\",\r\n    \"adressId\" : \"631b089acaf1156d18eb5c40\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user/deleteUserAdress",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"deleteUserAdress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User Adress",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"6318e8619418d45d244d805c\",\r\n    \"adress\" : [{\r\n        \"adressDesc\" : \"alperen\",\r\n        \"adressName\" : \"goztepe\"         \r\n                }]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/user/addUserAdress",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"addUserAdress"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer: {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/auth/profile/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User verify",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(pm.response.json())\r",
+									"var object = pm.response;\r",
+									"pm.environment.set(\"access_token\",object.access_token);\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"content-length": true,
+							"host": true,
+							"user-agent": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accessToken\" : \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMThiODEyMWE4NjUyNWExODBkYWQwZiIsIm5hbWUiOiJlbXJlIGFjYXkiLCJpYXQiOjE2NjI2MjI0NjMsImV4cCI6MTY2MjYyMzY2M30.yBfS8tJTA-ZuNaPqFn34Qamy3IHDxkBI2LuI7cv6qyo\"\r\n\r\n}\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/verify",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer: {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/auth/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Upload",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer: {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/Desktop/resim.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/upload",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/order",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllOrder",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/device",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"device"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

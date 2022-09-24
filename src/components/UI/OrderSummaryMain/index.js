@@ -1,175 +1,84 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { Flex } from "rebass";
 import { Button } from "antd";
-
 import AntModal from "../AntModal";
 import Footer from "../Footer";
 import LoginTabs from "../LoginTabs";
+import { Box, Flex, Image } from "rebass";
 
 import { useModal } from "../../../config/hooks/useModal";
 
-import { FooterContainer } from "./style";
+import {
+  Content,
+  MainContent,
+  MainTitle,
+  Destination,
+  FooterContainer,
+} from "./style";
 import { PlusOutlined } from "@ant-design/icons";
 import paymentLogo from "../../../assests/paymentLogo.png";
+import destination from "../../../assests/destination.svg";
 
 const OrderSummaryMain = ({ nexPageLink }) => {
+  const { isModalVisible, openModal, closeModal } = useModal();
   const {
     deliveryPrice,
-    deliveryDetail: { weight, length, width, height },
-    receiverInfo: { name, number, address },
+    deliveryDetail: { destination: direction, weight, length, width, height },
   } = useSelector(({ delivery }) => delivery);
-  const { isModalVisible, openModal, closeModal } = useModal();
+  const volume = Number(width) * Number(length) * Number(height);
 
   return (
     <>
-      <Flex justifyContent="center" width={"70%"} m="auto">
-        <div className="col-lg-10 border flex justify-center shadow-[0px_0px_8px_rgba(38,43,55,20%)] bg-white">
-          <div className="card border-0 px-[12px] pb-[12px] border-[unset] w-[65%]">
-            <div className="card-header bg-white pt-[30px] pb-[20px] border-b-0">
-              <h1 className="display-6 text-[26px] font-medium">
-                Sipariş Özeti
-              </h1>
-            </div>
-            <div className="card-body">
-              <div className="row mx-0">
-                <div className="col-5 bg-[#f5f7f8] pt-0 rounded-[5px] pl-[23px]">
-                  <label className="form-label text-[12px] text-[#6c757d]">
-                    Nereden
-                  </label>
-                  <br />
-                  <label className="form-label text-[16px]">Türkiye</label>
-                </div>
-                <div className="col flex justify-center align-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1em"
-                    height="1em"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    className="bi bi-arrow-right-circle w-[30px] h-[30px]"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
-                    ></path>
-                  </svg>
-                </div>
-                <div className="col-5 bg-[#f5f7f8] pt-[8px] rounded-[5px] pl-[23px]">
-                  <label className="form-label text-[12px] text-[#6c757d]">
-                    Nereye
-                  </label>
-                  <br />
-                  <label className="form-label text-[16px]">Almanya</label>
-                </div>
-              </div>
-              <div className="row mx-0 mt-[14px]">
-                <div className="col-sm-6 col-lg-6 rounded-[3px] pt-[3px]">
-                  <label className="col-form-label text-[16px] text-[#6c757d]">
-                    Adet
-                  </label>
-                </div>
-                <div className="col-sm-6 col-lg-6 text-right	rounded-[3px] pt-[3px]">
-                  <label className="col-form-label font-medium	text-[16px]">
-                    2
-                  </label>
-                </div>
-              </div>
-              <div className="row mx-0">
-                <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px]">
-                  <label className="col-form-label text-[16px] text-[#6c757d]">
-                    Paket İçeriği
-                  </label>
-                </div>
-                <div className="col-sm-6 col-lg-6 text-right	rounded-[3px] pt-[3px]">
-                  <label className="col-form-label text-[16px] font-medium">
-                    Paket
-                  </label>
-                </div>
-              </div>
-              <div className="row mx-0 mt-0">
-                <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px]">
-                  <label className="col-form-label text-[16px] text-[#6c757d]">
-                    Paket Ölçüleri
-                  </label>
-                </div>
-                <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px] text-right">
-                  <label className="col-form-label text-[16px] font-medium">
-                    {`${length} x ${width} x ${height}`}
-                  </label>
-                </div>
-              </div>
-              <div className="row mx-0 mt-0">
-                <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px]">
-                  <label className="col-form-label text-[16px] text-[#6c757d]">
-                    Toplam Ağırlık
-                  </label>
-                </div>
-                <div className="col-sm-6 col-lg-6 text-right	rounded-[3px] pt-[3px]">
-                  <label className="col-form-label text-[16px] font-medium">
-                    {weight} KG
-                  </label>
-                </div>
-              </div>
-              <div className="row mx-0 mt-[30px]">
-                <div className="col-sm-6 col-lg-6 p5-[3px] rounded-[3px]">
-                  <label className="col-form-label text-[16px] text-[#6c757d]">
-                    Alıcı Ad Soyad
-                  </label>
-                </div>
-                <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px] text-right">
-                  <label className="col-form-label text-[16px] font-medium">
-                    {name}
-                  </label>
-                </div>
-              </div>
-              <div className="row mx-0 mt-0">
-                <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px]">
-                  <label className="col-form-label text-[16px] text-[#6c757d]">
-                    Alıcı Adres
-                  </label>
-                </div>
-                <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px] text-right">
-                  <label className="col-form-label text-[16px] font-medium">
-                    {address}
-                  </label>
-                </div>
-              </div>
-              <div className="row mx-0 mt-0">
-                <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px]">
-                  <label className="col-form-label text-[16px] text-[#6c757d]">
-                    Alıcı Telefon
-                  </label>
-                </div>
-                <div className="col-sm-6 col-lg-6 pt-[3px] rounded-[3px] text-right">
-                  <label className="col-form-label text-[16px] font-medium">
-                    {number}
-                  </label>
-                </div>
-                <div className="col-lg-12 px-0">
-                  <hr className="text-[#adb5bd] mt-0 mb-[5px]" />
-                </div>
-              </div>
-              <div className="row mt-0 mx-0">
-                <div className="col-sm-6 col-lg-6 flex align-center pt-[3px] rounded-[3px]">
-                  <label className="col-form-label text-[17px]">
-                    Toplam Tutar
-                  </label>
-                </div>
-                <div className="col-sm-6 col-lg-6 py-[3px] rounded-[3px] text-right">
-                  <label className="col-form-label text-[27px] font-medium">
-                    USD {deliveryPrice}
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <MainContent justifyContent="center" width={"70%"} m="auto">
+        <MainTitle>Sipariş Özeti</MainTitle>
+        <Destination>
+          <Flex width={"50%"} className="destinationBox">
+            <label>Nereden</label>
+            <label>{direction === "fromTr" ? "Türkiye" : "Almanya"}</label>
+          </Flex>
+          <Box>
+            <Image width={"45px"} src={destination}></Image>
+          </Box>
+          <Flex width={"50%"} className="destinationBox">
+            <label>Nereye</label>
+            <label>{direction === "fromTr" ? "Almanya" : "Türkiye"}</label>
+          </Flex>
+        </Destination>
+        <Content>
+          <Box>Adet</Box>
+          <Box>2</Box>
+        </Content>
+        <Content>
+          <Box>Paket İçeriği</Box>
+          <Box>Paket</Box>
+        </Content>
+        <Content>
+          <Box>Paket Ölçüleri</Box>
+          <Box>
+            {width}X{height}X{length}
+          </Box>
+        </Content>
+        <Content>
+          <Box>Toplam Ağırlık</Box>
+          <Box>{weight}</Box>
+        </Content>
+        <Content>
+          <Box>Alıcı Ad, Soyad</Box>
+          <Box>{weight}</Box>
+        </Content>
+        <Content>
+          <Box>Alıcı Adres</Box>
+          <Box>{weight}</Box>
+        </Content>
+        <Content>
+          <Box>Alıcı Telefon</Box>
+          <Box>{weight}</Box>
+        </Content>
+      </MainContent>
+      <Flex justifyContent={"center"}>
+        <Image src={paymentLogo}></Image>
       </Flex>
-      <div className="flex justify-center w-full mt-[20px]">
-        <img className="flex" src={paymentLogo} alt="logo" />
-      </div>
       <Footer prevLink={"/personalInfo"}>
         <FooterContainer>
           <Button className="newOrderButton" danger>
