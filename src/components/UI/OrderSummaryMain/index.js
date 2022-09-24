@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { Button } from "antd";
+import { Button, Divider } from "antd";
 import AntModal from "../AntModal";
 import Footer from "../Footer";
 import LoginTabs from "../LoginTabs";
@@ -11,6 +11,7 @@ import { useModal } from "../../../config/hooks/useModal";
 
 import {
   Content,
+  MainBox,
   MainContent,
   MainTitle,
   Destination,
@@ -24,59 +25,76 @@ const OrderSummaryMain = ({ nexPageLink }) => {
   const { isModalVisible, openModal, closeModal } = useModal();
   const {
     deliveryPrice,
-    deliveryDetail: { destination: direction, weight, length, width, height },
+    deliveryDetail: {
+      destination: direction,
+      weight,
+      length,
+      width,
+      height,
+      city,
+    },
+    receiverInfo: { name, number, address },
   } = useSelector(({ delivery }) => delivery);
-  const volume = Number(width) * Number(length) * Number(height);
 
   return (
     <>
-      <MainContent justifyContent="center" width={"70%"} m="auto">
+      <MainBox justifyContent="center" width={"60%"} m="30px auto">
         <MainTitle>Sipariş Özeti</MainTitle>
-        <Destination>
-          <Flex width={"50%"} className="destinationBox">
-            <label>Nereden</label>
-            <label>{direction === "fromTr" ? "Türkiye" : "Almanya"}</label>
-          </Flex>
-          <Box>
-            <Image width={"45px"} src={destination}></Image>
-          </Box>
-          <Flex width={"50%"} className="destinationBox">
-            <label>Nereye</label>
-            <label>{direction === "fromTr" ? "Almanya" : "Türkiye"}</label>
-          </Flex>
-        </Destination>
-        <Content>
-          <Box>Adet</Box>
-          <Box>2</Box>
-        </Content>
-        <Content>
-          <Box>Paket İçeriği</Box>
-          <Box>Paket</Box>
-        </Content>
-        <Content>
-          <Box>Paket Ölçüleri</Box>
-          <Box>
-            {width}X{height}X{length}
-          </Box>
-        </Content>
-        <Content>
-          <Box>Toplam Ağırlık</Box>
-          <Box>{weight}</Box>
-        </Content>
-        <Content>
-          <Box>Alıcı Ad, Soyad</Box>
-          <Box>{weight}</Box>
-        </Content>
-        <Content>
-          <Box>Alıcı Adres</Box>
-          <Box>{weight}</Box>
-        </Content>
-        <Content>
-          <Box>Alıcı Telefon</Box>
-          <Box>{weight}</Box>
-        </Content>
-      </MainContent>
-      <Flex justifyContent={"center"}>
+        <MainContent>
+          <Destination>
+            <Flex width={"50%"} className="destinationBox">
+              <label>Nereden</label>
+              <label>{direction === "fromTr" ? "Türkiye" : city}</label>
+            </Flex>
+            <Box>
+              <Image width={"45px"} src={destination}></Image>
+            </Box>
+            <Flex width={"50%"} className="destinationBox">
+              <label>Nereye</label>
+              <label>{direction === "fromTr" ? city : "Türkiye"}</label>
+            </Flex>
+          </Destination>
+          <Content>
+            <Box>Adet</Box>
+            <Box>2</Box>
+          </Content>
+          <Content>
+            <Box>Paket İçeriği</Box>
+            <Box>Paket</Box>
+          </Content>
+          <Content>
+            <Box>Paket Ölçüleri</Box>
+            <Box>
+              {width} X {height} X {length}
+            </Box>
+          </Content>
+          <Content>
+            <Box>Toplam Ağırlık</Box>
+            <Box>{weight}</Box>
+          </Content>
+          <Content>
+            <Box>Alıcı Ad, Soyad</Box>
+            <Box>{name}</Box>
+          </Content>
+          <Content>
+            <Box>Alıcı Adres</Box>
+            <Box>{address}</Box>
+          </Content>
+          <Content>
+            <Box>Alıcı Telefon</Box>
+            <Box>{number}</Box>
+          </Content>
+          <Divider />
+          <Content>
+            <Box>Toplam Tutar</Box>
+            <Box>USD {deliveryPrice}</Box>
+          </Content>
+        </MainContent>
+      </MainBox>
+      <Flex
+        justifyContent={"center"}
+        style={{ paddingTop: "2.375rem", paddingBottom: "2rem" }}
+      >
         <Image src={paymentLogo}></Image>
       </Flex>
       <Footer prevLink={"/personalInfo"}>

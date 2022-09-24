@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, Flex } from "rebass";
 
-const MainContent = styled(Flex)`
+const MainBox = styled(Flex)`
   background: #ffffff;
   border: 1px solid #e7e7e7;
   box-shadow: 0px 0px 8px rgba(38, 43, 55, 0.2);
@@ -14,7 +14,6 @@ const MainContent = styled(Flex)`
 const Destination = styled(Flex)`
   align-items: center;
   text-align: center;
-  padding: 0 10rem 0 10rem;
 
   .destinationBox {
     background: #f5f7f8;
@@ -43,9 +42,35 @@ const Destination = styled(Flex)`
   }
 `;
 
-const Content = styled(Flex)`
+const MainContent = styled(Box)`
   padding: 1.5rem 10rem 0 10rem;
+
+  div:nth-of-type(6) {
+    padding-top: 3rem !important;
+  }
+
+  div:nth-of-type(10) {
+    padding-bottom: 3.75rem;
+
+    div:nth-of-type(1) {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px;
+      color: #262B37;
+    }
+
+    div:nth-of-type(2) {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 44px;
+      color: #262B37;
+    }
+  } 
+`;
+
+const Content = styled(Flex)`
   justify-content: space-between;
+  padding-top: 16px;
 
   div:nth-of-type(1) {
     font-weight: 500;
@@ -58,7 +83,7 @@ const Content = styled(Flex)`
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;
-    color: #262B37;
+    color: #262b37;
   }
 `;
 
@@ -106,4 +131,11 @@ const FooterContainer = styled(Flex)`
   }
 `;
 
-export { Content, MainContent, MainTitle, Destination, FooterContainer };
+export {
+  MainContent,
+  Content,
+  MainBox,
+  MainTitle,
+  Destination,
+  FooterContainer,
+};
