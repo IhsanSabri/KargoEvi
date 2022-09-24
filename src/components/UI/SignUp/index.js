@@ -2,9 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Checkbox, Form, Input, Select, Radio } from "antd";
+
+import { UserService } from "../../../services";
+
 import { FormItem, ButtonRegister } from "./style";
 
 const { Option } = Select;
+
+const userService = new UserService();
 
 const SignUp = ({ nexPageLink }) => {
   const [form] = Form.useForm();
@@ -12,7 +17,26 @@ const SignUp = ({ nexPageLink }) => {
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    navigate(nexPageLink);
+    const { username, lastName, email, password } = values;
+
+    userService
+      .addUser({
+        name: `${username} ${lastName}`,
+        email,
+        password,
+      })
+      .then((res) => {
+        console.log("reshere", res);
+
+        if (res.success) {
+          console.log("signup is succesfully");
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+
+    //navigate(nexPageLink);
   };
 
   const prefixSelector = (
@@ -78,7 +102,7 @@ const SignUp = ({ nexPageLink }) => {
 
         <FormItem
           label="SOYADINIZ"
-          name="username"
+          name="lastName"
           rules={[
             {
               required: true,
@@ -87,7 +111,7 @@ const SignUp = ({ nexPageLink }) => {
           ]}
         >
           <Input
-            placeholder="Username"
+            placeholder="LastName"
             style={{
               width: "100%",
             }}
