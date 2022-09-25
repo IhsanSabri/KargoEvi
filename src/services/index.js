@@ -9,8 +9,9 @@ const { makeRequest, makeRequestAuth } = axiosClient(
   }
   
   export class UserService {
-    //getUser = (params) => makeRequestAuth("get", "/user/all", { params });
+    getSingleUser = (data) => makeRequest("post", "/user/singleuser", { data });
     addUser = (data) => makeRequest("post", "/auth/register", { data });
+    addUserAddress = (data) => makeRequest("post", "/user/addUserAdress", { data });
     //updateUser = (data) => makeRequestAuth("put", "/user/update", { data });
     //deleteUser = (data) => makeRequestAuth("delete", "/user/delete", { data });
   }

@@ -1,15 +1,43 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import { Form, Input, Select } from "antd";
+
+import { UserService } from "../../../services";
+
 import { FormItem, ButtonRegister, FormTitle } from "./style";
 
 const { Option } = Select;
+const userService = new UserService();
 
 const AddAddress = ({ event }) => {
+  const { userId } = useSelector(({ delivery }) => delivery);
+
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+    const { addressTitle, explanation } = values;
+
+    userService
+      .addUserAddress({
+        id: userId,
+        adress: [
+          {
+            adressDesc: explanation,
+            adressName: addressTitle,
+          },
+        ],
+      })
+      .then((res) => {
+        console.log("res", res);
+        if (res.success) {
+          //TODO: address will be added to state
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
   };
 
   const prefixSelectorPhone = (

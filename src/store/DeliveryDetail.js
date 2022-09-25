@@ -4,6 +4,9 @@ const initialState = {
   deliveryDetail: {},
   deliveryPrice: 0,
   receiverInfo: {},
+  token: '',
+  userId: '',
+  userAddress: [],
 };
 
 const DeliveryDetail = createSlice({

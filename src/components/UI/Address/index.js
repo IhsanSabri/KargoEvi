@@ -23,7 +23,6 @@ import {
   ColumnBoxAddres,
   PaymentImage,
 } from "./style";
-import { StepsMain, MainCol } from "../Steps/style";
 import paymentLogo from "../../../assests/paymentLogo.png";
 
 const { Content } = Layout;

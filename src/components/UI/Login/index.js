@@ -1,37 +1,79 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Checkbox, Form, Input } from "antd";
 
-import { AuthService } from "../../../services";
+import { AuthService, UserService } from "../../../services";
+import { modifiedData } from "../../../store/DeliveryDetail";
+import { setNotificationMessage } from "../../../config/utils";
 
 import { FormItem, ButtonSubmit } from "./style";
 
 const authService = new AuthService();
+const userService = new UserService();
 
 const Login = ({ nexPageLink }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-    const { username, password } = values;
-
+  const getToken = async (username, password) => {
     authService
       .login({
         email: username,
         password,
       })
+      .then(async (res) => {
+        if (res.success) {
+          dispatch(modifiedData({ name: "token", data: res.access_token }));
+
+          await getUserId(username);
+        }
+      })
+      .catch((err) => {
+        setNotificationMessage({
+          type: "error",
+          message: "Please check you credentials",
+        });
+      });
+  };
+
+  const getUserId = (username) => {
+    userService
+      .getSingleUser({
+        email: username,
+      })
       .then((res) => {
         console.log("res", res);
-
         if (res.success) {
-          navigate(nexPageLink);
+          const {
+            data: { _id, adress },
+          } = res;
+
+          dispatch(modifiedData({ name: "userId", data: _id }));
+          dispatch(modifiedData({ name: "userAddress", data: adress }));
+
+          setNotificationMessage({
+            type: "success",
+            message: "Logged in successfully",
+          });
+
+          setTimeout(() => {
+            navigate(nexPageLink);
+          }, 500);
         }
       })
       .catch((err) => {
         console.log("err", err);
       });
+  };
+
+  const onFinish = (values) => {
+    console.log("Received values of form: ", values);
+    const { username, password } = values;
+
+    getToken(username, password);
   };
 
   return (
