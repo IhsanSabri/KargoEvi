@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import AntModal from "../AntModal";
+import LoginTabs from "../LoginTabs";
+
 import logo from "../../../assests/logo.png";
 import userAvatar from "../../../assests/userAvatar.svg";
 import { Navbar, MenuMain, MainButton, ImageMain } from "./style";
 
 import { ShoppingOutlined } from "@ant-design/icons";
+
+import { useModal } from "../../../config/hooks/useModal";
 
 const items1 = [
   {
@@ -38,21 +43,28 @@ const items1 = [
 }));
 
 const NavBar = () => {
+  const { isModalVisible, openModal, closeModal } = useModal();
+
   return (
-    <Navbar className="header">
-      <Link to="/" style={{ alignSelf: "center", marginRight: "1rem" }}>
-        <img src={logo} alt="brandImage" href="#Home.js" />
-      </Link>
-      <MenuMain theme="dark" mode="horizontal" items={items1}></MenuMain>
-      <MainButton>
-        <ImageMain src={userAvatar}></ImageMain>
-        Üyelik
-      </MainButton>
-      <MainButton>
-        <ShoppingOutlined />
-        Sepetim
-      </MainButton>
-    </Navbar>
+    <>
+      <Navbar className="header">
+        <Link to="/" style={{ alignSelf: "center", marginRight: "1rem" }}>
+          <img src={logo} alt="brandImage" href="#Home.js" />
+        </Link>
+        <MenuMain theme="dark" mode="horizontal" items={items1}></MenuMain>
+        <MainButton onClick={openModal}>
+          <ImageMain src={userAvatar}></ImageMain>
+          Üyelik
+        </MainButton>
+        <MainButton>
+          <ShoppingOutlined />
+          Sepetim
+        </MainButton>
+      </Navbar>
+      <AntModal visible={isModalVisible} onCancel={closeModal}>
+        <LoginTabs nexPageLink={"/productInfo"} />
+      </AntModal>
+    </>
   );
 };
 
