@@ -51,7 +51,7 @@ const OrderSummaryMain = ({ nexPageLink }) => {
             </Box>
             <Flex width={"50%"} className="destinationBox">
               <label>Nereye</label>
-              <label>{direction === "fromTr" ? city : "Türkiye"}</label>
+              <label>{direction === "toTr" ? city : "Türkiye"}</label>
             </Flex>
           </Destination>
           <Content>

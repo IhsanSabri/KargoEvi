@@ -29,8 +29,8 @@ const MenuMain = styled(Menu)`
 `;
 
 const MainButton = styled(Button)`
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
   border-radius: 2px;
   padding: 9px 27px 9px 22px;
   display: flex;

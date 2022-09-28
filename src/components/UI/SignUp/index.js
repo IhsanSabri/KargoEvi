@@ -66,7 +66,7 @@ const SignUp = ({ nexPageLink }) => {
         <Radio.Group
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "flex-start",
             width: "100%",
           }}
         >
