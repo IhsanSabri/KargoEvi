@@ -50,6 +50,11 @@ const MainDivider = styled(Divider)`
 
 const FacebookButton = styled(FacebookLoginButton)`
   box-shadow: none !important;
+  background: rgb(59, 89, 152) !important;
+
+  &:hover {
+    background: rgb(59, 89, 152) !important;
+  }
 
   div {
     flex-direction: column;
@@ -66,6 +71,7 @@ const FacebookButton = styled(FacebookLoginButton)`
 
 const GoogleButton = styled(GoogleLoginButton)`
   box-shadow: none !important;
+  background: #f9edea !important;
 
   div {
     flex-direction: column;
@@ -82,6 +88,11 @@ const GoogleButton = styled(GoogleLoginButton)`
 
 const TwitterButton = styled(TwitterLoginButton)`
   box-shadow: none !important;
+  background: rgb(90, 164, 235) !important;
+
+  &:hover {
+    background: rgb(90, 164, 235) !important;
+  }
 
   div {
     flex-direction: column;
@@ -98,6 +109,7 @@ const TwitterButton = styled(TwitterLoginButton)`
 
 const AppleButton = styled(AppleLoginButton)`
   box-shadow: none !important;
+  background: #e8e8e8 !important;
 
   div {
     flex-direction: column;
