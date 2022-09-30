@@ -96,7 +96,7 @@ const PaymentPage = () => {
             <SafetyCertificateOutlined
               style={{
                 position: "relative",
-                top: "-5px",
+                top: "1px",
               }}
             />
             Ödeme Yap

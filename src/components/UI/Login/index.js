@@ -153,21 +153,23 @@ const Login = ({ nexPageLink }) => {
           </ButtonSubmit>
         </FormItem>
       </Form>
-      <MainDivider>veya</MainDivider>
-      <Flex>
-        <GoogleButton onClick={() => alert("Hello")}>
-          <span>Google</span>
-        </GoogleButton>
-        <TwitterButton onClick={() => alert("Hello")}>
-          <span>Twitter</span>
-        </TwitterButton>
-        <FacebookButton onClick={() => alert("Hello")}>
-          <span>Facebook</span>
-        </FacebookButton>
-        <AppleButton onClick={() => alert("Hello")}>
-          <span>Apple</span>
-        </AppleButton>
-      </Flex>
+      {
+        // <MainDivider>veya</MainDivider>
+        // <Flex>
+        //   <GoogleButton onClick={() => alert("Hello")}>
+        //     <span>Google</span>
+        //   </GoogleButton>
+        //   <TwitterButton onClick={() => alert("Hello")}>
+        //     <span>Twitter</span>
+        //   </TwitterButton>
+        //   <FacebookButton onClick={() => alert("Hello")}>
+        //     <span>Facebook</span>
+        //   </FacebookButton>
+        //   <AppleButton onClick={() => alert("Hello")}>
+        //     <span>Apple</span>
+        //   </AppleButton>
+        // </Flex>
+      }
     </>
   );
 };

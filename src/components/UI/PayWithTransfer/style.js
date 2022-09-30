@@ -22,7 +22,7 @@ const TransferContainer = styled.div`
   }
 
   .ant-radio {
-    top: 2px;
+    top: 15px;
   }
 
   .ant-collapse-item {

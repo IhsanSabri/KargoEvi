@@ -89,9 +89,7 @@ export default class CreditCard extends React.Component {
                     </Box>
                   </Flex>
                 </form>
-                <Checkbox
-                  onChange={(e) => console.log(e)}
-                >
+                <Checkbox onChange={(e) => console.log(e)}>
                   Kart Bilgilerimi Sonraki Siparişler için sakla
                 </Checkbox>
               </Box>
@@ -172,7 +170,8 @@ export default class CreditCard extends React.Component {
                   </Radio.Group>
                 </Flex>
               </Box>
-              <Box width={1 / 3}>
+              {/*
+                <Box width={1 / 3}>
                 <NewCardFrame
                   icon={
                     <PlusOutlined
@@ -184,7 +183,7 @@ export default class CreditCard extends React.Component {
                   }
                   text={"Yeni Kart Ekle"}
                 />
-              </Box>
+              </Box>*/}
             </Flex>
           </TabPane>
         </Tabs>
