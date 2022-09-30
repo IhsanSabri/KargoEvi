@@ -13,7 +13,7 @@ import ExcelImporting from "../ExcelImporting";
 import AntCollapse from "../CollapseMenu";
 import OrderSummary from "../OrderSummary";
 
-import { FooterContainer, Download } from "./style";
+import { FooterContainer, Download, AddProduct } from "./style";
 import { DiffOutlined } from "@ant-design/icons";
 
 const ProductInfo = ({ nextPageLink }) => {
@@ -128,23 +128,22 @@ const ProductInfo = ({ nextPageLink }) => {
             </Card>
           </form>
           <Flex justifyContent="end" my={4}>
-            <Button
+            <AddProduct
               danger
               size="large"
-              style={{ width: "150px", height: "50px" }}
               icon={
                 <PlusOutlined
                   style={{
                     fontSize: "12px",
                     position: "relative",
-                    top: "-4px",
+                    top: "-1px",
                   }}
                 />
               }
               onClick={handleProductAdd}
             >
               Ürün Ekle
-            </Button>
+            </AddProduct>
           </Flex>
           <Box>
             <AntCollapse menus={menus} />
@@ -159,6 +158,7 @@ const ProductInfo = ({ nextPageLink }) => {
             className="submitAndContinueButton"
             type="submit"
             form="hook-form"
+            style={{ cursor: "pointer" }}
           >
             Devam Et
           </button>

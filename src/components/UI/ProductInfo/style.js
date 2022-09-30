@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Flex } from "rebass";
+import { Button } from "antd";
 
 const FooterContainer = styled(Flex)`
   .submitAndContinueButton {
@@ -22,4 +23,15 @@ const Download = styled.a`
   color: #1a926b;
 `;
 
-export { FooterContainer, Download };
+const AddProduct = styled(Button)`
+  width: 150px;
+  height: 50px;
+
+  &:hover {
+    background: #D5353B;
+    color: white;
+    border-color: white;
+  }
+`;
+
+export { FooterContainer, Download, AddProduct };

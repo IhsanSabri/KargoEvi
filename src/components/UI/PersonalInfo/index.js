@@ -199,7 +199,7 @@ const PersonalInfo = ({ nextPageLink }) => {
         </PersonalInfoContainer>
       </Flex>
       <OrderSummary />
-      <Footer prevLink={"/"}>
+      <Footer prevLink={"/productInfo"}>
         <FooterContainer>
           <button
             as={Button}

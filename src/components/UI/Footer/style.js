@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import styled from "@emotion/styled";
 
 import { Flex } from "rebass";
@@ -11,4 +13,17 @@ const FooterMain = styled(Flex)`
   background-color: white;
 `;
 
-export { FooterMain };
+const BackButton = styled(Link)`
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 33px;
+  color: #225386;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export { FooterMain, BackButton };

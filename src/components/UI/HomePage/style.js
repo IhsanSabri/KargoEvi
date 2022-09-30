@@ -45,10 +45,10 @@ const BottomTabsCarOthersTitle = styled(Flex)`
 `;
 
 const ContactButton = styled(Button)`
-  border: 1px solid #ffffff;
+  border: 1px solid #ffffff !important;
   border-radius: 4px;
-  background: transparent;
-  color: #ffffff;
+  background: transparent !important;
+  color: #ffffff !important;
   height: 64px;
   font-weight: 500;
   font-size: 24px;
