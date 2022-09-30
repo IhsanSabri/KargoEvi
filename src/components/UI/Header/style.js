@@ -17,10 +17,18 @@ const MenuMain = styled(Menu)`
   height: inherit;
   align-items: center;
 
+  .ant-menu-item-selected {
+    color: unset !important;
+  }
+
   li {
     height: inherit !important;
     align-items: center !important;
     display: flex !important;
+
+    &:hover {
+      color: unset !important;
+    }
 
     span {
       align-items: center !important;

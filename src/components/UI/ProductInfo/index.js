@@ -158,7 +158,6 @@ const ProductInfo = ({ nextPageLink }) => {
             className="submitAndContinueButton"
             type="submit"
             form="hook-form"
-            style={{ cursor: "pointer" }}
           >
             Devam Et
           </button>

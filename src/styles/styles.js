@@ -23,6 +23,10 @@ const InputText = styled.input`
   line-height: 22px;
   color: #262b37;
   display: block;
+
+  &:-webkit-autofill {
+    transition: background-color 600000s 0s, color 600000s 0s;
+  }
 `;
 
 const SelectOption = styled.select`
@@ -43,7 +47,7 @@ const WeightFormatSpan = styled.span`
   font-size: 10px;
   line-height: 14px;
   color: #666666;
-  background: white;
+  background: transparent;
   align-items: center;
   justify-content: center;
   padding: 0.375rem;
@@ -59,7 +63,7 @@ const WeightFormatSpan = styled.span`
 const RadioInput = styled.input`
   width: 20px;
   height: 20px;
-  margin: 0 5px
+  margin: 0 5px;
 `;
 
 export { LabelText, InputText, SelectOption, WeightFormatSpan, RadioInput };

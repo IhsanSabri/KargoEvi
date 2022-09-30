@@ -11,6 +11,10 @@ const FooterMain = styled(Flex)`
   position: fixed;
   width: 100%;
   background-color: white;
+
+  button {
+    cursor: pointer !important;
+  }
 `;
 
 const BackButton = styled(Link)`
