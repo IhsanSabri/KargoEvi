@@ -43,10 +43,10 @@ const DeliveryTabs = ({ nextPageLink }) => {
           <TabPane tab="Kurye Taşıması" key="1">
             <CourierDelivery register={register} />
           </TabPane>
-          <TabPane tab="Hava Yolu Taşıması" key="2">
+          <TabPane tab="Hava Yolu Taşıması" key="2" disabled>
             <AirlineTransport register={register} />
           </TabPane>
-          <TabPane tab="Deniz Yolu Taşıması" key="3">
+          <TabPane tab="Deniz Yolu Taşıması" key="3" disabled>
             <ShippingTransport register={register} />
           </TabPane>
         </Tabs>

@@ -10,13 +10,13 @@ const onChange = (key) => {
   console.log(key);
 };
 
-const LoginTabs = ({ nexPageLink }) => (
+const LoginTabs = ({ nextPageLink, closeModal }) => (
   <Tabs defaultActiveKey="1" onChange={onChange}>
     <TabPane tab="Üyelik Girişi" key="1">
-      <Login nexPageLink={nexPageLink} />
+      <Login nextPageLink={nextPageLink} closeModal={closeModal}/>
     </TabPane>
     <TabPane tab="Yeni Üyelik" key="2">
-      <SignUp nexPageLink={nexPageLink} />
+      <SignUp nextPageLink={nextPageLink} closeModal={closeModal}/>
     </TabPane>
   </Tabs>
 );

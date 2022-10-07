@@ -60,7 +60,7 @@ const Router = () => {
             path="/paymentPage"
             element={
               <CustomSuspense>
-                <PaymentPageContainer nexPageLink={"/thankYouPage"} />
+                <PaymentPageContainer nextPageLink={"/thankYouPage"} />
               </CustomSuspense>
             }
           />
@@ -71,7 +71,7 @@ const Router = () => {
             path="/orderSummary"
             element={
               <CustomSuspense>
-                <OrderSummaryPage nexPageLink={"/address"} />
+                <OrderSummaryPage nextPageLink={"/address"} />
               </CustomSuspense>
             }
           />

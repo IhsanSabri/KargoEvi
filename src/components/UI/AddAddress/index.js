@@ -11,7 +11,9 @@ const { Option } = Select;
 const userService = new UserService();
 
 const AddAddress = ({ event }) => {
-  const { userId } = useSelector(({ delivery }) => delivery);
+  const {
+    userInfo: { userId },
+  } = useSelector(({ delivery }) => delivery);
 
   const [form] = Form.useForm();
 

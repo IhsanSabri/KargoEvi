@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { Button, Divider } from "antd";
 import AntModal from "../AntModal";
@@ -21,7 +22,8 @@ import { PlusOutlined } from "@ant-design/icons";
 import paymentLogo from "../../../assests/paymentLogo.png";
 import destination from "../../../assests/destination.svg";
 
-const OrderSummaryMain = ({ nexPageLink }) => {
+const OrderSummaryMain = ({ nextPageLink }) => {
+  const navigate = useNavigate();
   const { isModalVisible, openModal, closeModal } = useModal();
   const {
     deliveryPrice,
@@ -34,7 +36,12 @@ const OrderSummaryMain = ({ nexPageLink }) => {
       city,
     },
     receiverInfo: { name, number, address },
+    token,
   } = useSelector(({ delivery }) => delivery);
+
+  const handleOrderComplete = () => {
+    token ? navigate(nextPageLink) : openModal();
+  };
 
   return (
     <>
@@ -108,14 +115,14 @@ const OrderSummaryMain = ({ nexPageLink }) => {
             type="submit"
             danger
             form="hook-form"
-            onClick={openModal}
+            onClick={handleOrderComplete}
           >
             Siparişi Tamamla
           </Button>
         </FooterContainer>
       </Footer>
       <AntModal visible={isModalVisible} onCancel={closeModal}>
-        <LoginTabs nexPageLink={nexPageLink} />
+        <LoginTabs nextPageLink={nextPageLink} closeModal={closeModal} />
       </AntModal>
     </>
   );

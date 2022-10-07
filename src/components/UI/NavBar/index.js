@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import AntModal from "../AntModal";
 import LoginTabs from "../LoginTabs";
@@ -43,7 +44,15 @@ const items1 = [
 }));
 
 const NavBar = () => {
+  const {
+    token,
+    userInfo: { name },
+  } = useSelector(({ delivery }) => delivery);
   const { isModalVisible, openModal, closeModal } = useModal();
+
+  const handleAccount = () => {
+    !token && openModal();
+  };
 
   return (
     <>
@@ -52,9 +61,9 @@ const NavBar = () => {
           <img src={logo} alt="brandImage" href="#Home.js" />
         </Link>
         <MenuMain theme="dark" mode="horizontal" items={items1}></MenuMain>
-        <MainButton onClick={openModal}>
+        <MainButton onClick={handleAccount}>
           <ImageMain src={userAvatar}></ImageMain>
-          Üyelik
+          {token ? name : "Üyelik"}
         </MainButton>
         <MainButton>
           <ShoppingOutlined />
@@ -62,7 +71,7 @@ const NavBar = () => {
         </MainButton>
       </Navbar>
       <AntModal visible={isModalVisible} onCancel={closeModal}>
-        <LoginTabs nexPageLink={"/productInfo"} />
+        <LoginTabs nextPageLink={"/productInfo"} closeModal={closeModal} />
       </AntModal>
     </>
   );

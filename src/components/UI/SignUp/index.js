@@ -11,7 +11,7 @@ const { Option } = Select;
 
 const userService = new UserService();
 
-const SignUp = ({ nexPageLink }) => {
+const SignUp = ({ nextPageLink }) => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ const SignUp = ({ nexPageLink }) => {
         console.log("err", err);
       });
 
-    //navigate(nexPageLink);
+    //navigate(nextPageLink);
   };
 
   const prefixSelector = (

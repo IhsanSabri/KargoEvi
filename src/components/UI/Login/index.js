@@ -29,7 +29,7 @@ import { Flex } from "rebass";
 const authService = new AuthService();
 const userService = new UserService();
 
-const Login = ({ nexPageLink }) => {
+const Login = ({ nextPageLink, closeModal }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -60,14 +60,14 @@ const Login = ({ nexPageLink }) => {
         email: username,
       })
       .then((res) => {
-        console.log("res", res);
         if (res.success) {
           const {
-            data: { _id, adress },
+            data: { _id, name, adress },
           } = res;
 
-          dispatch(modifiedData({ name: "userId", data: _id }));
-          dispatch(modifiedData({ name: "userAddress", data: adress }));
+          const userInfo = { userId: _id, name, adress };
+
+          dispatch(modifiedData({ name: "userInfo", data: userInfo }));
 
           setNotificationMessage({
             type: "success",
@@ -75,7 +75,9 @@ const Login = ({ nexPageLink }) => {
           });
 
           setTimeout(() => {
-            navigate(nexPageLink);
+            closeModal();
+
+            nextPageLink.includes("address") && navigate(nextPageLink);
           }, 500);
         }
       })
