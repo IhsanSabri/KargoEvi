@@ -20,7 +20,6 @@ import { DiffOutlined } from "@ant-design/icons";
 const ProductInfo = ({ nextPageLink }) => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState, getValues } = useForm();
-  const asd = formState.dirtyFields;
   const [product, setProduct] = useState([]);
   const [buttonActive, setButtonActive] = useState(false);
 

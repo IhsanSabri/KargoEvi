@@ -42,7 +42,6 @@ const Product = ({ register, indexNum }) => {
             required
             {...register(`${indexNum}.prodcutDescription.value`)}
             type="text"
-            defaultValue=""
           ></InputText>
         </Box>
         <Box width={1 / 6}>
@@ -53,7 +52,6 @@ const Product = ({ register, indexNum }) => {
               required
               {...register(`${indexNum}.weight.value`)}
               type="text"
-              defaultValue=""
             ></InputText>
             <WeightFormatSpan>KG</WeightFormatSpan>
           </Flex>
@@ -92,7 +90,6 @@ const Product = ({ register, indexNum }) => {
               defaultValue={deliveryPrice}
               {...register(`${indexNum}.price.value`)}
               type="text"
-              defaultValue=""
             ></InputText>
             <PriceFormatSelect {...register(`${indexNum}.currency.value`)}>
               <option defaultValue="$">$</option>
