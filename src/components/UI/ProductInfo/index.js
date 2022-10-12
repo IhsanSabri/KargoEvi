@@ -32,7 +32,7 @@ const ProductInfo = ({ nextPageLink }) => {
     />,
   ];
 
-  useEffect(() => {
+  const buttonCheck = () => {
     let valueLength = 0;
     let formValueObjectLength = Object.values(getValues()).length;
 
@@ -44,7 +44,7 @@ const ProductInfo = ({ nextPageLink }) => {
     });
 
     setButtonActive(checkButton);
-  }, [formState]);
+  };
 
   const handleRegistration = (data) => {
     console.log(data);
@@ -135,7 +135,11 @@ const ProductInfo = ({ nextPageLink }) => {
       </Flex>
       <Flex justifyContent="center" width={"60%"} m="30px auto">
         <Box>
-          <form id="hook-form" onSubmit={handleSubmit(handleRegistration)}>
+          <form
+            id="hook-form"
+            onSubmit={handleSubmit(handleRegistration)}
+            onChange={buttonCheck}
+          >
             <Card
               style={{ border: "1px solid lightgrey", borderRadius: "5px" }}
             >
