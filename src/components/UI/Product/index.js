@@ -11,17 +11,24 @@ import {
   SelectOption,
   WeightFormatSpan,
 } from "../../../styles/styles";
+import { useSelector } from "react-redux";
 
 const Product = ({ register, indexNum }) => {
+  const {
+    deliveryPrice,
+    deliveryDetail: { destination, weight },
+  } = useSelector(({ delivery }) => delivery);
   return (
     <Box>
       <MainProductCover>
         <Box width={1 / 6} mr={2}>
           <LabelText>ADET (*)</LabelText>
-          <SelectOption required {...register(`${indexNum}.piece.value`)}>
-            <option value="" defaultValue="">
-              Seçiniz
-            </option>
+          <SelectOption
+            defaultValue="1"
+            required
+            {...register(`${indexNum}.piece.value`)}
+          >
+            <option value="">Seçiniz</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -41,6 +48,7 @@ const Product = ({ register, indexNum }) => {
           <LabelText>AĞIRLIK (*)</LabelText>
           <Flex>
             <InputText
+              defaultValue={weight}
               required
               {...register(`${indexNum}.weight.value`)}
               type="text"
@@ -63,10 +71,12 @@ const Product = ({ register, indexNum }) => {
         </Box>
         <Box width={1 / 6} mr={2}>
           <LabelText>MENŞEİ (*)</LabelText>
-          <SelectOption required {...register(`${indexNum}.origin.value`)}>
-            <option value="" defaultValue="">
-              Seçiniz
-            </option>
+          <SelectOption
+            defaultValue={destination === "fromTr" ? "Turkey" : "Germany"}
+            required
+            {...register(`${indexNum}.origin.value`)}
+          >
+            <option value="">Seçiniz</option>
             <option value="Turkey">Türkiye</option>
             <option value="Germany">Almanya</option>
           </SelectOption>
@@ -76,6 +86,7 @@ const Product = ({ register, indexNum }) => {
           <Box style={{ display: "-webkit-box" }}>
             <InputText
               required
+              defaultValue={deliveryPrice}
               {...register(`${indexNum}.price.value`)}
               type="text"
             ></InputText>
