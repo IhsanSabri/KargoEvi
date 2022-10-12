@@ -24,7 +24,7 @@ const Product = ({ register, indexNum }) => {
         <Box width={1 / 6} mr={2}>
           <LabelText>ADET (*)</LabelText>
           <SelectOption
-            defaultValue="1"
+            value="1"
             required
             {...register(`${indexNum}.piece.value`)}
           >
@@ -42,6 +42,7 @@ const Product = ({ register, indexNum }) => {
             required
             {...register(`${indexNum}.prodcutDescription.value`)}
             type="text"
+            defaultValue=""
           ></InputText>
         </Box>
         <Box width={1 / 6}>
@@ -52,6 +53,7 @@ const Product = ({ register, indexNum }) => {
               required
               {...register(`${indexNum}.weight.value`)}
               type="text"
+              defaultValue=""
             ></InputText>
             <WeightFormatSpan>KG</WeightFormatSpan>
           </Flex>
@@ -67,6 +69,7 @@ const Product = ({ register, indexNum }) => {
             required
             {...register(`${indexNum}.hs(gtip).value`)}
             type="text"
+            defaultValue=""
           ></InputText>
         </Box>
         <Box width={1 / 6} mr={2}>
@@ -89,6 +92,7 @@ const Product = ({ register, indexNum }) => {
               defaultValue={deliveryPrice}
               {...register(`${indexNum}.price.value`)}
               type="text"
+              defaultValue=""
             ></InputText>
             <PriceFormatSelect {...register(`${indexNum}.currency.value`)}>
               <option defaultValue="$">$</option>

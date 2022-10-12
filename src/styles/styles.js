@@ -66,4 +66,23 @@ const RadioInput = styled.input`
   margin: 0 5px;
 `;
 
-export { LabelText, InputText, SelectOption, WeightFormatSpan, RadioInput };
+const ContinueButton = styled.button`
+  color: #fff;
+  background-color: #dc3545;
+  width: 14rem;
+  height: 64px;
+  font-size: 24px;
+  border: unset;
+
+  &:hover:enabled {
+    color: #fff;
+    background-color: #bb2d3b;
+  }
+
+  &:disabled {
+    background: #EA9A9D;
+    cursor: unset !important;
+  }
+`;
+
+export { LabelText, InputText, SelectOption, WeightFormatSpan, RadioInput, ContinueButton };

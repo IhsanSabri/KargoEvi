@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import { Flex, Box, Text } from "rebass";
-import { Card, Button } from "antd";
+import { Card } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
 import Product from "../Product";
@@ -13,14 +13,17 @@ import ExcelImporting from "../ExcelImporting";
 import AntCollapse from "../CollapseMenu";
 import OrderSummary from "../OrderSummary";
 
-import { FooterContainer, Download, AddProduct } from "./style";
+import { Download, AddProduct } from "./style";
+import { ContinueButton } from "../../../styles/styles";
 import { DiffOutlined } from "@ant-design/icons";
 
 const ProductInfo = ({ nextPageLink }) => {
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
-
+  const { register, handleSubmit, formState, getValues } = useForm();
+  const asd = formState.dirtyFields;
   const [product, setProduct] = useState([]);
+  const [buttonActive, setButtonActive] = useState(false);
+
   const productArr = [
     <Product
       key={product.length}
@@ -29,6 +32,20 @@ const ProductInfo = ({ nextPageLink }) => {
     />,
   ];
 
+  useEffect(() => {
+    let valueLength = 0;
+    let formValueObjectLength = Object.values(getValues()).length;
+
+    const checkButton = Object.values(getValues()).some((values) => {
+      valueLength += Object.values(values).filter(
+        (index) => index.value.length > 0
+      ).length;
+      return valueLength === formValueObjectLength * 7;
+    });
+
+    setButtonActive(checkButton);
+  }, [formState]);
+
   const handleRegistration = (data) => {
     console.log(data);
 
@@ -36,6 +53,7 @@ const ProductInfo = ({ nextPageLink }) => {
   };
 
   const handleProductAdd = (event) => {
+    setButtonActive(false);
     setProduct(
       product.concat(
         <Product
@@ -152,16 +170,15 @@ const ProductInfo = ({ nextPageLink }) => {
       </Flex>
       <OrderSummary />
       <Footer prevLink={"/"}>
-        <FooterContainer>
-          <button
-            as={Button}
-            className="submitAndContinueButton"
+        <Flex>
+          <ContinueButton
             type="submit"
             form="hook-form"
+            disabled={!buttonActive}
           >
             Devam Et
-          </button>
-        </FooterContainer>
+          </ContinueButton>
+        </Flex>
       </Footer>
     </>
   );
