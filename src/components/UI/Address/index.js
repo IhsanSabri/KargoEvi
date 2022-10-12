@@ -29,6 +29,7 @@ const { Content } = Layout;
 
 const AddressMain = ({ nextPageLink }) => {
   const [addressData, setAddressData] = useState([]);
+  const [borderValue, setBorderValue] = useState([]);
   const { isModalVisible, openModal, closeModal } = useModal();
   const [form] = Form.useForm();
   const navigate = useNavigate();
@@ -73,6 +74,10 @@ const AddressMain = ({ nextPageLink }) => {
       });
   }, []);
 
+  const handleRadioGroup = (event) => {
+    setBorderValue(event.target.value);
+  };
+
   return (
     <>
       <Flex justifyContent={"center"}>
@@ -110,10 +115,16 @@ const AddressMain = ({ nextPageLink }) => {
               <BoxMain orientation="left">Adres Seçiniz</BoxMain>
               <CheckboxMain>Fatura Adresim Aynı</CheckboxMain>
             </TitleAddress>
-            <Radio.Group defaultValue={1}>
+            <Radio.Group defaultValue={1} onChange={handleRadioGroup}>
               <Row gutter={[24, 24]} style={{ padding: "15px" }}>
-                {addressData.map((address, id) => {
-                  return <AddressColumn key={id} address={address} />;
+                {addressData.map((address) => {
+                  return (
+                    <AddressColumn
+                      key={address._id}
+                      address={address}
+                      borderValue={borderValue}
+                    />
+                  );
                 })}
                 <ColumnBox span={11}>
                   <ColumnBoxAddres>
@@ -143,7 +154,11 @@ const AddressMain = ({ nextPageLink }) => {
         </FooterContainer>
       </Footer>
       <AntModal visible={isModalVisible} onCancel={closeModal}>
-        <AddAddress event={closeModal} />
+        <AddAddress
+          event={closeModal}
+          addressData={addressData}
+          setAddressData={setAddressData}
+        />
       </AntModal>
     </>
   );

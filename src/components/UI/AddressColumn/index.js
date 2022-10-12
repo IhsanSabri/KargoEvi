@@ -10,39 +10,47 @@ import {
   UserInfos,
 } from "./style";
 
-const AddressColumn = (props) => {
-  const changeStyle = (e) => {
-    const selectedElement =
-      document.querySelectorAll(".addressColumn")[e.target.value - 1];
-
-    console.log(selectedElement.className);
-  };
-
+const AddressColumn = ({
+  borderValue,
+  address: {
+    _id,
+    addressTitle,
+    userName,
+    phoneNumber,
+    PhonePrefix,
+    addressDescription,
+    district,
+    city,
+    country,
+    postalCode,
+  },
+}) => {
   return (
     <ColumnBox span={11}>
       <AdressSelectionTab>
-        <Radio
-          style={{ fontSize: "18px" }}
-          value={props.address.id}
-          onChange={changeStyle}
-        >
-          {props.address.addressName}
+        <Radio style={{ fontSize: "18px" }} value={_id}>
+          {addressTitle}
         </Radio>
         <UpdateText>Düzenle</UpdateText>
       </AdressSelectionTab>
-      <ColumnBoxAddres className="addressColumn">
+      <ColumnBoxAddres
+        style={{
+          border:
+            borderValue === _id ? "1px solid #50749c" : "1px solid #f0f0f0",
+        }}
+      >
         <UserInfos>
           <div className="userInfo">
             <div className="userName">
               <Avatar size="small" icon={<UserOutlined />} />
-              {props.address.userName}
+              {userName}
             </div>
             <div className="userPhone">
               <PhoneOutlined />
-              {props.address.phoneNumber}
+              {`${PhonePrefix} ${phoneNumber}`}
             </div>
           </div>
-          <div className="userAddress">{props.address.address}</div>
+          <div className="userAddress">{`${addressDescription} ${postalCode} ${district}, ${city}, ${country}`}</div>
         </UserInfos>
       </ColumnBoxAddres>
     </ColumnBox>

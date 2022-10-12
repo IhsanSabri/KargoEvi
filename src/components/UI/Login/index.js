@@ -62,10 +62,10 @@ const Login = ({ nextPageLink, closeModal }) => {
       .then((res) => {
         if (res.success) {
           const {
-            data: { _id, name, adress },
+            data: { _id, name },
           } = res;
 
-          const userInfo = { userId: _id, name, adress };
+          const userInfo = { userId: _id, name };
 
           dispatch(modifiedData({ name: "userInfo", data: userInfo }));
 

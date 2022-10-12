@@ -90,7 +90,6 @@ const UserInfos = styled.div`
     font-weight: 400;
     font-size: 12px;
     min-height: 40px;
-}
   }
 `;
 

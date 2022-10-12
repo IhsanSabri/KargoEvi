@@ -31,7 +31,7 @@ const PersonalInfo = ({ nextPageLink }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-  const [isChecked, setIsChecked] = useState(false);
+  const [isEtgbChecked, setIsEtgbChecked] = useState(false);
   const handleRegistration = (data) => {
     console.log(data);
 
@@ -40,7 +40,7 @@ const PersonalInfo = ({ nextPageLink }) => {
     navigate(nextPageLink);
   };
   const isCheckboxChecked = (event) => {
-    setIsChecked(event.target.checked);
+    setIsEtgbChecked(event.target.checked);
   };
 
   const stepsInfo = [
@@ -116,7 +116,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                     </PhoneSelect>
                     <InputText
                       required
-                      {...register("number")}
+                      {...register("phoneNumber")}
                       type="text"
                       style={{
                         borderBottomLeftRadius: "0",
@@ -167,7 +167,7 @@ const PersonalInfo = ({ nextPageLink }) => {
               <Flex paddingTop={"30px"}>
                 <Box width={1 / 3} textAlign={"left"} marginRight={"10px"}>
                   <LabelText style={{ color: "#000000" }}>POSTA KODU</LabelText>
-                  <InputText required {...register("code")} type="text" />
+                  <InputText required {...register("postCode")} type="text" />
                 </Box>
                 <Box width={2 / 3} textAlign={"left"} marginRight={"10px"}>
                   <LabelText style={{ color: "#000000" }}>
@@ -185,7 +185,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                   />
                   <CheckBoxLabel>&nbsp; ETGB ile Gönder</CheckBoxLabel>
                   <CollapseMain
-                    activeKey={isChecked ? ["1"] : ["0"]}
+                    activeKey={isEtgbChecked ? ["1"] : ["0"]}
                     ghost={true}
                   >
                     <Panel key="1" showArrow={false}>

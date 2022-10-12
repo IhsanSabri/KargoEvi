@@ -10,7 +10,7 @@ import { FormItem, ButtonRegister, FormTitle } from "./style";
 const { Option } = Select;
 const userService = new UserService();
 
-const AddAddress = ({ event }) => {
+const AddAddress = ({ event, addressData, setAddressData }) => {
   const {
     userInfo: { userId },
   } = useSelector(({ delivery }) => delivery);
@@ -19,38 +19,40 @@ const AddAddress = ({ event }) => {
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    const { addressTitle, explanation } = values;
+    const data = { ...values, _id: Math.floor(Math.random() * 100) };
+    //const { addressTitle, explanation } = values;
+    setAddressData([...addressData, data]);
 
-    userService
-      .addUserAddress({
-        id: userId,
-        adress: [
-          {
-            adressDesc: explanation,
-            adressName: addressTitle,
-          },
-        ],
-      })
-      .then((res) => {
-        console.log("res", res);
-        if (res.success) {
-          //TODO: address will be added to state
-        }
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
+    // userService
+    //   .addUserAddress({
+    //     id: userId,
+    //     adress: [
+    //       {
+    //         adressDesc: explanation,
+    //         adressName: addressTitle,
+    //       },
+    //     ],
+    //   })
+    //   .then((res) => {
+    //     console.log("res", res);
+    //     if (res.success) {
+    //       //TODO: address will be added to state
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log("err", err);
+    //   });
   };
 
   const prefixSelectorPhone = (
-    <FormItem name="prefix" noStyle>
+    <FormItem name="PhonePrefix" noStyle>
       <Select
         style={{
           width: 70,
         }}
       >
-        <Option value="90">+90</Option>
-        <Option value="1">+1</Option>
+        <Option value="+90">+90</Option>
+        <Option value="+1">+1</Option>
       </Select>
     </FormItem>
   );
@@ -61,7 +63,7 @@ const AddAddress = ({ event }) => {
       name="register"
       onFinish={onFinish}
       initialValues={{
-        prefix: "+90",
+        PhonePrefix: "+90",
       }}
       scrollToFirstError
     >
@@ -86,7 +88,7 @@ const AddAddress = ({ event }) => {
 
         <FormItem
           label="AD SOYAD"
-          name="username"
+          name="userName"
           rules={[
             {
               required: true,
@@ -102,8 +104,8 @@ const AddAddress = ({ event }) => {
       </Input.Group>
       <Input.Group compact>
         <FormItem
-          name="phone"
           label="GSM NUMARANIZ"
+          name="phoneNumber"
           rules={[
             {
               required: true,
@@ -195,7 +197,7 @@ const AddAddress = ({ event }) => {
       </FormItem>
       <FormItem
         label="AÇIKLAMA"
-        name="explanation"
+        name="addressDescription"
         rules={[
           {
             required: true,
