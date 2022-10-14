@@ -1,27 +1,61 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Form, Input, Select } from "antd";
 
 import { UserService } from "../../../services";
+import { modifiedData } from "../../../store/DeliveryDetail";
 
 import { FormItem, ButtonRegister, FormTitle } from "./style";
 
 const { Option } = Select;
 const userService = new UserService();
 
-const AddAddress = ({ event, addressData, setAddressData }) => {
+const AddAddress = ({ closeModal }) => {
+  const dispatch = useDispatch();
   const {
     userInfo: { userId },
+    userAddress,
+    updateAddress: {
+      _id: updateAddressId,
+      addressTitle,
+      userName,
+      phoneNumber,
+      country,
+      city,
+      district,
+      postalCode,
+      addressDescription,
+      PhonePrefix,
+    },
   } = useSelector(({ delivery }) => delivery);
 
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    const data = { ...values, _id: Math.floor(Math.random() * 100) };
-    //const { addressTitle, explanation } = values;
-    setAddressData([...addressData, data]);
+    const data = { ...values, _id: String(Math.floor(Math.random() * 100)) }; //TODO: id will be updated
+
+    if (updateAddressId) {
+      const modifiedAddresses = userAddress.map((address) =>
+        address._id === updateAddressId
+          ? { ...values, _id: address._id }
+          : address
+      );
+
+      dispatch(modifiedData({ name: "userAddress", data: modifiedAddresses }));
+      //TODO: request send for edit address
+    } else {
+      dispatch(
+        modifiedData({ name: "userAddress", data: [...userAddress, data] })
+      );
+
+      //TODO: request send for new address with excluding random id.
+    }
+
+    setTimeout(() => {
+      closeModal();
+    }, 500);
 
     // userService
     //   .addUserAddress({
@@ -63,7 +97,7 @@ const AddAddress = ({ event, addressData, setAddressData }) => {
       name="register"
       onFinish={onFinish}
       initialValues={{
-        PhonePrefix: "+90",
+        PhonePrefix: PhonePrefix || "+90",
       }}
       scrollToFirstError
     >
@@ -72,6 +106,7 @@ const AddAddress = ({ event, addressData, setAddressData }) => {
         <FormItem
           label="ADRES BAŞLIĞI"
           name="addressTitle"
+          initialValue={addressTitle}
           rules={[
             {
               required: true,
@@ -89,6 +124,7 @@ const AddAddress = ({ event, addressData, setAddressData }) => {
         <FormItem
           label="AD SOYAD"
           name="userName"
+          initialValue={userName}
           rules={[
             {
               required: true,
@@ -106,6 +142,7 @@ const AddAddress = ({ event, addressData, setAddressData }) => {
         <FormItem
           label="GSM NUMARANIZ"
           name="phoneNumber"
+          initialValue={phoneNumber}
           rules={[
             {
               required: true,
@@ -123,6 +160,7 @@ const AddAddress = ({ event, addressData, setAddressData }) => {
         <FormItem
           label="ÜLKE"
           name="country"
+          initialValue={country}
           rules={[
             {
               required: true,
@@ -144,6 +182,7 @@ const AddAddress = ({ event, addressData, setAddressData }) => {
         <FormItem
           label="ŞEHİR"
           name="city"
+          initialValue={city}
           rules={[
             {
               required: true,
@@ -164,6 +203,7 @@ const AddAddress = ({ event, addressData, setAddressData }) => {
         <FormItem
           label="İlÇE"
           name="district"
+          initialValue={district}
           rules={[
             {
               required: true,
@@ -183,6 +223,7 @@ const AddAddress = ({ event, addressData, setAddressData }) => {
       <FormItem
         label="POSTA KODU"
         name="postalCode"
+        initialValue={postalCode}
         rules={[
           {
             required: true,
@@ -198,6 +239,7 @@ const AddAddress = ({ event, addressData, setAddressData }) => {
       <FormItem
         label="AÇIKLAMA"
         name="addressDescription"
+        initialValue={addressDescription}
         rules={[
           {
             required: true,
@@ -208,7 +250,7 @@ const AddAddress = ({ event, addressData, setAddressData }) => {
         <Input.TextArea rows={4} />
       </FormItem>
       <FormItem style={{ marginTop: "4rem", marginBottom: "unset" }}>
-        <ButtonRegister className="cancel" danger onClick={event}>
+        <ButtonRegister className="cancel" danger onClick={closeModal}>
           Vazgeç
         </ButtonRegister>
         <ButtonRegister danger type="primary" htmlType="submit">

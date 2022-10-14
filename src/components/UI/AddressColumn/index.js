@@ -1,7 +1,10 @@
 import React from "react";
 
+import { useDispatch } from "react-redux";
+
 import { PhoneOutlined, UserOutlined } from "@ant-design/icons";
 import { Radio, Avatar } from "antd";
+
 import {
   ColumnBox,
   ColumnBoxAddres,
@@ -9,10 +12,10 @@ import {
   UpdateText,
   UserInfos,
 } from "./style";
+import { modifiedData } from "../../../store/DeliveryDetail";
 
-const AddressColumn = ({
-  borderValue,
-  address: {
+const AddressColumn = ({ borderValue, openModal, address }) => {
+  const {
     _id,
     addressTitle,
     userName,
@@ -23,15 +26,22 @@ const AddressColumn = ({
     city,
     country,
     postalCode,
-  },
-}) => {
+  } = address;
+  const dispatch = useDispatch();
+
+  const handleUpdate = () => {
+    dispatch(modifiedData({ name: "updateAddress", data: address }));
+
+    openModal();
+  };
+
   return (
     <ColumnBox span={11}>
       <AdressSelectionTab>
         <Radio style={{ fontSize: "18px" }} value={_id}>
           {addressTitle}
         </Radio>
-        <UpdateText>Düzenle</UpdateText>
+        <UpdateText onClick={handleUpdate}>Düzenle</UpdateText>
       </AdressSelectionTab>
       <ColumnBoxAddres
         style={{

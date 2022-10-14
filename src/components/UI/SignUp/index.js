@@ -1,9 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Checkbox, Form, Input, Select, Radio } from "antd";
 
 import { UserService } from "../../../services";
+import { setNotificationMessage } from "../../../config/utils";
+import useSignInProcess from "../../../config/hooks/useSignInProcess";
 
 import { FormItem, ButtonRegister } from "./style";
 
@@ -11,9 +12,10 @@ const { Option } = Select;
 
 const userService = new UserService();
 
-const SignUp = ({ nextPageLink }) => {
+const SignUp = ({ nextPageLink, closeModal }) => {
   const [form] = Form.useForm();
-  const navigate = useNavigate();
+
+  const { login } = useSignInProcess(closeModal, nextPageLink);
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
@@ -26,17 +28,18 @@ const SignUp = ({ nextPageLink }) => {
         password,
       })
       .then((res) => {
-        console.log("reshere", res);
-
         if (res.success) {
-          console.log("signup is succesfully");
+          login(email, password);
         }
       })
       .catch((err) => {
         console.log("err", err);
-      });
 
-    //navigate(nextPageLink);
+        setNotificationMessage({
+          type: "error",
+          message: "This e-mail is exist",
+        });
+      });
   };
 
   const prefixSelector = (

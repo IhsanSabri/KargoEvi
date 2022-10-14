@@ -7,7 +7,7 @@ const FormItem = styled(Form.Item)`
 
   .ant-row.ant-form-item-row {
     flex-direction: column;
-    text-align-last: justify;
+    text-align-last: left;
   }
   .ant-form-item-control-input-content {
     display: inline-flex;
@@ -29,7 +29,6 @@ const FormItem = styled(Form.Item)`
 const ButtonRegister = styled(Button)`
   width: 25%;
   text-align-last: center;
-}
 `;
 
 const FormTitle = styled.div`

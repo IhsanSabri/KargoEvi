@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 import OrderSummary from "../OrderSummary";
@@ -12,6 +13,7 @@ import Steps from "../Steps";
 import { Flex } from "rebass";
 
 import { useModal } from "../../../config/hooks/useModal";
+import { modifiedData } from "../../../store/DeliveryDetail";
 import { Layout, Button, Form, Row, Radio } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import {
@@ -28,11 +30,12 @@ import paymentLogo from "../../../assests/paymentLogo.png";
 const { Content } = Layout;
 
 const AddressMain = ({ nextPageLink }) => {
-  const [addressData, setAddressData] = useState([]);
+  const dispatch = useDispatch();
   const [borderValue, setBorderValue] = useState([]);
   const { isModalVisible, openModal, closeModal } = useModal();
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const { userAddress } = useSelector(({ delivery }) => delivery);
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
@@ -67,15 +70,31 @@ const AddressMain = ({ nextPageLink }) => {
     axios
       .get("/mockData/savedAddress.json")
       .then(function (response) {
-        setAddressData(response?.data);
+        dispatch(modifiedData({ name: "userAddress", data: response?.data }));
       })
       .catch(function (error) {
         console.log(error);
       });
+
+    return () => {
+      dispatch(modifiedData({ name: "updateAddress", data: {} }));
+    };
   }, []);
 
   const handleRadioGroup = (event) => {
+    const selectedAddress = userAddress.filter(
+      (address) => address._id === event.target.value
+    );
+
     setBorderValue(event.target.value);
+
+    dispatch(modifiedData({ name: "selectedAddress", data: selectedAddress }));
+  };
+
+  const handleNewAddress = () => {
+    dispatch(modifiedData({ name: "updateAddress", data: {} }));
+
+    openModal();
   };
 
   return (
@@ -117,19 +136,20 @@ const AddressMain = ({ nextPageLink }) => {
             </TitleAddress>
             <Radio.Group defaultValue={1} onChange={handleRadioGroup}>
               <Row gutter={[24, 24]} style={{ padding: "15px" }}>
-                {addressData.map((address) => {
+                {userAddress.map((address) => {
                   return (
                     <AddressColumn
                       key={address._id}
                       address={address}
                       borderValue={borderValue}
+                      openModal={openModal}
                     />
                   );
                 })}
                 <ColumnBox span={11}>
                   <ColumnBoxAddres>
                     <PlusOutlined />
-                    <div onClick={openModal}>Yeni Adres Ekle</div>
+                    <div onClick={handleNewAddress}>Yeni Adres Ekle</div>
                   </ColumnBoxAddres>
                 </ColumnBox>
               </Row>
@@ -154,11 +174,7 @@ const AddressMain = ({ nextPageLink }) => {
         </FooterContainer>
       </Footer>
       <AntModal visible={isModalVisible} onCancel={closeModal}>
-        <AddAddress
-          event={closeModal}
-          addressData={addressData}
-          setAddressData={setAddressData}
-        />
+        <AddAddress closeModal={closeModal} />
       </AntModal>
     </>
   );

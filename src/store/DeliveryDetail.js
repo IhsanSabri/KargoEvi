@@ -6,6 +6,9 @@ const initialState = {
   receiverInfo: {},
   token: "",
   userInfo: {},
+  userAddress: [],
+  updateAddress: {},
+  selectedAddress: {},
 };
 
 const DeliveryDetail = createSlice({

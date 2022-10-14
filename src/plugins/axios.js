@@ -2,7 +2,6 @@ import axios from "axios";
 //import { getLocalStorage } from "config/utils";
 
 const axiosClient = (url, interceptors = true) => {
-    console.log('url', url)
   const instance = axios.create({
     baseURL: url,
     timeout: 60000,
@@ -19,7 +18,7 @@ const axiosClient = (url, interceptors = true) => {
       async (err) => {
         console.log(`[axios][interceptors][response][failure] ${err}`);
         throw err;
-      },
+      }
     );
   }
 
