@@ -1,5 +1,5 @@
 import axios from "axios";
-//import { getLocalStorage } from "config/utils";
+import { getSessionStorage } from "../config/utils";
 
 const axiosClient = (url, interceptors = true) => {
   const instance = axios.create({
@@ -42,11 +42,11 @@ const axiosClient = (url, interceptors = true) => {
   }
 
   async function makeRequestAuth(type, path, options = {}) {
-    if (!localStorage.getItem("token")) return console.log("Token not found");
+    //if (!localStorage.getItem("token")) return console.log("Token not found");
 
     return makeRequest(type, path, {
       headers: {
-        //Authorization: getLocalStorage("token"),
+        Authorization: getSessionStorage("persist:root"),
       },
       ...options,
     });

@@ -14,3 +14,5 @@ export const setNotificationMessage = ({ type, ...rest }) => {
     ...rest,
   });
 };
+
+export const getSessionStorage = (name) => JSON.parse(sessionStorage.getItem(name));

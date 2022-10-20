@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import AntModal from "../AntModal";
 import LoginTabs from "../LoginTabs";
+
+import { AuthService } from "../../../services";
 
 import logo from "../../../assests/logo.png";
 import userAvatar from "../../../assests/userAvatar.svg";
@@ -12,6 +14,7 @@ import { Navbar, MenuMain, MainButton, ImageMain } from "./style";
 import { ShoppingOutlined } from "@ant-design/icons";
 
 import { useModal } from "../../../config/hooks/useModal";
+import { modifiedData } from "../../../store/DeliveryDetail";
 
 const items1 = [
   {
@@ -43,7 +46,10 @@ const items1 = [
   ),
 }));
 
+const authService = new AuthService();
+
 const NavBar = () => {
+  const dispatch = useDispatch();
   const {
     token,
     userInfo: { name },
@@ -53,6 +59,12 @@ const NavBar = () => {
   const handleAccount = () => {
     !token && openModal();
   };
+
+  const handleLogout = () => {
+    //authService.logout();
+    // TODO: will be removed!
+    token && dispatch(modifiedData({ name: "token", data: "" }));
+  }
 
   return (
     <>
@@ -69,6 +81,12 @@ const NavBar = () => {
           <ShoppingOutlined />
           Sepetim
         </MainButton>
+        {token && (
+          <MainButton onClick={handleLogout}>
+            <ImageMain src={userAvatar}></ImageMain>
+            Çıkış
+          </MainButton>
+        )}
       </Navbar>
       <AntModal visible={isModalVisible} onCancel={closeModal}>
         <LoginTabs nextPageLink={"/productInfo"} closeModal={closeModal} />

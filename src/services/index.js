@@ -5,6 +5,7 @@ const { makeRequest, makeRequestAuth } = axiosClient(
 
 export class AuthService {
   login = (data) => makeRequest("post", "/user/login", { data });
+  logout = (data) => makeRequestAuth("post", "/auth/logout", { data }); 
 }
 
 export class UserService {
