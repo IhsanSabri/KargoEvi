@@ -32,6 +32,7 @@ const PersonalInfo = ({ nextPageLink }) => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const [isEtgbChecked, setIsEtgbChecked] = useState(false);
+
   const handleRegistration = (data) => {
     console.log(data);
 
@@ -116,7 +117,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                     </PhoneSelect>
                     <InputText
                       required
-                      {...register("phoneNumber")}
+                      {...register("phone")}
                       type="text"
                       style={{
                         borderBottomLeftRadius: "0",
@@ -129,7 +130,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                   <LabelText style={{ color: "#000000" }}>
                     ALICI E-POSTA ADRESİ
                   </LabelText>
-                  <InputText required {...register("email")} type="text" />
+                  <InputText required {...register("mail")} type="text" />
                 </Box>
               </Flex>
               <Flex paddingTop={"30px"}>
@@ -156,7 +157,7 @@ const PersonalInfo = ({ nextPageLink }) => {
                 </Box>
                 <Box width={1 / 3} textAlign={"left"} marginRight={"10px"}>
                   <LabelText style={{ color: "#000000" }}>ALICI İLÇE</LabelText>
-                  <SelectOption required {...register("region")}>
+                  <SelectOption required {...register("district")}>
                     <option value="" defaultValue="">
                       Seçiniz
                     </option>
@@ -173,14 +174,14 @@ const PersonalInfo = ({ nextPageLink }) => {
                   <LabelText style={{ color: "#000000" }}>
                     ALICI AÇIK ADRES
                   </LabelText>
-                  <InputText required {...register("address")} type="text" />
+                  <InputText required {...register("adress")} type="text" />
                 </Box>
               </Flex>
               <Flex paddingTop={"50px"} paddingLeft={"12px"}>
                 <Box style={{ paddingLeft: "1.5em" }}>
                   <InputCheckBox
-                    id="etgbcheckbox"
-                    {...register("sendWithEtgb")}
+                    type="checkbox"
+                    {...register("ETGB")}
                     onChange={isCheckboxChecked}
                   />
                   <CheckBoxLabel>&nbsp; ETGB ile Gönder</CheckBoxLabel>

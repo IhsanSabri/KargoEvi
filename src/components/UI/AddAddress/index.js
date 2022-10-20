@@ -46,9 +46,29 @@ const AddAddress = ({ closeModal }) => {
       dispatch(modifiedData({ name: "userAddress", data: modifiedAddresses }));
       //TODO: request send for edit address
     } else {
-      dispatch(
-        modifiedData({ name: "userAddress", data: [...userAddress, data] })
-      );
+      console.log("data", data);
+
+      userService
+        .addUserAddress({
+          id: userId,
+          adress: [data],
+        })
+        .then((res) => {
+          console.log("res", res);
+          if (res.success) {
+            //TODO: address will be added to state
+            console.log("success");
+            dispatch(
+              modifiedData({
+                name: "userAddress",
+                data: res.data.adress,
+              })
+            );
+          }
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
 
       //TODO: request send for new address with excluding random id.
     }
@@ -56,26 +76,6 @@ const AddAddress = ({ closeModal }) => {
     setTimeout(() => {
       closeModal();
     }, 500);
-
-    // userService
-    //   .addUserAddress({
-    //     id: userId,
-    //     adress: [
-    //       {
-    //         adressDesc: explanation,
-    //         adressName: addressTitle,
-    //       },
-    //     ],
-    //   })
-    //   .then((res) => {
-    //     console.log("res", res);
-    //     if (res.success) {
-    //       //TODO: address will be added to state
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log("err", err);
-    //   });
   };
 
   const prefixSelectorPhone = (
@@ -105,7 +105,7 @@ const AddAddress = ({ closeModal }) => {
       <Input.Group compact>
         <FormItem
           label="ADRES BAŞLIĞI"
-          name="addressTitle"
+          name="adressName"
           initialValue={addressTitle}
           rules={[
             {
@@ -123,7 +123,7 @@ const AddAddress = ({ closeModal }) => {
 
         <FormItem
           label="AD SOYAD"
-          name="userName"
+          name="adressDesc"
           initialValue={userName}
           rules={[
             {
@@ -141,7 +141,7 @@ const AddAddress = ({ closeModal }) => {
       <Input.Group compact>
         <FormItem
           label="GSM NUMARANIZ"
-          name="phoneNumber"
+          name="phone"
           initialValue={phoneNumber}
           rules={[
             {
@@ -238,7 +238,7 @@ const AddAddress = ({ closeModal }) => {
       </FormItem>
       <FormItem
         label="AÇIKLAMA"
-        name="addressDescription"
+        name="adress"
         initialValue={addressDescription}
         rules={[
           {

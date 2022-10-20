@@ -152,6 +152,7 @@ const ProductInfo = ({ nextPageLink }) => {
             <AddProduct
               danger
               size="large"
+              disabled
               icon={
                 <PlusOutlined
                   style={{

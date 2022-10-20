@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { UserService } from "../../../services";
 
 import OrderSummary from "../OrderSummary";
 import AddressColumn from "../AddressColumn";
@@ -25,9 +25,11 @@ import {
   ColumnBoxAddres,
   PaymentImage,
 } from "./style";
+import { ContinueButton } from "../../../styles/styles";
 import paymentLogo from "../../../assests/paymentLogo.png";
 
 const { Content } = Layout;
+const userService = new UserService();
 
 const AddressMain = ({ nextPageLink }) => {
   const dispatch = useDispatch();
@@ -35,11 +37,15 @@ const AddressMain = ({ nextPageLink }) => {
   const { isModalVisible, openModal, closeModal } = useModal();
   const [form] = Form.useForm();
   const navigate = useNavigate();
-  const { userAddress } = useSelector(({ delivery }) => delivery);
+  const {
+    userAddress,
+    userInfo: { userId },
+    isPaymentAddress,
+    selectedAddress,
+  } = useSelector(({ delivery }) => delivery);
 
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-    navigate(nextPageLink);
+    Object.keys(selectedAddress).length && navigate(nextPageLink);
   };
 
   const stepsInfo = [
@@ -67,10 +73,10 @@ const AddressMain = ({ nextPageLink }) => {
   ];
 
   useEffect(() => {
-    axios
-      .get("/mockData/savedAddress.json")
-      .then(function (response) {
-        dispatch(modifiedData({ name: "userAddress", data: response?.data }));
+    userService
+      .getUserAddress({ id: userId })
+      .then((res) => {
+        dispatch(modifiedData({ name: "userAddress", data: res?.data }));
       })
       .catch(function (error) {
         console.log(error);
@@ -95,6 +101,12 @@ const AddressMain = ({ nextPageLink }) => {
     dispatch(modifiedData({ name: "updateAddress", data: {} }));
 
     openModal();
+  };
+
+  const handleCheckBox = (e) => {
+    dispatch(
+      modifiedData({ name: "isPaymentAddress", data: e.target.checked })
+    );
   };
 
   return (
@@ -132,9 +144,17 @@ const AddressMain = ({ nextPageLink }) => {
           >
             <TitleAddress>
               <BoxMain orientation="left">Adres Seçiniz</BoxMain>
-              <CheckboxMain>Fatura Adresim Aynı</CheckboxMain>
+              <CheckboxMain
+                defaultChecked={isPaymentAddress}
+                onChange={handleCheckBox}
+              >
+                Fatura Adresim Aynı
+              </CheckboxMain>
             </TitleAddress>
-            <Radio.Group defaultValue={1} onChange={handleRadioGroup}>
+            <Radio.Group
+              defaultValue={selectedAddress[0]?._id}
+              onChange={handleRadioGroup}
+            >
               <Row gutter={[24, 24]} style={{ padding: "15px" }}>
                 {userAddress.map((address) => {
                   return (
@@ -163,14 +183,13 @@ const AddressMain = ({ nextPageLink }) => {
       </PaymentImage>
       <Footer prevLink={"/"}>
         <FooterContainer>
-          <button
-            as={Button}
-            className="submitAndContinueButton"
+          <ContinueButton
             type="submit"
             form="hook-form"
+            disabled={!Object.keys(selectedAddress).length > 0}
           >
             Devam Et
-          </button>
+          </ContinueButton>
         </FooterContainer>
       </Footer>
       <AntModal visible={isModalVisible} onCancel={closeModal}>

@@ -9,6 +9,7 @@ const initialState = {
   userAddress: [],
   updateAddress: {},
   selectedAddress: {},
+  isPaymentAddress: true,
 };
 
 const DeliveryDetail = createSlice({

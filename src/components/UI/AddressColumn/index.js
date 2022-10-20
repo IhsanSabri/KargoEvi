@@ -18,15 +18,15 @@ import { modifiedData } from "../../../store/DeliveryDetail";
 const AddressColumn = ({ borderValue, openModal, address }) => {
   const {
     _id,
-    addressTitle,
-    userName,
-    phoneNumber,
-    PhonePrefix,
-    addressDescription,
+    adressName,
+    adressDesc,
+    phone,
+    //PhonePrefix,
+    adress,
     district,
     city,
     country,
-    postalCode,
+    //postalCode,
   } = address;
   const dispatch = useDispatch();
 
@@ -40,7 +40,7 @@ const AddressColumn = ({ borderValue, openModal, address }) => {
     <ColumnBox span={11}>
       <AdressSelectionTab>
         <Radio style={{ fontSize: "18px" }} value={_id}>
-          {addressTitle}
+          {adressName}
         </Radio>
         <UpdateText onClick={handleUpdate}>Düzenle</UpdateText>
       </AdressSelectionTab>
@@ -54,14 +54,15 @@ const AddressColumn = ({ borderValue, openModal, address }) => {
           <div className="userInfo">
             <div className="userName">
               <Avatar size="small" icon={<UserOutlined />} />
-              <UserNameText>{userName}</UserNameText>
+              <UserNameText>{adressDesc}</UserNameText>
             </div>
             <div className="userPhone">
               <PhoneOutlined />
-              {`${PhonePrefix} ${phoneNumber}`}
+              {/* {`${PhonePrefix} ${phone}`} */}
+              {phone}
             </div>
           </div>
-          <div className="userAddress">{`${addressDescription} ${postalCode} ${district}, ${city}, ${country}`}</div>
+          <div className="userAddress">{`${adress} ${district}, ${city}, ${country}`}</div>
         </UserInfos>
       </ColumnBoxAddres>
     </ColumnBox>
