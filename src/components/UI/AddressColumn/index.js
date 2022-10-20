@@ -11,6 +11,7 @@ import {
   AdressSelectionTab,
   UpdateText,
   UserInfos,
+  UserNameText,
 } from "./style";
 import { modifiedData } from "../../../store/DeliveryDetail";
 
@@ -53,7 +54,7 @@ const AddressColumn = ({ borderValue, openModal, address }) => {
           <div className="userInfo">
             <div className="userName">
               <Avatar size="small" icon={<UserOutlined />} />
-              {userName}
+              <UserNameText>{userName}</UserNameText>
             </div>
             <div className="userPhone">
               <PhoneOutlined />

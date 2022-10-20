@@ -147,9 +147,9 @@ const AddressMain = ({ nextPageLink }) => {
                   );
                 })}
                 <ColumnBox span={11}>
-                  <ColumnBoxAddres>
+                  <ColumnBoxAddres onClick={handleNewAddress}>
                     <PlusOutlined />
-                    <div onClick={handleNewAddress}>Yeni Adres Ekle</div>
+                    <div>Yeni Adres Ekle</div>
                   </ColumnBoxAddres>
                 </ColumnBox>
               </Row>

@@ -33,6 +33,10 @@ const UpdateText = styled.div`
   cursor: pointer;
 `;
 
+const UserNameText = styled.div`
+  padding: 0 10px;
+`;
+
 const UserInfos = styled.div`
   display: flex;
   width: 100%;
@@ -42,7 +46,7 @@ const UserInfos = styled.div`
   .userInfo {
     align-items: center;
     display: flex;
-    padding: 15px;
+    padding: 1rem 0.7rem;
     font-family: "Manrope";
     font-style: normal;
 
@@ -67,10 +71,11 @@ const UserInfos = styled.div`
     }
 
     .userPhone {
-      padding-left: 2rem;
+      padding-left: 1rem;
       display: flex;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
+      min-width: 140px;
 
       div {
         padding-left: 5.5px;
@@ -99,4 +104,5 @@ export {
   AdressSelectionTab,
   UpdateText,
   UserInfos,
+  UserNameText,
 };
