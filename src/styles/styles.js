@@ -54,7 +54,7 @@ const WeightFormatSpan = styled.span`
   display: flex;
   border-left-width: 0;
   position: relative;
-  right: 25px;
+  right: 20px;
   height: 0;
   top: 25px;
   width: 0;

@@ -71,6 +71,7 @@ const MainContent = styled(Box)`
 const Content = styled(Flex)`
   justify-content: space-between;
   padding-top: 16px;
+  align-items: center;
 
   div:nth-of-type(1) {
     font-weight: 500;

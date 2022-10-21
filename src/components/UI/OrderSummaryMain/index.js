@@ -35,7 +35,15 @@ const OrderSummaryMain = ({ nextPageLink }) => {
       height,
       city,
     },
-    receiverInfo: { name, number, address },
+    receiverInfo: {
+      name,
+      phone,
+      adress,
+      district,
+      postCode,
+      city: receiverCity,
+      country,
+    },
     token,
   } = useSelector(({ delivery }) => delivery);
 
@@ -51,14 +59,14 @@ const OrderSummaryMain = ({ nextPageLink }) => {
           <Destination>
             <Flex width={"50%"} className="destinationBox">
               <label>Nereden</label>
-              <label>{direction === "fromTr" ? "Türkiye" : city}</label>
+              <label>{direction === "fromTr" ? "Türkiye" : "Almanya"}</label>
             </Flex>
             <Box>
               <Image width={"45px"} src={destination}></Image>
             </Box>
             <Flex width={"50%"} className="destinationBox">
               <label>Nereye</label>
-              <label>{direction === "toTr" ? city : "Türkiye"}</label>
+              <label>{city}</label>
             </Flex>
           </Destination>
           <Content>
@@ -72,7 +80,7 @@ const OrderSummaryMain = ({ nextPageLink }) => {
           <Content>
             <Box>Paket Ölçüleri</Box>
             <Box>
-              {width} X {height} X {length}
+              {width}x{height}x{length}
             </Box>
           </Content>
           <Content>
@@ -85,11 +93,13 @@ const OrderSummaryMain = ({ nextPageLink }) => {
           </Content>
           <Content>
             <Box>Alıcı Adres</Box>
-            <Box>{address}</Box>
+            <Box
+              sx={{ maxWidth: "13rem", textAlign: "right" }}
+            >{`${adress}, ${district}, ${postCode}, ${receiverCity},  ${country}`}</Box>
           </Content>
           <Content>
             <Box>Alıcı Telefon</Box>
-            <Box>{number}</Box>
+            <Box>{phone}</Box>
           </Content>
           <Divider />
           <Content>
