@@ -66,7 +66,7 @@ const OrderSummaryMain = ({ nextPageLink }) => {
             </Box>
             <Flex width={"50%"} className="destinationBox">
               <label>Nereye</label>
-              <label>{city}</label>
+              <label>{receiverCity}</label>
             </Flex>
           </Destination>
           <Content>

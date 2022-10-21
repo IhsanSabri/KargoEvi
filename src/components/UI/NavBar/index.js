@@ -15,6 +15,7 @@ import { ShoppingOutlined } from "@ant-design/icons";
 
 import { useModal } from "../../../config/hooks/useModal";
 import { modifiedData } from "../../../store/DeliveryDetail";
+import { Box, Flex } from "rebass";
 
 const items1 = [
   {
@@ -64,29 +65,33 @@ const NavBar = () => {
     //authService.logout();
     // TODO: will be removed!
     token && dispatch(modifiedData({ name: "token", data: "" }));
-  }
+  };
 
   return (
     <>
       <Navbar className="header">
-        <Link to="/" style={{ alignSelf: "center", marginRight: "1rem" }}>
-          <img src={logo} alt="brandImage" href="#Home.js" />
-        </Link>
+        <Box>
+          <Link to="/" style={{ alignSelf: "center", marginRight: "1rem" }}>
+            <img src={logo} alt="brandImage" href="#Home.js" />
+          </Link>
+        </Box>
         <MenuMain theme="dark" mode="horizontal" items={items1}></MenuMain>
-        <MainButton onClick={handleAccount}>
-          <ImageMain src={userAvatar}></ImageMain>
-          {token ? name : "Üyelik"}
-        </MainButton>
-        <MainButton>
-          <ShoppingOutlined />
-          Sepetim
-        </MainButton>
-        {token && (
-          <MainButton onClick={handleLogout}>
+        <Flex>
+          <MainButton onClick={handleAccount}>
             <ImageMain src={userAvatar}></ImageMain>
-            Çıkış
+            {token ? name : "Üyelik"}
           </MainButton>
-        )}
+          <MainButton>
+            <ShoppingOutlined />
+            Sepetim
+          </MainButton>
+          {token && (
+            <MainButton onClick={handleLogout}>
+              <ImageMain src={userAvatar}></ImageMain>
+              Çıkış
+            </MainButton>
+          )}
+        </Flex>
       </Navbar>
       <AntModal visible={isModalVisible} onCancel={closeModal}>
         <LoginTabs nextPageLink={"/productInfo"} closeModal={closeModal} />

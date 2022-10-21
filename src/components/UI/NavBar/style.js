@@ -8,10 +8,11 @@ const Navbar = styled(Header)`
   align-items: center;
   display: flex;
   background: rgb(38, 43, 55) !important;
+  justify-content: center;
 `;
 
 const MenuMain = styled(Menu)`
-  width: 60%;
+  width: 50%;
   background: rgb(38, 43, 55) !important;
   border-bottom: unset;
 
@@ -25,6 +26,10 @@ const MenuMain = styled(Menu)`
       font-size: 21px;
       line-height: 29px;
     }
+  }
+
+  .ant-menu-overflow-item {
+    color: white;
   }
 `;
 
@@ -43,8 +48,6 @@ const MainButton = styled(Button)`
   font-style: normal;
   line-height: 22px;
   margin-left: 1rem;
-  width: 10%;
-  justify-content: center;
 
   &:hover {
     border-color: unset !important;
@@ -52,15 +55,13 @@ const MainButton = styled(Button)`
   }
 
   span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    padding-left: 5px;
+    margin-left: 0 !important;
   }
 `;
 
 const ImageMain = styled(Image)`
   min-width: unset;
   max-width: unset;
-  margin-right: 0.5rem;
 `;
 export { Navbar, MenuMain, MainButton, ImageMain };
