@@ -54,19 +54,27 @@ const UserInfos = styled.div`
       display: flex;
       font-size: 15px;
       font-weight: 600;
+      width: 50%;
 
       span {
         background: white;
         border: 1px solid black;
+        position: absolute;
 
         span {
           color: black;
           border: unset;
+          top: 3px;
+          right: 4px;
         }
       }
 
       div {
-        padding-left: 5.5px;
+        padding-left: 29.5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: initial;
       }
     }
 
@@ -76,6 +84,7 @@ const UserInfos = styled.div`
       font-size: 14px;
       font-weight: 600;
       min-width: 140px;
+      width: 50%;
 
       div {
         padding-left: 5.5px;

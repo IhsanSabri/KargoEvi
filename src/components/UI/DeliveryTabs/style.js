@@ -20,12 +20,15 @@ const TabsContainer = styled(Box)`
 `;
 
 const SubmitButton = styled.button`
-  width: 170px;
-  height: 50px;
+  width: 220px;
+  height: 64px;
   border-color: #d84148;
   background: #d5353b;
   color: white;
   border-radius: 5px;
+  font-weight: 600;
+  font-size: 24px;
+  border-width: inherit;
 `;
 
 export { TabsContainer, SubmitButton };

@@ -70,7 +70,8 @@ const DeliveryTabs = ({ nextPageLink }) => {
             style={{
               fontSize: "15px",
               position: "relative",
-              top: "-3px",
+              top: "-1px",
+              right: "-5px"
             }}
           />
         </SubmitButton>

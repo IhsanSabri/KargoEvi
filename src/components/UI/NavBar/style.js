@@ -32,7 +32,7 @@ const MainButton = styled(Button)`
   background: transparent !important;
   border: 1px solid rgba(255, 255, 255, 0.6) !important;
   border-radius: 2px;
-  padding: 9px 27px 9px 22px;
+  padding: 0.563rem;
   display: flex;
   align-items: center;
   height: 48px;
@@ -43,10 +43,18 @@ const MainButton = styled(Button)`
   font-style: normal;
   line-height: 22px;
   margin-left: 1rem;
+  width: 10%;
+  justify-content: center;
 
   &:hover {
     border-color: unset !important;
     background: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 

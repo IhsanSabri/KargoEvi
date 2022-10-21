@@ -23,7 +23,7 @@ import {
   CheckBoxLabel,
   CollapseMain,
 } from "./style";
-import { LabelText, InputText, SelectOption } from "../../../styles/styles";
+import { LabelText, InputText, SelectOption, ContinueButton } from "../../../styles/styles";
 
 const { Panel } = Collapse;
 
@@ -202,14 +202,12 @@ const PersonalInfo = ({ nextPageLink }) => {
       <OrderSummary />
       <Footer prevLink={"/productInfo"}>
         <FooterContainer>
-          <button
-            as={Button}
-            className="submitAndContinueButton"
+          <ContinueButton
             type="submit"
             form="hook-form"
           >
             Devam Et
-          </button>
+          </ContinueButton>
         </FooterContainer>
       </Footer>
     </>

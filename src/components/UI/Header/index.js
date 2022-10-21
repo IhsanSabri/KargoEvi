@@ -13,7 +13,7 @@ const items = ["info@kargoevi.com", "+90 850 340 17 17"].map((index, key) => ({
         {index}
       </Flex>
     ) : (
-      <Flex>
+      <Flex sx={{ cursor: "default" }}>
         <PhoneOutlined
           style={{ transform: "scaleX(-1)", marginRight: "0.4rem" }}
         />

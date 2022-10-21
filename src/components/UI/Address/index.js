@@ -169,7 +169,7 @@ const AddressMain = ({ nextPageLink }) => {
       <PaymentImage>
         <img src={paymentLogo} />
       </PaymentImage>
-      <Footer prevLink={"/"}>
+      <Footer prevLink={"/orderSummary"}>
         <FooterContainer>
           <ContinueButton
             type="submit"
