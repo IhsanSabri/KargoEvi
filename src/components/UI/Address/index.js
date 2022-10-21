@@ -14,7 +14,7 @@ import { Flex } from "rebass";
 
 import { useModal } from "../../../config/hooks/useModal";
 import { modifiedData } from "../../../store/DeliveryDetail";
-import { Layout, Button, Form, Row, Radio } from "antd";
+import { Form, Row, Radio } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import {
   FooterContainer,
@@ -28,7 +28,6 @@ import {
 import { ContinueButton } from "../../../styles/styles";
 import paymentLogo from "../../../assests/paymentLogo.png";
 
-const { Content } = Layout;
 const userService = new UserService();
 
 const AddressMain = ({ nextPageLink }) => {
@@ -116,66 +115,55 @@ const AddressMain = ({ nextPageLink }) => {
           return <Steps key={step.id} steps={step} />;
         })}
       </Flex>
-      <Flex justifyContent="center" width={"70%"} m="30px auto">
-        <Content
-          className="site-layout"
+      <Flex justifyContent="center" width={"60%"} m="30px auto">
+        <Form
+          form={form}
+          name="register"
+          onFinish={onFinish}
+          id="hook-form"
           style={{
-            padding: "0 75px",
             display: "flex",
-            marginBottom: "5%",
-            minHeight: "665px",
-            justifyContent: "center",
+            padding: 24,
+            minHeight: 665,
+            border: "1px solid #e7e7e7",
+            borderRadius: "8px",
+            background: "white",
+            flexDirection: "column",
           }}
         >
-          <Form
-            form={form}
-            name="register"
-            onFinish={onFinish}
-            id="hook-form"
-            style={{
-              display: "flex",
-              padding: 24,
-              minHeight: 380,
-              border: "1px solid rgba(0,0,0,.125)",
-              background: "white",
-              marginRight: "3%",
-              flexDirection: "column",
-            }}
-          >
-            <TitleAddress>
-              <BoxMain orientation="left">Adres Seçiniz</BoxMain>
-              <CheckboxMain
-                defaultChecked={isPaymentAddress}
-                onChange={handleCheckBox}
-              >
-                Fatura Adresim Aynı
-              </CheckboxMain>
-            </TitleAddress>
-            <Radio.Group
-              defaultValue={selectedAddress[0]?._id}
-              onChange={handleRadioGroup}
+          <TitleAddress>
+            <BoxMain orientation="left">Adres Seçiniz</BoxMain>
+            <CheckboxMain
+              defaultChecked={isPaymentAddress}
+              onChange={handleCheckBox}
             >
-              <Row gutter={[24, 24]} style={{ padding: "15px" }}>
-                {userAddress.map((address) => {
-                  return (
-                    <AddressColumn
-                      key={address._id}
-                      address={address}
-                      borderValue={borderValue}
-                      openModal={openModal}
-                    />
-                  );
-                })}
-                <ColumnBox span={11}>
-                  <ColumnBoxAddres onClick={handleNewAddress}>
-                    <PlusOutlined />
-                    <div>Yeni Adres Ekle</div>
-                  </ColumnBoxAddres>
-                </ColumnBox>
-              </Row>
-            </Radio.Group>
-          </Form>
-        </Content>
+              Fatura Adresim Aynı
+            </CheckboxMain>
+          </TitleAddress>
+          <Radio.Group
+            defaultValue={selectedAddress[0]?._id}
+            onChange={handleRadioGroup}
+          >
+            <Row gutter={[24, 24]} style={{ padding: "15px" }}>
+              {userAddress.map((address) => {
+                return (
+                  <AddressColumn
+                    key={address._id}
+                    address={address}
+                    borderValue={borderValue}
+                    openModal={openModal}
+                  />
+                );
+              })}
+              <ColumnBox span={11}>
+                <ColumnBoxAddres onClick={handleNewAddress}>
+                  <PlusOutlined />
+                  <div>Yeni Adres Ekle</div>
+                </ColumnBoxAddres>
+              </ColumnBox>
+            </Row>
+          </Radio.Group>
+        </Form>
       </Flex>
       <OrderSummary />
       <PaymentImage>

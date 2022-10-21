@@ -4,7 +4,7 @@ import { Box, Flex } from "rebass";
 const MainBox = styled(Flex)`
   background: #ffffff;
   border: 1px solid #e7e7e7;
-  box-shadow: 0px 0px 8px rgba(38, 43, 55, 0.2);
+  box-shadow: 0px 0px 3px #e7e7e7;
   border-radius: 8px;
   font-family: "Manrope";
   font-style: normal;

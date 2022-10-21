@@ -140,7 +140,7 @@ const ProductInfo = ({ nextPageLink }) => {
             onChange={buttonCheck}
           >
             <Card
-              style={{ border: "1px solid lightgrey", borderRadius: "5px" }}
+              style={{ border: "1px solid #e7e7e7", borderRadius: "8px" }}
             >
               <Text fontSize={"24px"} mb={4} fontWeight={"500"}>
                 Ürün İçerik Bilgileri

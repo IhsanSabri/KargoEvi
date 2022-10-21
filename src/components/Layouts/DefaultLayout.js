@@ -10,7 +10,7 @@ const DefaultLayout = () => {
     <Box height="100vh" bg="#f0f2f5">
       <Header />
       <NavBar />
-      <Box p={"120px 70px 120px 0"} bg="#f0f2f5">
+      <Box p={"93px 70px 120px 0"} bg="#f0f2f5">
         <Outlet />
       </Box>
     </Box>

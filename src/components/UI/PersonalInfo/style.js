@@ -16,6 +16,7 @@ const ContainerTitle = styled(Box)`
   padding-bottom: 20px;
   background: white;
   border-bottom: 0;
+  border-radius: 8px;
 
   h1 {
     padding: 0.5rem 1rem;
