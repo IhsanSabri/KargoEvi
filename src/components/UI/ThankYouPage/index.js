@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Layout } from "antd";
 import { Box } from "rebass";
 
 import thankYouPage from "../../../assests/thankYouPage.png";
 
 import {
+  MainBox,
   MainTitle,
   OrderInfo,
   DeliveryInfo,
@@ -18,18 +18,12 @@ import {
 const ThankYou = () => {
   return (
     <>
-      <Layout
-        style={{
-          padding: "50px 50px 50px",
-          alignItems: "center",
-          overflow: "scroll"
-        }}
-      >
-        <MainTitle>
-          <b>Tebrikler!</b> Siparişiniz Oluşturuldu.
-        </MainTitle>
-        <MainContent width={2 / 3}>
-          <OrderInfo width={1 / 2}>
+      <MainTitle>
+        <b>Tebrikler!</b> Siparişiniz Oluşturuldu.
+      </MainTitle>
+      <MainBox justifyContent="center" width={"60%"} m="30px auto">
+        <MainContent>
+          <OrderInfo width={"70%"}>
             <DeliveryInfo>
               <Box opacity="0.6" fontSize="12px" lineHeight="16px">
                 Kargo Takip Numarası
@@ -54,7 +48,7 @@ const ThankYou = () => {
           </OrderText>
           <img src={thankYouPage}></img>
         </MainContent>
-      </Layout>
+      </MainBox>
     </>
   );
 };

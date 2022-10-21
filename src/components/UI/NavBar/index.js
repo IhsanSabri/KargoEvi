@@ -69,29 +69,31 @@ const NavBar = () => {
 
   return (
     <>
-      <Navbar className="header">
+      <Navbar justifyContent="space-between">
         <Box>
           <Link to="/" style={{ alignSelf: "center", marginRight: "1rem" }}>
             <img src={logo} alt="brandImage" href="#Home.js" />
           </Link>
         </Box>
         <MenuMain theme="dark" mode="horizontal" items={items1}></MenuMain>
-        <Flex>
-          <MainButton onClick={handleAccount}>
-            <ImageMain src={userAvatar}></ImageMain>
-            {token ? name : "Üyelik"}
-          </MainButton>
-          <MainButton>
-            <ShoppingOutlined />
-            Sepetim
-          </MainButton>
-          {token && (
-            <MainButton onClick={handleLogout}>
+        <Box>
+          <Flex>
+            <MainButton onClick={handleAccount}>
               <ImageMain src={userAvatar}></ImageMain>
-              Çıkış
+              {token ? name : "Üyelik"}
             </MainButton>
-          )}
-        </Flex>
+            <MainButton>
+              <ShoppingOutlined />
+              Sepetim
+            </MainButton>
+            {token && (
+              <MainButton onClick={handleLogout}>
+                <ImageMain src={userAvatar}></ImageMain>
+                Çıkış
+              </MainButton>
+            )}
+          </Flex>
+        </Box>
       </Navbar>
       <AntModal visible={isModalVisible} onCancel={closeModal}>
         <LoginTabs nextPageLink={"/productInfo"} closeModal={closeModal} />

@@ -1,14 +1,13 @@
 import styled from "@emotion/styled";
 
-import { Image } from "rebass";
-import { Layout, Menu, Button } from "antd";
-const { Header } = Layout;
+import { Image, Flex } from "rebass";
+import { Menu, Button } from "antd";
 
-const Navbar = styled(Header)`
+const Navbar = styled(Flex)`
   align-items: center;
-  display: flex;
   background: rgb(38, 43, 55) !important;
   justify-content: center;
+  padding: 10px 0;
 `;
 
 const MenuMain = styled(Menu)`

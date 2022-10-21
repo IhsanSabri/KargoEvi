@@ -9,7 +9,7 @@ const MainOrderSummry = styled(Box)`
   background: white;
   font-family: Manrope;
   font-style: normal;
-  border: 1px solid lightgray;
+  border: 1px solid #e7e7e7;
   border-radius: 5px;
 `;
 
@@ -20,7 +20,7 @@ const MainOrderSummryBox = styled(Box)`
 const SummaryTitle = styled(Box)`
   font-size: 14px;
   font-weight: 600;
-  text-transformation: uppercase;
+  text-transform: uppercase;
 `;
 
 const Destination = styled(Flex)`

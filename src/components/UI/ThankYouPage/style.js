@@ -3,6 +3,14 @@ import styled from "@emotion/styled";
 import { Flex } from "rebass";
 import { CopyOutlined } from "@ant-design/icons";
 
+const MainBox = styled(Flex)`
+  background: #ffffff;
+  border-radius: 8px;
+  font-family: "Manrope";
+  font-style: normal;
+  flex-direction: column;
+`;
+
 const MainTitle = styled.div`
   font-family: "Manrope";
   font-style: normal;
@@ -10,7 +18,7 @@ const MainTitle = styled.div`
   line-height: 44px;
   text-align: center;
   color: #262b37;
-  padding-bottom: 16px;
+  margin-bottom: -20px;
 `;
 
 const MainContent = styled(Flex)`
@@ -67,14 +75,15 @@ const CopyIcon = styled(CopyOutlined)`
 `;
 
 const OrderText = styled(Flex)`
-  padding: 70px;
-  font-weight: 600;
+  padding: 50px 35px;
+  font-weight: 500;
   font-size: 16px;
   line-height: 22px;
   text-align: center;
 `;
 
 export {
+  MainBox,
   MainTitle,
   OrderInfo,
   DeliveryInfo,
