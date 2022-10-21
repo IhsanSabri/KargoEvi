@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -16,10 +17,12 @@ import OrderSummary from "../OrderSummary";
 import { Download, AddProduct } from "./style";
 import { ContinueButton } from "../../../styles/styles";
 import { DiffOutlined } from "@ant-design/icons";
+import { modifiedData } from "../../../store/DeliveryDetail";
 
 const ProductInfo = ({ nextPageLink }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { register, handleSubmit, formState, getValues } = useForm();
+  const { register, handleSubmit, getValues } = useForm();
   const [product, setProduct] = useState([]);
   const [buttonActive, setButtonActive] = useState(false);
 
@@ -45,8 +48,15 @@ const ProductInfo = ({ nextPageLink }) => {
     setButtonActive(checkButton);
   };
 
-  const handleRegistration = (data) => {
-    console.log(data);
+  const handleRegistration = (productInfo) => {
+    const { description, total, GTIP } = productInfo[0];
+    const productData = {
+      description: description.value,
+      total: total.value,
+      GTIP: GTIP.value,
+    };
+
+    dispatch(modifiedData({ name: "productDetailInfo", data: productData }));
 
     navigate(nextPageLink);
   };
@@ -139,9 +149,7 @@ const ProductInfo = ({ nextPageLink }) => {
             onSubmit={handleSubmit(handleRegistration)}
             onChange={buttonCheck}
           >
-            <Card
-              style={{ border: "1px solid #e7e7e7", borderRadius: "8px" }}
-            >
+            <Card style={{ border: "1px solid #e7e7e7", borderRadius: "8px" }}>
               <Text fontSize={"24px"} mb={4} fontWeight={"500"}>
                 Ürün İçerik Bilgileri
               </Text>

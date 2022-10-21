@@ -1,5 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
 
 import { Button } from "antd";
 import { Box, Flex } from "rebass";
@@ -14,11 +15,34 @@ import Footer from "../Footer";
 import AntCollapse from "../CollapseMenu";
 import GdprBox from "../GdprBox";
 
+//import { OrderService } from "../../../services";
+
 import { PaymentPageMainWrapper, FooterContainer } from "./style";
 import { SafetyCertificateOutlined } from "@ant-design/icons";
+// import { setNotificationMessage } from "../../../config/utils";
+// import { modifiedData } from "../../../store/DeliveryDetail";
+
+// const orderService = new OrderService();
 
 const PaymentPage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const {
+  //   userInfo: { userId },
+  //   userAddress,
+  //   updateAddress: {
+  //     _id: updateAddressId,
+  //     addressTitle,
+  //     userName,
+  //     phoneNumber,
+  //     country,
+  //     city,
+  //     district,
+  //     postalCode,
+  //     addressDescription,
+  //     PhonePrefix,
+  //   },
+  // } = useSelector(({ delivery }) => delivery);
   const stepsInfo = [
     {
       id: 1,
@@ -66,6 +90,41 @@ const PaymentPage = () => {
     },
   ];
 
+  const handleCompleteOrder = () => {
+    // orderService
+    //   .addOrder({
+    //     userId,
+    //     direction,
+    //     description,
+    //     dimention,
+    //     weight,
+    //     amount,
+    //     total,
+    //     GTIP,
+    //     clientAdress,
+    //     ispaymentadress,
+    //   })
+    //   .then((res) => {
+    //     console.log("res", res);
+    //     if (res.success) {
+    //       //TODO: address will be added to state
+    //       console.log("success");
+
+    //       dispatch(modifiedData({ name: "orderId", data: res?.data?._id }));
+
+    //       setNotificationMessage({
+    //         type: "success",
+    //         message: "Siparişiniz Oluşturuldu",
+    //       });
+
+    //       navigate("/thankYouPage");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log("err", err);
+    //   });
+  };
+
   return (
     <>
       <PaymentPageMainWrapper
@@ -91,7 +150,7 @@ const PaymentPage = () => {
             type="submit"
             danger
             form="hook-form"
-            onClick={() => navigate("/thankYouPage")}
+            onClick={handleCompleteOrder}
           >
             <SafetyCertificateOutlined
               style={{

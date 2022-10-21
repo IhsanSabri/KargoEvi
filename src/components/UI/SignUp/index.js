@@ -19,13 +19,15 @@ const SignUp = ({ nextPageLink, closeModal }) => {
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    const { username, lastName, email, password } = values;
+    const { username, lastName, email, password, type, phone, prefix } = values;
 
     userService
       .addUser({
         name: `${username} ${lastName}`,
         email,
         password,
+        type,
+        phone: `${prefix}${phone}`,
       })
       .then((res) => {
         if (res.success) {
@@ -65,7 +67,7 @@ const SignUp = ({ nextPageLink, closeModal }) => {
       }}
       scrollToFirstError
     >
-      <Form.Item>
+      <Form.Item name="type">
         <Radio.Group
           style={{
             display: "flex",
@@ -73,11 +75,11 @@ const SignUp = ({ nextPageLink, closeModal }) => {
             width: "100%",
           }}
         >
-          <Radio style={{ fontSize: "18px" }} value="bireyselÜyelik">
+          <Radio style={{ fontSize: "18px" }} value="personal">
             {" "}
             Bireysel Üyelik
           </Radio>
-          <Radio style={{ fontSize: "18px" }} value="kurumsalÜyelik">
+          <Radio style={{ fontSize: "18px" }} value="corporate">
             {" "}
             Kurumsal Üyelik{" "}
           </Radio>

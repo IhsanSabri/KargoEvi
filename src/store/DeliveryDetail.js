@@ -9,7 +9,9 @@ const initialState = {
   userAddress: [],
   updateAddress: {},
   selectedAddress: {},
+  productDetailInfo: {},
   isPaymentAddress: true,
+  orderId: '',
 };
 
 const DeliveryDetail = createSlice({

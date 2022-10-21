@@ -26,7 +26,7 @@ const Product = ({ register, indexNum }) => {
           <SelectOption
             value="1"
             required
-            {...register(`${indexNum}.piece.value`)}
+            {...register(`${indexNum}.total.value`)}
           >
             <option value="">Seçiniz</option>
             <option value="1">1</option>
@@ -40,7 +40,7 @@ const Product = ({ register, indexNum }) => {
           <LabelText>ÜRÜN TANIMI (*)</LabelText>
           <InputText
             required
-            {...register(`${indexNum}.prodcutDescription.value`)}
+            {...register(`${indexNum}.description.value`)}
             type="text"
           ></InputText>
         </Box>
@@ -65,7 +65,7 @@ const Product = ({ register, indexNum }) => {
           </LabelText>
           <InputText
             required
-            {...register(`${indexNum}.hs(gtip).value`)}
+            {...register(`${indexNum}.GTIP.value`)}
             type="text"
             defaultValue=""
           ></InputText>

@@ -129,6 +129,7 @@ const AddressMain = ({ nextPageLink }) => {
             borderRadius: "8px",
             background: "white",
             flexDirection: "column",
+            width: "100%",
           }}
         >
           <TitleAddress>

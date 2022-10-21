@@ -5,7 +5,7 @@ const { makeRequest, makeRequestAuth } = axiosClient(
 
 export class AuthService {
   login = (data) => makeRequest("post", "/user/login", { data });
-  logout = (data) => makeRequestAuth("post", "/auth/logout", { data }); 
+  logout = (data) => makeRequestAuth("post", "/auth/logout", { data });
 }
 
 export class UserService {
@@ -16,4 +16,8 @@ export class UserService {
   getUserAddress = (data) => makeRequest("post", "/user/userAdress", { data }); //mock data
   //updateUser = (data) => makeRequestAuth("put", "/user/update", { data });
   //deleteUser = (data) => makeRequestAuth("delete", "/user/delete", { data });
+}
+
+export class OrderService {
+  addOrder = (data) => makeRequest("post", "/order/addOrder", { data });
 }
