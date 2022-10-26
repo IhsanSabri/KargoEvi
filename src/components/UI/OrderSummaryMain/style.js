@@ -11,6 +11,12 @@ const MainBox = styled(Flex)`
   flex-direction: column;
 `;
 
+const RestrictedBox = styled(Box)`
+  max-width: 13rem;
+  text-align: right;
+  word-break: break-word;
+`;
+
 const Destination = styled(Flex)`
   align-items: center;
   text-align: center;
@@ -56,16 +62,16 @@ const MainContent = styled(Box)`
       font-weight: 500;
       font-size: 16px;
       line-height: 22px;
-      color: #262B37;
+      color: #262b37;
     }
 
     div:nth-of-type(2) {
       font-weight: 700;
       font-size: 32px;
       line-height: 44px;
-      color: #262B37;
+      color: #262b37;
     }
-  } 
+  }
 `;
 
 const Content = styled(Flex)`
@@ -134,6 +140,7 @@ const FooterContainer = styled(Flex)`
 
 export {
   MainContent,
+  RestrictedBox,
   Content,
   MainBox,
   MainTitle,

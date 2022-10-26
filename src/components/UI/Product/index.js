@@ -24,7 +24,7 @@ const Product = ({ register, indexNum }) => {
         <Box width={1 / 6} mr={2}>
           <LabelText>ADET (*)</LabelText>
           <SelectOption
-            value="1"
+            defaultValue="1"
             required
             {...register(`${indexNum}.total.value`)}
           >

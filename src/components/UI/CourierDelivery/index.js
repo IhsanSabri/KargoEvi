@@ -18,6 +18,7 @@ import {
 const CourierDelivery = ({ register }) => {
   const dispatch = useDispatch();
   const [directions, setDirections] = useState({});
+  const [from, setFrom] = useState("NEREYE");
   const [selectedDirections, setSelectedDirections] = useState("");
   const inputValues = useRef({});
 
@@ -30,6 +31,16 @@ const CourierDelivery = ({ register }) => {
     let totalPrice = calculatePrice(inputValues.current);
 
     dispatch(modifiedData({ name: "deliveryPrice", data: totalPrice }));
+  };
+
+  const handleFromTurkey = () => {
+    setSelectedDirections("fromTurkey");
+    setFrom("NEREYE");
+  };
+
+  const handleToTurkey = () => {
+    setSelectedDirections("toTurkey");
+    setFrom("NEREDEN");
   };
 
   useEffect(() => {
@@ -53,7 +64,7 @@ const CourierDelivery = ({ register }) => {
             value="fromTr"
             id="fromTr"
             required
-            onClick={() => setSelectedDirections("fromTurkey")}
+            onClick={handleFromTurkey}
           />
           <span style={{ position: "relative", top: "-5px" }}>
             Türkiye'den Gönder
@@ -66,7 +77,7 @@ const CourierDelivery = ({ register }) => {
             value="toTr"
             id="toTr"
             required
-            onClick={() => setSelectedDirections("toTurkey")}
+            onClick={handleToTurkey}
           />
           <span style={{ position: "relative", top: "-5px" }}>
             Türkiye'ye Gönder
@@ -74,7 +85,7 @@ const CourierDelivery = ({ register }) => {
         </LabelText>
       </Flex>
       <Box width={1} textAlign={"left"}>
-        <LabelText style={{ color: "#000000" }}>NEREYE</LabelText>
+        <LabelText style={{ color: "#000000" }}>{from}</LabelText>
         <SelectOption required {...register("city")}>
           <option hidden>Seçiniz</option>
           {directions[selectedDirections] &&

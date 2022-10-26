@@ -5,6 +5,8 @@ import DefaultLayout from "../components/Layouts/DefaultLayout";
 import MainLayout from "../components/Layouts/MainLayout";
 import ToolsLayout from "../components/Layouts/ToolsLayout";
 import CustomSuspense from "../components/UI/ComponentRender/CustomSuspense";
+import Header from "../components/UI/Header";
+import NavBar from "../components/UI/NavBar";
 
 const Home = lazy(() => import("../pages/Home"));
 const ProductInfoPage = lazy(() => import("../pages/ProductInfoPage"));
@@ -19,6 +21,8 @@ const ThankYouPage = lazy(() => import("../pages/ThankYouPage"));
 const Router = () => {
   return (
     <BrowserRouter>
+      <Header />
+      <NavBar />
       <Routes>
         <Route element={<MainLayout />}>
           <Route

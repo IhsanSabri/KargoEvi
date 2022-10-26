@@ -12,6 +12,7 @@ import { useModal } from "../../../config/hooks/useModal";
 
 import {
   Content,
+  RestrictedBox,
   MainBox,
   MainContent,
   MainTitle,
@@ -45,6 +46,7 @@ const OrderSummaryMain = ({ nextPageLink }) => {
       country,
     },
     token,
+    productDetailInfo: { total, description },
   } = useSelector(({ delivery }) => delivery);
 
   const handleOrderComplete = () => {
@@ -71,11 +73,11 @@ const OrderSummaryMain = ({ nextPageLink }) => {
           </Destination>
           <Content>
             <Box>Adet</Box>
-            <Box>2</Box>
+            <Box>{total}</Box>
           </Content>
           <Content>
             <Box>Paket İçeriği</Box>
-            <Box>Paket</Box>
+            <RestrictedBox>{description}</RestrictedBox>
           </Content>
           <Content>
             <Box>Paket Ölçüleri</Box>
@@ -89,17 +91,15 @@ const OrderSummaryMain = ({ nextPageLink }) => {
           </Content>
           <Content>
             <Box>Alıcı Ad, Soyad</Box>
-            <Box>{name}</Box>
+            <RestrictedBox>{name}</RestrictedBox>
           </Content>
           <Content>
             <Box>Alıcı Adres</Box>
-            <Box
-              sx={{ maxWidth: "13rem", textAlign: "right" }}
-            >{`${adress}, ${district}, ${postCode}, ${receiverCity},  ${country}`}</Box>
+            <RestrictedBox>{`${adress}, ${district}, ${postCode}, ${receiverCity},  ${country}`}</RestrictedBox>
           </Content>
           <Content>
             <Box>Alıcı Telefon</Box>
-            <Box>{phone}</Box>
+            <RestrictedBox>{phone}</RestrictedBox>
           </Content>
           <Divider />
           <Content>

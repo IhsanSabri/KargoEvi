@@ -18,6 +18,7 @@ const AntCollapse = ({ menus }) => {
       <Box width={1}>
         <Collapse
           onChange={onChange}
+          accordion
           expandIconPosition="end"
           expandIcon={({ isActive }) =>
             isActive ? <MinusOutlined /> : <PlusOutlined />

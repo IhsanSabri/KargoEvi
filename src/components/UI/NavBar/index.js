@@ -17,7 +17,7 @@ import { useModal } from "../../../config/hooks/useModal";
 import { modifiedData } from "../../../store/DeliveryDetail";
 import { Box, Flex } from "rebass";
 
-const items1 = [
+const items = [
   {
     path: "/index",
     name: "Hizmetlerimiz",
@@ -75,7 +75,7 @@ const NavBar = () => {
             <img src={logo} alt="brandImage" href="#Home.js" />
           </Link>
         </Box>
-        <MenuMain theme="dark" mode="horizontal" items={items1}></MenuMain>
+        <MenuMain theme="dark" mode="horizontal" items={items}></MenuMain>
         <Box>
           <Flex>
             <MainButton onClick={handleAccount}>
