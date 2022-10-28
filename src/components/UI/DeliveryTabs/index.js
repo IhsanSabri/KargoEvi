@@ -33,7 +33,6 @@ const DeliveryTabs = ({ nextPageLink }) => {
     dispatch(modifiedData({ name: "deliveryDetail", data }));
 
     navigate(nextPageLink);
-    /*TODO: axios POST request */
   };
 
   return (
@@ -71,7 +70,7 @@ const DeliveryTabs = ({ nextPageLink }) => {
               fontSize: "15px",
               position: "relative",
               top: "-1px",
-              right: "-5px"
+              right: "-5px",
             }}
           />
         </SubmitButton>

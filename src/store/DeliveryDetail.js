@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { depthItemModified } from "../config/utils";
+
 const initialState = {
+  deliveryCountries: [],
   deliveryDetail: {},
   deliveryPrice: 0,
   receiverInfo: {},
@@ -11,7 +14,7 @@ const initialState = {
   selectedAddress: {},
   productDetailInfo: {},
   isPaymentAddress: true,
-  orderId: '',
+  orderId: "",
 };
 
 const DeliveryDetail = createSlice({
@@ -21,9 +24,17 @@ const DeliveryDetail = createSlice({
     modifiedData: (state, action) => {
       state[action.payload.name] = action.payload.data;
     },
+    depthModifiedData: (state, action) =>
+      depthItemModified(
+        state,
+        action.payload.name,
+        action.payload.depth,
+        action.payload.data
+      ),
     setInitialState: () => initialState,
   },
 });
 
-export const { modifiedData, setInitialState } = DeliveryDetail.actions;
+export const { modifiedData, depthModifiedData, setInitialState } =
+  DeliveryDetail.actions;
 export default DeliveryDetail.reducer;

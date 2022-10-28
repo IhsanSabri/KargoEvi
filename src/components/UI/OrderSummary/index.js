@@ -1,9 +1,11 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Box, Image } from "rebass";
 
 import destination from "../../../assests/destination.svg";
+import { calculatePrice } from "../../../config/utils";
+import { modifiedData } from "../../../store/DeliveryDetail";
 
 import {
   MainOrderSummry,
@@ -16,11 +18,26 @@ import {
 } from "./style";
 
 const OrderSummary = () => {
+  const dispatch = useDispatch();
   const {
     deliveryPrice,
-    deliveryDetail: { destination: direction, weight, length, width, height },
+    deliveryDetail: {
+      destination: direction,
+      country,
+      weight,
+      length,
+      width,
+      height,
+    },
   } = useSelector(({ delivery }) => delivery);
-  const volume = Number(width) * Number(length) * Number(height);
+
+  const volume = (Number(width) * Number(length) * Number(height)) / 1000000;
+
+  useEffect(() => {
+    let totalPrice = calculatePrice({ weight, length, width, height });
+
+    dispatch(modifiedData({ name: "deliveryPrice", data: totalPrice }));
+  }, [weight]);
 
   return (
     <MainOrderSummry width={"15%"}>
@@ -28,13 +45,13 @@ const OrderSummary = () => {
         <SummaryTitle>SİPARİŞ ÖZET</SummaryTitle>
         <Destination>
           <Box width={"50%"} className="destinationBox">
-            <label>{direction === "fromTr" ? "Türkiye" : "Almanya"}</label>
+            <label>{direction === "fromTr" ? "Türkiye" : country}</label>
           </Box>
           <Box>
             <Image src={destination}></Image>
           </Box>
           <Box width={"50%"} className="destinationBox">
-            <label>{direction === "fromTr" ? "Almanya" : "Türkiye"}</label>
+            <label>{direction === "fromTr" ? country : "Türkiye"}</label>
           </Box>
         </Destination>
         <InfoBox>

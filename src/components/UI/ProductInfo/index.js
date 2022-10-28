@@ -17,7 +17,7 @@ import OrderSummary from "../OrderSummary";
 import { Download, AddProduct } from "./style";
 import { ContinueButton } from "../../../styles/styles";
 import { DiffOutlined } from "@ant-design/icons";
-import { modifiedData } from "../../../store/DeliveryDetail";
+import { depthModifiedData, modifiedData } from "../../../store/DeliveryDetail";
 
 const ProductInfo = ({ nextPageLink }) => {
   const dispatch = useDispatch();
@@ -49,7 +49,8 @@ const ProductInfo = ({ nextPageLink }) => {
   };
 
   const handleRegistration = (productInfo) => {
-    const { description, total, GTIP } = productInfo[0];
+    console.log("productInfo[0]", productInfo[0]);
+    const { description, total, GTIP, weight } = productInfo[0];
     const productData = {
       description: description.value,
       total: total.value,
@@ -57,6 +58,16 @@ const ProductInfo = ({ nextPageLink }) => {
     };
 
     dispatch(modifiedData({ name: "productDetailInfo", data: productData }));
+
+    console.log("weight", weight.value);
+
+    dispatch(
+      depthModifiedData({
+        name: "deliveryDetail",
+        depth: ["weight"],
+        data: weight.value,
+      })
+    );
 
     navigate(nextPageLink);
   };

@@ -1,8 +1,11 @@
-import React from "react";
-
-import DeliveryTabs from "../DeliveryTabs";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
 import { Flex, Box, Text, Image } from "rebass";
+import DeliveryTabs from "../DeliveryTabs";
+
+import { modifiedData } from "../../../store/DeliveryDetail";
 
 import { RightOutlined } from "@ant-design/icons";
 
@@ -20,6 +23,21 @@ import secondImage from "../../../assests/nasilcalisir.webp";
 import backgroundImage from "../../../assests/background.png";
 
 const Home = ({ nextPageLink }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get("/mockData/directions.json")
+      .then(function (response) {
+        dispatch(
+          modifiedData({ name: "deliveryCountries", data: response?.data })
+        );
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <Flex
       id="mainPage"

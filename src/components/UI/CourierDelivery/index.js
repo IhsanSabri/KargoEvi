@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
-import { useDispatch } from "react-redux";
+import React, { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Box, Flex } from "rebass";
 
@@ -17,10 +16,9 @@ import {
 
 const CourierDelivery = ({ register }) => {
   const dispatch = useDispatch();
-  const [directions, setDirections] = useState({});
-  const [from, setFrom] = useState("NEREYE");
-  const [selectedDirections, setSelectedDirections] = useState("");
   const inputValues = useRef({});
+  const [from, setFrom] = useState("NEREYE");
+  const { deliveryCountries } = useSelector(({ delivery }) => delivery);
 
   const handleInputChange = (event) => {
     inputValues.current = {
@@ -33,26 +31,9 @@ const CourierDelivery = ({ register }) => {
     dispatch(modifiedData({ name: "deliveryPrice", data: totalPrice }));
   };
 
-  const handleFromTurkey = () => {
-    setSelectedDirections("fromTurkey");
-    setFrom("NEREYE");
+  const handleDirectionSelection = (event) => {
+    event.target.value === "fromTr" ? setFrom("NEREYE") : setFrom("NEREDEN");
   };
-
-  const handleToTurkey = () => {
-    setSelectedDirections("toTurkey");
-    setFrom("NEREDEN");
-  };
-
-  useEffect(() => {
-    axios
-      .get("/mockData/directions.json")
-      .then(function (response) {
-        setDirections(response?.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
 
   return (
     <Box px={4} py={2}>
@@ -64,7 +45,8 @@ const CourierDelivery = ({ register }) => {
             value="fromTr"
             id="fromTr"
             required
-            onClick={handleFromTurkey}
+            onClick={handleDirectionSelection}
+            defaultChecked
           />
           <span style={{ position: "relative", top: "-5px" }}>
             Türkiye'den Gönder
@@ -77,7 +59,7 @@ const CourierDelivery = ({ register }) => {
             value="toTr"
             id="toTr"
             required
-            onClick={handleToTurkey}
+            onClick={handleDirectionSelection}
           />
           <span style={{ position: "relative", top: "-5px" }}>
             Türkiye'ye Gönder
@@ -86,18 +68,17 @@ const CourierDelivery = ({ register }) => {
       </Flex>
       <Box width={1} textAlign={"left"}>
         <LabelText style={{ color: "#000000" }}>{from}</LabelText>
-        <SelectOption required {...register("city")}>
+        <SelectOption required {...register("country")}>
           <option hidden>Seçiniz</option>
-          {directions[selectedDirections] &&
-            directions[selectedDirections].map((citie) => (
-              <option key={citie} value={citie}>
-                {citie}
-              </option>
-            ))}
+          {deliveryCountries.map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
         </SelectOption>
       </Box>
       <Flex width={1} my={4}>
-        <Box width={1 / 4} mr={2}>
+        <Box width={1 / 4}>
           <LabelText>AĞIRLIK</LabelText>
           <Flex>
             <InputText
@@ -109,7 +90,7 @@ const CourierDelivery = ({ register }) => {
             <WeightFormatSpan>KG</WeightFormatSpan>
           </Flex>
         </Box>
-        <Box width={1 / 4} mr={2}>
+        <Box width={1 / 4}>
           <LabelText>UZUNLUK</LabelText>
           <Flex>
             <InputText
@@ -121,7 +102,7 @@ const CourierDelivery = ({ register }) => {
             <WeightFormatSpan>CM</WeightFormatSpan>
           </Flex>
         </Box>
-        <Box width={1 / 4} mr={2}>
+        <Box width={1 / 4}>
           <LabelText>GENİŞLİK</LabelText>
           <Flex>
             <InputText
@@ -133,7 +114,7 @@ const CourierDelivery = ({ register }) => {
             <WeightFormatSpan>CM</WeightFormatSpan>
           </Flex>
         </Box>
-        <Box width={1 / 4} mr={2}>
+        <Box width={1 / 4}>
           <LabelText>YÜKSEKLİK</LabelText>
           <Flex>
             <InputText

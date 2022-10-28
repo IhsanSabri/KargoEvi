@@ -15,4 +15,14 @@ export const setNotificationMessage = ({ type, ...rest }) => {
   });
 };
 
-export const getSessionStorage = (name) => JSON.parse(sessionStorage.getItem(name));
+export const depthItemModified = (curObj, name, keys, value) => {
+  let obj = curObj[name];
+
+  for (var i = 0; i < keys.length - 1; i++) {
+    obj = obj[keys[i]];
+  }
+  obj[keys[i]] = value;
+};
+
+export const getSessionStorage = (name) =>
+  JSON.parse(sessionStorage.getItem(name));

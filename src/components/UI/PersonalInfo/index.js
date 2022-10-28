@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Flex, Box, Text } from "rebass";
 
@@ -12,7 +12,7 @@ import Steps from "../Steps";
 
 import { modifiedData } from "../../../store/DeliveryDetail";
 
-import { Button, Collapse } from "antd";
+import { Collapse } from "antd";
 import {
   FooterContainer,
   PersonalInfoContainer,
@@ -23,7 +23,12 @@ import {
   CheckBoxLabel,
   CollapseMain,
 } from "./style";
-import { LabelText, InputText, SelectOption, ContinueButton } from "../../../styles/styles";
+import {
+  LabelText,
+  InputText,
+  SelectOption,
+  ContinueButton,
+} from "../../../styles/styles";
 
 const { Panel } = Collapse;
 
@@ -32,6 +37,10 @@ const PersonalInfo = ({ nextPageLink }) => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const [isEtgbChecked, setIsEtgbChecked] = useState(false);
+  const {
+    deliveryCountries,
+    deliveryDetail: { destination, country },
+  } = useSelector(({ delivery }) => delivery);
 
   const handleRegistration = (data) => {
     console.log(data);
@@ -136,12 +145,22 @@ const PersonalInfo = ({ nextPageLink }) => {
               <Flex paddingTop={"30px"}>
                 <Box width={1 / 3} textAlign={"left"} marginRight={"10px"}>
                   <LabelText style={{ color: "#000000" }}>ALICI ÜLKE</LabelText>
-                  <SelectOption required {...register("country")}>
-                    <option value="" defaultValue="">
-                      Seçiniz
-                    </option>
-                    <option value="Germany">Almanya</option>
-                    <option value="Netherland">Hollanda</option>
+                  <SelectOption
+                    required
+                    {...register("country")}
+                    defaultValue={
+                      destination === "fromTr" ? country : "Türkiye"
+                    }
+                  >
+                    <option value="">Seçiniz</option>
+                    <option value="Türkiye">Türkiye</option>
+                    {deliveryCountries.map((country) => (
+                      <option key={country} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                    {/* <option value="Germany">Almanya</option>
+                    <option value="Netherland">Hollanda</option> */}
                   </SelectOption>
                 </Box>
                 <Box width={1 / 3} textAlign={"left"} marginRight={"10px"}>
@@ -202,10 +221,7 @@ const PersonalInfo = ({ nextPageLink }) => {
       <OrderSummary />
       <Footer prevLink={"/productInfo"}>
         <FooterContainer>
-          <ContinueButton
-            type="submit"
-            form="hook-form"
-          >
+          <ContinueButton type="submit" form="hook-form">
             Devam Et
           </ContinueButton>
         </FooterContainer>

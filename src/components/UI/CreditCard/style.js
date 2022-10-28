@@ -1,6 +1,16 @@
 import styled from "@emotion/styled";
 
 const CardContainer = styled.div`
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
   .rccs {
     width: 100%;
     max-width: 290px;

@@ -15,8 +15,9 @@ import { useSelector } from "react-redux";
 
 const Product = ({ register, indexNum }) => {
   const {
+    deliveryCountries,
     deliveryPrice,
-    deliveryDetail: { destination, weight },
+    deliveryDetail: { destination, weight, country },
   } = useSelector(({ delivery }) => delivery);
   return (
     <Box>
@@ -73,13 +74,17 @@ const Product = ({ register, indexNum }) => {
         <Box width={1 / 6} mr={2}>
           <LabelText>MENŞEİ (*)</LabelText>
           <SelectOption
-            defaultValue={destination === "fromTr" ? "Turkey" : "Germany"}
+            defaultValue={destination === "fromTr" ? "Türkiye" : country}
             required
             {...register(`${indexNum}.origin.value`)}
           >
             <option value="">Seçiniz</option>
-            <option value="Turkey">Türkiye</option>
-            <option value="Germany">Almanya</option>
+            <option value="Türkiye">Türkiye</option>
+            {deliveryCountries.map((country) => (
+              <option key={country} value={country}>
+                {country}
+              </option>
+            ))}
           </SelectOption>
         </Box>
         <Box width={1 / 6}>

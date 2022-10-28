@@ -20,7 +20,7 @@ const TabsContainer = styled(Box)`
 `;
 
 const SubmitButton = styled.button`
-  width: 220px;
+  width: 55%;
   height: 64px;
   border-color: #d84148;
   background: #d5353b;

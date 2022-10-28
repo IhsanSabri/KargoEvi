@@ -34,7 +34,7 @@ const OrderSummaryMain = ({ nextPageLink }) => {
       length,
       width,
       height,
-      city,
+      country: directionCountry,
     },
     receiverInfo: {
       name,
@@ -61,14 +61,18 @@ const OrderSummaryMain = ({ nextPageLink }) => {
           <Destination>
             <Flex width={"50%"} className="destinationBox">
               <label>Nereden</label>
-              <label>{direction === "fromTr" ? "Türkiye" : "Almanya"}</label>
+              <label>
+                {direction === "fromTr" ? "Türkiye" : directionCountry}
+              </label>
             </Flex>
             <Box>
               <Image width={"45px"} src={destination}></Image>
             </Box>
             <Flex width={"50%"} className="destinationBox">
               <label>Nereye</label>
-              <label>{city}</label>
+              <label>
+                {direction === "fromTr" ? directionCountry : "Türkiye"}
+              </label>
             </Flex>
           </Destination>
           <Content>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
 
@@ -25,6 +25,14 @@ import { SafetyCertificateOutlined } from "@ant-design/icons";
 // const orderService = new OrderService();
 
 const PaymentPage = () => {
+  const [cardInfo, setCardInfo] = useState({
+    cvc: "",
+    expiry: "",
+    name: "",
+    number: "",
+    isCardSaved: false,
+  });
+
   // const navigate = useNavigate();
   // const dispatch = useDispatch();
   // const {
@@ -71,7 +79,7 @@ const PaymentPage = () => {
     {
       subKey: "creditCard",
       title: "Kredi Kartı İle Öde",
-      component: <CreditCard />,
+      component: <CreditCard cardInfo={cardInfo} setCardInfo={setCardInfo} />,
     },
     {
       subKey: "walletPayment",
@@ -91,6 +99,8 @@ const PaymentPage = () => {
   ];
 
   const handleCompleteOrder = () => {
+    console.log("cardInfo", cardInfo);
+
     // orderService
     //   .addOrder({
     //     userId,
