@@ -53,13 +53,21 @@ const DeliveryTabs = ({ nextPageLink }) => {
       <Flex
         justifyContent="space-between"
         p={3}
-        sx={{ borderTop: "1px solid lightgrey" }}
+        sx={{ borderTop: "1px solid lightgrey", background: "white" }}
       >
-        <Box>
+        <Box width={1 / 2}>
           <Text fontSize={1} fontWeight="300">
             Ödenecek Tutar
           </Text>
-          <Text fontSize={4} fontWeight="600">
+          <Text
+            fontSize={4}
+            fontWeight="600"
+            sx={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
             {`USD ${deliveryPrice}`}
           </Text>
         </Box>

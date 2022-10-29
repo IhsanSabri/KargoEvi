@@ -25,6 +25,10 @@ const FormItem = styled(Form.Item)`
 const ButtonRegister = styled(Button)`
   width: 100%;
   text-align-last: center;
+  height: 64px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 33px;
 `;
 
 export { FormItem, ButtonRegister };

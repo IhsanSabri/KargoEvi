@@ -18,6 +18,8 @@ const CourierDelivery = ({ register }) => {
   const dispatch = useDispatch();
   const inputValues = useRef({});
   const [from, setFrom] = useState("NEREYE");
+  const [fromOpacity, setFromOpacity] = useState('1');
+  const [toOpacity, setToOpacity] = useState('0.6');
   const { deliveryCountries } = useSelector(({ delivery }) => delivery);
 
   const handleInputChange = (event) => {
@@ -32,13 +34,21 @@ const CourierDelivery = ({ register }) => {
   };
 
   const handleDirectionSelection = (event) => {
-    event.target.value === "fromTr" ? setFrom("NEREYE") : setFrom("NEREDEN");
+    if (event.target.value === "fromTr") {
+      setFrom("NEREYE");
+      setFromOpacity('1');
+      setToOpacity('0.6');
+    } else {
+      setFrom("NEREDEN");
+      setToOpacity('1');
+      setFromOpacity('0.6')
+    }
   };
 
   return (
-    <Box px={4} py={2}>
-      <Flex mb={4}>
-        <LabelText style={{ color: "black", marginRight: "15px" }}>
+    <Box px={4} py={2} sx={{ background: "white" }}>
+      <Flex mb={4} mt={4}>
+        <LabelText style={{ color: "black", marginRight: "15px", opacity: fromOpacity }}>
           <RadioInput
             {...register("destination")}
             type="radio"
@@ -48,11 +58,18 @@ const CourierDelivery = ({ register }) => {
             onClick={handleDirectionSelection}
             defaultChecked
           />
-          <span style={{ position: "relative", top: "-5px" }}>
+          <span
+            style={{
+              position: "relative",
+              top: "-5px",
+              fontSize: "16px",
+              fontWeight: "400"
+            }}
+          >
             Türkiye'den Gönder
           </span>
         </LabelText>
-        <LabelText style={{ color: "black" }}>
+        <LabelText style={{ color: "black", opacity: toOpacity }}>
           <RadioInput
             {...register("destination")}
             type="radio"
@@ -61,7 +78,14 @@ const CourierDelivery = ({ register }) => {
             required
             onClick={handleDirectionSelection}
           />
-          <span style={{ position: "relative", top: "-5px" }}>
+          <span
+            style={{
+              position: "relative",
+              top: "-5px",
+              fontSize: "16px",
+              fontWeight: "400"
+            }}
+          >
             Türkiye'ye Gönder
           </span>
         </LabelText>

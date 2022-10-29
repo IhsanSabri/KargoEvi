@@ -7,11 +7,33 @@ const TabsContainer = styled(Box)`
   top: 15%;
   right: 10%;
   z-index: 99;
-  background-color: white;
   width: 26%;
 
+  .ant-tabs-nav {
+    margin: 0 !important;
+
+    .ant-tabs-nav-operations {
+      display: none;
+    }
+  }
+
+  .ant-tabs-nav-list {
+    width: 100%;
+
+    .ant-tabs-tab {
+      border-radius: 4px 4px 0 0 !important;
+      width: 33.3%;
+    }
+  }
+
   .ant-tabs-tab-btn {
-    font-size: 13px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {

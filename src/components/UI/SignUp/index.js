@@ -96,6 +96,9 @@ const SignUp = ({ nextPageLink, closeModal }) => {
               message: "Lütfen, kullanıcı adını giriniz!",
             },
           ]}
+          style={{
+            width: "50%",
+          }}
         >
           <Input
             placeholder="Username"
@@ -114,6 +117,9 @@ const SignUp = ({ nextPageLink, closeModal }) => {
               message: "Lütfen, kullanıcı soyadını giriniz!",
             },
           ]}
+          style={{
+            width: "50%",
+          }}
         >
           <Input
             placeholder="LastName"
