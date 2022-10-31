@@ -21,7 +21,7 @@ const AddressColumn = ({ borderValue, openModal, address }) => {
     adressName,
     adressDesc,
     phone,
-    //PhonePrefix,
+    //phonePrefix,
     adress,
     district,
     city,
@@ -40,7 +40,7 @@ const AddressColumn = ({ borderValue, openModal, address }) => {
     <ColumnBox span={11}>
       <AdressSelectionTab>
         <Radio style={{ fontSize: "18px" }} value={_id}>
-          {adressName}
+          {adressDesc}
         </Radio>
         <UpdateText onClick={handleUpdate}>Düzenle</UpdateText>
       </AdressSelectionTab>
@@ -54,11 +54,11 @@ const AddressColumn = ({ borderValue, openModal, address }) => {
           <div className="userInfo">
             <div className="userName">
               <Avatar size="small" icon={<UserOutlined />} />
-              <UserNameText>{adressDesc}</UserNameText>
+              <UserNameText>{adressName}</UserNameText>
             </div>
             <div className="userPhone">
               <PhoneOutlined />
-              {/* {`${PhonePrefix} ${phone}`} */}
+              {/* {`${phonePrefix} ${phone}`} */}
               {phone}
             </div>
           </div>

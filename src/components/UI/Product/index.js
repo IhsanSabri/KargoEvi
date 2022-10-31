@@ -67,7 +67,7 @@ const Product = ({ register, indexNum }) => {
           <InputText
             required
             {...register(`${indexNum}.GTIP.value`)}
-            type="text"
+            type="number"
             defaultValue=""
           ></InputText>
         </Box>

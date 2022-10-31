@@ -18,15 +18,15 @@ const AddAddress = ({ closeModal }) => {
     userAddress,
     updateAddress: {
       _id: updateAddressId,
-      addressTitle,
-      userName,
-      phoneNumber,
+      adressDesc,
+      adressName,
+      phone,
       country,
       city,
       district,
       postalCode,
-      addressDescription,
-      PhonePrefix,
+      adress,
+      phonePrefix,
     },
   } = useSelector(({ delivery }) => delivery);
 
@@ -79,7 +79,7 @@ const AddAddress = ({ closeModal }) => {
   };
 
   const prefixSelectorPhone = (
-    <FormItem name="PhonePrefix" noStyle>
+    <FormItem name="phonePrefix" noStyle>
       <Select
         style={{
           width: 70,
@@ -97,7 +97,7 @@ const AddAddress = ({ closeModal }) => {
       name="register"
       onFinish={onFinish}
       initialValues={{
-        PhonePrefix: PhonePrefix || "+90",
+        phonePrefix: phonePrefix || "+90",
       }}
       scrollToFirstError
     >
@@ -105,8 +105,8 @@ const AddAddress = ({ closeModal }) => {
       <Input.Group compact>
         <FormItem
           label="ADRES BAŞLIĞI"
-          name="adressName"
-          initialValue={addressTitle}
+          name="adressDesc"
+          initialValue={adressDesc}
           rules={[
             {
               required: true,
@@ -123,8 +123,8 @@ const AddAddress = ({ closeModal }) => {
 
         <FormItem
           label="AD SOYAD"
-          name="adressDesc"
-          initialValue={userName}
+          name="adressName"
+          initialValue={adressName}
           rules={[
             {
               required: true,
@@ -142,7 +142,7 @@ const AddAddress = ({ closeModal }) => {
         <FormItem
           label="GSM NUMARANIZ"
           name="phone"
-          initialValue={phoneNumber}
+          initialValue={phone}
           rules={[
             {
               required: true,
@@ -239,7 +239,7 @@ const AddAddress = ({ closeModal }) => {
       <FormItem
         label="AÇIKLAMA"
         name="adress"
-        initialValue={addressDescription}
+        initialValue={adress}
         rules={[
           {
             required: true,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Button } from "antd";
 import { Box, Flex } from "rebass";
@@ -15,14 +15,14 @@ import Footer from "../Footer";
 import AntCollapse from "../CollapseMenu";
 import GdprBox from "../GdprBox";
 
-//import { OrderService } from "../../../services";
+import { OrderService } from "../../../services";
 
 import { PaymentPageMainWrapper, FooterContainer } from "./style";
 import { SafetyCertificateOutlined } from "@ant-design/icons";
-// import { setNotificationMessage } from "../../../config/utils";
-// import { modifiedData } from "../../../store/DeliveryDetail";
+import { setNotificationMessage } from "../../../config/utils";
+import { modifiedData } from "../../../store/DeliveryDetail";
 
-// const orderService = new OrderService();
+const orderService = new OrderService();
 
 const PaymentPage = () => {
   const [cardInfo, setCardInfo] = useState({
@@ -33,24 +33,16 @@ const PaymentPage = () => {
     isCardSaved: false,
   });
 
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const {
-  //   userInfo: { userId },
-  //   userAddress,
-  //   updateAddress: {
-  //     _id: updateAddressId,
-  //     addressTitle,
-  //     userName,
-  //     phoneNumber,
-  //     country,
-  //     city,
-  //     district,
-  //     postalCode,
-  //     addressDescription,
-  //     PhonePrefix,
-  //   },
-  // } = useSelector(({ delivery }) => delivery);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {
+    userInfo: { userId },
+    deliveryDetail,
+    productDetailInfo,
+    deliveryPrice,
+    isPaymentAddress,
+    receiverInfo,
+  } = useSelector(({ delivery }) => delivery);
   const stepsInfo = [
     {
       id: 1,
@@ -98,41 +90,67 @@ const PaymentPage = () => {
     },
   ];
 
+  const setDirectionArray = () => {
+    let directionArray = [deliveryDetail.country];
+
+    if (deliveryDetail.destination === "toTr") {
+      directionArray.push("Türkiye");
+    } else {
+      directionArray.unshift("Türkiye");
+    }
+
+    return directionArray;
+  };
+
   const handleCompleteOrder = () => {
     console.log("cardInfo", cardInfo);
 
-    // orderService
-    //   .addOrder({
-    //     userId,
-    //     direction,
-    //     description,
-    //     dimention,
-    //     weight,
-    //     amount,
-    //     total,
-    //     GTIP,
-    //     clientAdress,
-    //     ispaymentadress,
-    //   })
-    //   .then((res) => {
-    //     console.log("res", res);
-    //     if (res.success) {
-    //       //TODO: address will be added to state
-    //       console.log("success");
+    orderService
+      .addOrder({
+        userId,
+        direction: setDirectionArray(),
+        description: productDetailInfo.description,
+        dimention: [
+          Number(deliveryDetail.length),
+          Number(deliveryDetail.width),
+          Number(deliveryDetail.height),
+        ],
+        weight: deliveryDetail.weight,
+        amount: deliveryPrice,
+        total: productDetailInfo.total,
+        GTIP: productDetailInfo.GTIP,
+        clientAdress: {
+          name: receiverInfo.name,
+          mail: receiverInfo.mail,
+          country: receiverInfo.country,
+          city: receiverInfo.city,
+          district: receiverInfo.district,
+          postCode: receiverInfo.postCode,
+          adress: receiverInfo.adress,
+          ETGB: receiverInfo.ETGB,
+          phone: receiverInfo.phone,
+        },
+        ispaymentadress: isPaymentAddress,
+      })
+      .then((res) => {
+        console.log("res", res);
+        if (res.success) {
+          //TODO: address will be added to state
+          console.log("success");
 
-    //       dispatch(modifiedData({ name: "orderId", data: res?.data?._id }));
+          dispatch(modifiedData({ name: "orderId", data: res?.data?._id }));
 
-    //       setNotificationMessage({
-    //         type: "success",
-    //         message: "Siparişiniz Oluşturuldu",
-    //       });
+          setNotificationMessage({
+            type: "success",
+            message: "Siparişiniz Oluşturuldu",
+          });
 
-    //       navigate("/thankYouPage");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log("err", err);
-    //   });
+          //navigate("/thankYouPage");
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
   };
 
   return (

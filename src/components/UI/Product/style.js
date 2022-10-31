@@ -7,6 +7,12 @@ const MainProductCover = styled(Flex)`
   font-family: "Manrope";
   font-style: normal;
   margin-top: 15px;
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 const PriceFormatSelect = styled.select`
