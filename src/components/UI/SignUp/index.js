@@ -214,7 +214,7 @@ const SignUp = ({ nextPageLink, closeModal }) => {
               value
                 ? Promise.resolve()
                 : Promise.reject(
-                    new Error("Kullanım koşullarını kabuk ediniz!")
+                    new Error("Kullanım koşullarını kabul ediniz!")
                   ),
           },
         ]}

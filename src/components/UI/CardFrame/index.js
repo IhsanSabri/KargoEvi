@@ -10,8 +10,7 @@ const CardFrame = ({
   borderedValue,
   setBorderedValue,
   IconContainer,
-  UserInfo,
-  BankName,
+  cardInfo,
 }) => {
   const handleOnClick = () => {
     setBorderedValue(value);
@@ -20,7 +19,7 @@ const CardFrame = ({
   return (
     <CardFrameContainer m={"0 10% 0 6px"}>
       <Radio value={value} style={{ marginBottom: "10px", minWidth: "200px" }}>
-        {BankName} Kartım
+        {cardInfo?.bankName} Kartım
       </Radio>
       <Card
         onClick={handleOnClick}
@@ -38,11 +37,11 @@ const CardFrame = ({
           sx={{ float: "right" }}
         />
         <Box p={"18% 0 4% 10%"}>
-          <Text>{UserInfo?.cardNumber}</Text>
+          <Text>{cardInfo?.cardNumber}</Text>
           <Text fontSize={12} color={"gray"}>
-            {UserInfo?.name}
+            {cardInfo?.name}
           </Text>
-          <Text mt={"15px"}>{UserInfo?.expire}</Text>
+          <Text mt={"15px"}>{cardInfo?.expire}</Text>
         </Box>
       </Card>
     </CardFrameContainer>

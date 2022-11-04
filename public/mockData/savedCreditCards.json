@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "bankName": "QNB Finansbank",
+    "cardNumber": "5400 65** **** 5432",
+    "name": "Ayşe Keskin",
+    "expire": "10/24"
+  },
+  {
+    "id": 2,
+    "bankName": "Yapı Kredi",
+    "cardNumber": "3200 65** **** 5666",
+    "name": "Ali Veli",
+    "expire": "12/28"
+  },
+  {
+    "id": 3,
+    "bankName": "İş Bankası",
+    "cardNumber": "7777 65** **** 5432",
+    "name": "Ahmet Mehmet",
+    "expire": "05/25"
+  },
+  {
+    "id": 4,
+    "bankName": "Garanti",
+    "cardNumber": "3200 65** **** 5666",
+    "name": "Ali Veli",
+    "expire": "12/28"
+  }
+]

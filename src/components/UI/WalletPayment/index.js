@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Divider, Checkbox, Radio } from "antd";
+import { Divider, Checkbox, Radio, Row, Col } from "antd";
 import { Box, Flex, Text } from "rebass";
 import CardFrame from "../CardFrame";
 import NewCardFrame from "../NewCardFrame";
@@ -9,14 +9,28 @@ import { WalletOutlined } from "@ant-design/icons";
 import { WalletContainer } from "./style";
 
 import visa from "../../../assests/visa.png";
-import yapikredi from "../../../assests/yapikredi.png";
+import axios from "axios";
 
 const WalletPayment = () => {
   const [borderedValue, setBorderedValue] = useState(0);
+  const [savedCards, setSavedCards] = useState([]);
 
   const handleOnChange = (event) => {
     setBorderedValue(event.target.value);
   };
+
+  useEffect(() => {
+    axios
+      .get("/mockData/savedCreditCards.json")
+      .then(function (response) {
+        console.log("response", response);
+
+        setSavedCards(response?.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <WalletContainer>
@@ -24,9 +38,7 @@ const WalletPayment = () => {
         <Flex width={1} style={{ marginTop: "20px" }}>
           <Box width={1}>
             <Box width={1}>
-              <Checkbox
-                onChange={(e) => console.log(e)}
-              >
+              <Checkbox onChange={(e) => console.log(e)}>
                 <span style={{ fontSize: "18px", fontWeight: 500 }}>
                   349,10 TL
                 </span>{" "}
@@ -97,44 +109,23 @@ const WalletPayment = () => {
                 value={borderedValue}
                 onChange={handleOnChange}
               >
-                <Flex width={1}>
-                  <Box width={1 / 2}>
-                    <CardFrame
-                      value={1}
-                      borderedValue={borderedValue}
-                      setBorderedValue={(value) => setBorderedValue(value)}
-                      IconContainer={{
-                        src: visa,
-                        width: "57",
-                        heigth: "30",
-                      }}
-                      UserInfo={{
-                        cardNumber: "5400 65** **** 5432",
-                        name: "Ayşe Keskin",
-                        expire: "10/24",
-                      }}
-                      BankName="QNB Finansbank"
-                    />
-                  </Box>
-                  <Box width={1 / 2}>
-                    <CardFrame
-                      value={2}
-                      borderedValue={borderedValue}
-                      setBorderedValue={(value) => setBorderedValue(value)}
-                      IconContainer={{
-                        src: yapikredi,
-                        width: "77",
-                        heigth: "30",
-                      }}
-                      UserInfo={{
-                        cardNumber: "5400 65** **** 5432",
-                        name: "Ayşe Keskin",
-                        expire: "10/24",
-                      }}
-                      BankName="Yapı Kredi Bankası"
-                    />
-                  </Box>
-                </Flex>
+                <Row gutter={[16, 16]}>
+                  {savedCards.map((card) => (
+                    <Col key={card.id} span={12}>
+                      <CardFrame
+                        value={card.id}
+                        borderedValue={borderedValue}
+                        setBorderedValue={(value) => setBorderedValue(value)}
+                        cardInfo={card}
+                        IconContainer={{
+                          src: visa,
+                          width: "57",
+                          heigth: "30",
+                        }}
+                      />
+                    </Col>
+                  ))}
+                </Row>
               </Radio.Group>
             </Flex>
           </Box>

@@ -1,21 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Flex, Box } from "rebass";
-import { Radio, Checkbox } from "antd";
+import { Radio, Checkbox, Col, Row } from "antd";
 import { SafetyCertificateOutlined, PlusOutlined } from "@ant-design/icons";
 
 import CardFrame from "../CardFrame";
 import NewCardFrame from "../NewCardFrame";
 
 import visa from "../../../assests/visa.png";
-import yapikredi from "../../../assests/yapikredi.png";
+import axios from "axios";
 
 const SavedCardPayment = () => {
   const [borderedValue, setBorderedValue] = useState(0);
+  const [savedCards, setSavedCards] = useState([]);
 
   const handleOnChange = (event) => {
     setBorderedValue(event.target.value);
   };
+
+  useEffect(() => {
+    axios
+      .get("/mockData/savedCreditCards.json")
+      .then(function (response) {
+        console.log("response", response);
+
+        setSavedCards(response?.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <Flex width={1}>
@@ -26,28 +40,24 @@ const SavedCardPayment = () => {
             onChange={handleOnChange}
             value={borderedValue}
           >
-            <Flex width={1}>
-              <Box width={1 / 2}>
-                <CardFrame
-                  value={1}
-                  borderedValue={borderedValue}
-                  setBorderedValue={(value) => setBorderedValue(value)}
-                  IconContainer={{
-                    src: visa,
-                    width: "57",
-                    heigth: "30",
-                  }}
-                  UserInfo={{
-                    cardNumber: "5400 65** **** 5432",
-                    name: "Ayşe Keskin",
-                    expire: "10/24",
-                  }}
-                  BankName="QNB Finansbank"
-                />
-                <Checkbox
-                  style={{ marginTop: "30px" }}
-                  onChange={(e) => console.log(e)}
-                >
+            <Row gutter={[16, 16]}>
+              {savedCards.map((card) => (
+                <Col key={card.id} span={12}>
+                  <CardFrame
+                    value={card.id}
+                    borderedValue={borderedValue}
+                    setBorderedValue={(value) => setBorderedValue(value)}
+                    cardInfo={card}
+                    IconContainer={{
+                      src: visa,
+                      width: "57",
+                      heigth: "30",
+                    }}
+                  />
+                </Col>
+              ))}
+              <Col span={24}>
+                <Checkbox onChange={(e) => console.log(e)}>
                   <SafetyCertificateOutlined
                     style={{
                       fontSize: "21px",
@@ -56,26 +66,8 @@ const SavedCardPayment = () => {
                   />
                   3D secure ile Ödemek İstiyorum
                 </Checkbox>
-              </Box>
-              <Box width={1 / 2}>
-                <CardFrame
-                  value={2}
-                  borderedValue={borderedValue}
-                  setBorderedValue={(value) => setBorderedValue(value)}
-                  IconContainer={{
-                    src: yapikredi,
-                    width: "77",
-                    heigth: "30",
-                  }}
-                  UserInfo={{
-                    cardNumber: "5400 65** **** 5432",
-                    name: "Ayşe Keskin",
-                    expire: "10/24",
-                  }}
-                  BankName="Yapı Kredi Bankası"
-                />
-              </Box>
-            </Flex>
+              </Col>
+            </Row>
           </Radio.Group>
         </Flex>
       </Box>
