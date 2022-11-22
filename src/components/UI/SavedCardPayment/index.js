@@ -10,12 +10,14 @@ import NewCardFrame from "../NewCardFrame";
 import visa from "../../../assests/visa.png";
 import axios from "axios";
 
+import { useBorderFrame } from "../../../config/hooks/useBorderFrame";
+
 const SavedCardPayment = () => {
-  const [borderedValue, setBorderedValue] = useState(0);
+  const { borderedValue, setItemValue } = useBorderFrame();
   const [savedCards, setSavedCards] = useState([]);
 
   const handleOnChange = (event) => {
-    setBorderedValue(event.target.value);
+    setItemValue(event.target.value);
   };
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const SavedCardPayment = () => {
                   <CardFrame
                     value={card.id}
                     borderedValue={borderedValue}
-                    setBorderedValue={(value) => setBorderedValue(value)}
+                    setItemValue={(value) => setItemValue(value)}
                     cardInfo={card}
                     IconContainer={{
                       src: visa,

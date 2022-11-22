@@ -8,12 +8,12 @@ import { CardFrameContainer } from "./style";
 const CardFrame = ({
   value,
   borderedValue,
-  setBorderedValue,
+  setItemValue,
   IconContainer,
   cardInfo,
 }) => {
   const handleOnClick = () => {
-    setBorderedValue(value);
+    setItemValue(value);
   };
 
   return (

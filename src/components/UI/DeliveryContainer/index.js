@@ -9,11 +9,11 @@ const DeliveryContainer = ({
   icon,
   mainText,
   text,
-  selectedValue,
-  setSelectedValue,
+  borderedValue,
+  setItemValue,
 }) => {
   const handleOnClick = () => {
-    setSelectedValue(text);
+    setItemValue(text);
   };
 
   return (
@@ -21,7 +21,7 @@ const DeliveryContainer = ({
       onClick={handleOnClick}
       style={{
         border:
-          selectedValue === text ? "1px solid #50749c" : "1px solid #f0f0f0",
+          borderedValue === text ? "1px solid #50749c" : "1px solid #f0f0f0",
       }}
     >
       <Flex>

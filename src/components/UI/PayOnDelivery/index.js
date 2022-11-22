@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Text, Image } from "rebass";
 import { Radio } from "antd";
@@ -8,20 +8,21 @@ import { CreditCardOutlined } from "@ant-design/icons";
 import money from "../../../assests/money.svg";
 
 import { PayOnDeliveryContainer } from "./style";
+import { useBorderFrame } from "../../../config/hooks/useBorderFrame";
 
 const PayOnDelivery = () => {
-  const [selectedValue, setSelectedValue] = useState("");
+  const { borderedValue, setItemValue } = useBorderFrame();
 
   return (
     <PayOnDeliveryContainer>
       <Text color={"black"}>Ödeme yöntemini seçiniz</Text>
-      <Radio.Group value={selectedValue}>
+      <Radio.Group value={borderedValue}>
         <DeliveryContainer
           icon={<Image src={money} width={"55px"} height={"35px"} />}
           mainText="Kapıda Öde"
           text="Kapıda ödeme"
-          selectedValue={selectedValue}
-          setSelectedValue={setSelectedValue}
+          borderedValue={borderedValue}
+          setItemValue={setItemValue}
         />
         <DeliveryContainer
           icon={
@@ -34,8 +35,8 @@ const PayOnDelivery = () => {
           }
           mainText="Kapıda Kredi Kartı ile Öde"
           text="Kuryemizin yanında POS cihazı ile gelir"
-          selectedValue={selectedValue}
-          setSelectedValue={setSelectedValue}
+          borderedValue={borderedValue}
+          setItemValue={setItemValue}
         />
       </Radio.Group>
     </PayOnDeliveryContainer>
