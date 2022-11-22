@@ -36,16 +36,18 @@ const ProductInfo = ({ nextPageLink }) => {
 
   const buttonCheck = () => {
     let valueLength = 0;
-    let formValueObjectLength = Object.values(getValues()).length;
 
     const checkButton = Object.values(getValues()).some((values) => {
-      valueLength += Object.values(values).filter(
-        (index) => index.value.length > 0
+      valueLength = Object.values(values).filter(
+        (index) => index.value === undefined || index.value.length === 0
       ).length;
-      return valueLength === formValueObjectLength * 7;
+
+      return valueLength > 0;
     });
 
-    setButtonActive(checkButton);
+    console.log(checkButton);
+
+    setButtonActive(!checkButton);
   };
 
   const handleRegistration = (productInfo) => {

@@ -97,7 +97,6 @@ const Product = ({ register, indexNum }) => {
               type="text"
             ></InputText>
             <PriceFormatSelect
-              {...register(`${indexNum}.currency.value`)}
               disabled
             >
               <option defaultValue="$">$</option>
