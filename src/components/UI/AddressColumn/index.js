@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { PhoneOutlined, UserOutlined } from "@ant-design/icons";
 import { Radio, Avatar } from "antd";
@@ -15,7 +15,7 @@ import {
 } from "./style";
 import { modifiedData } from "../../../store/DeliveryDetail";
 
-const AddressColumn = ({ borderValue, openModal, address }) => {
+const AddressColumn = ({ openModal, address }) => {
   const {
     _id,
     adressName,
@@ -28,7 +28,18 @@ const AddressColumn = ({ borderValue, openModal, address }) => {
     country,
     //postalCode,
   } = address;
+  const { selectedAddress, userAddress } = useSelector(
+    ({ delivery }) => delivery
+  );
   const dispatch = useDispatch();
+
+  const handleOnClick = (event) => {
+    const selectedAddress = userAddress.filter(
+      (address) => address._id === event.currentTarget.id
+    );
+
+    dispatch(modifiedData({ name: "selectedAddress", data: selectedAddress }));
+  };
 
   const handleUpdate = () => {
     dispatch(modifiedData({ name: "updateAddress", data: address }));
@@ -37,7 +48,7 @@ const AddressColumn = ({ borderValue, openModal, address }) => {
   };
 
   return (
-    <ColumnBox span={11}>
+    <ColumnBox span={11} id={_id} onClick={handleOnClick}>
       <AdressSelectionTab>
         <Radio style={{ fontSize: "18px" }} value={_id}>
           {adressDesc}
@@ -47,7 +58,9 @@ const AddressColumn = ({ borderValue, openModal, address }) => {
       <ColumnBoxAddres
         style={{
           border:
-            borderValue === _id ? "1px solid #50749c" : "1px solid #f0f0f0",
+            selectedAddress[0]?._id === _id
+              ? "1px solid #50749c"
+              : "1px solid #f0f0f0",
         }}
       >
         <UserInfos>

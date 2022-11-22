@@ -32,7 +32,7 @@ const userService = new UserService();
 
 const AddressMain = ({ nextPageLink }) => {
   const dispatch = useDispatch();
-  const [borderValue, setBorderValue] = useState([]);
+
   const { isModalVisible, openModal, closeModal } = useModal();
   const [form] = Form.useForm();
   const navigate = useNavigate();
@@ -91,8 +91,6 @@ const AddressMain = ({ nextPageLink }) => {
       (address) => address._id === event.target.value
     );
 
-    setBorderValue(event.target.value);
-
     dispatch(modifiedData({ name: "selectedAddress", data: selectedAddress }));
   };
 
@@ -142,7 +140,7 @@ const AddressMain = ({ nextPageLink }) => {
             </CheckboxMain>
           </TitleAddress>
           <Radio.Group
-            defaultValue={selectedAddress[0]?._id}
+            value={selectedAddress[0]?._id}
             onChange={handleRadioGroup}
           >
             <Row gutter={[24, 24]} style={{ padding: "15px" }}>
@@ -151,7 +149,6 @@ const AddressMain = ({ nextPageLink }) => {
                   <AddressColumn
                     key={address._id}
                     address={address}
-                    borderValue={borderValue}
                     openModal={openModal}
                   />
                 );
