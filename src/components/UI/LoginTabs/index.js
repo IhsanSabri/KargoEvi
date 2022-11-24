@@ -4,6 +4,8 @@ import React from "react";
 import Login from "../Login";
 import SignUp from "../SignUp";
 
+import { TabName } from "./style";
+
 const { TabPane } = Tabs;
 
 const onChange = (key) => {
@@ -11,14 +13,14 @@ const onChange = (key) => {
 };
 
 const LoginTabs = ({ nextPageLink, closeModal }) => (
-  <Tabs defaultActiveKey="1" onChange={onChange}>
+  <TabName defaultActiveKey="1" onChange={onChange}>
     <TabPane tab="Üyelik Girişi" key="1">
       <Login nextPageLink={nextPageLink} closeModal={closeModal}/>
     </TabPane>
     <TabPane tab="Yeni Üyelik" key="2">
       <SignUp nextPageLink={nextPageLink} closeModal={closeModal}/>
     </TabPane>
-  </Tabs>
+  </TabName>
 );
 
 export default LoginTabs;

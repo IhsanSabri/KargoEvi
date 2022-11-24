@@ -1,25 +1,15 @@
 import React from "react";
 
-import {
-  FacebookLoginButton,
-  GoogleLoginButton,
-  TwitterLoginButton,
-  AppleLoginButton,
-} from "react-social-login-buttons";
-
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Checkbox, Form, Input } from "antd";
+import { Form, Input } from "antd";
 
 import useSignInProcess from "../../../config/hooks/useSignInProcess";
 
 import {
   FormItem,
   ButtonSubmit,
-  MainDivider,
-  FacebookButton,
-  GoogleButton,
-  TwitterButton,
-  AppleButton,
+  LoginFormForgotButton,
+  RememberMeCheckbox,
 } from "./style";
 import { Flex } from "rebass";
 
@@ -75,12 +65,12 @@ const Login = ({ nextPageLink, closeModal }) => {
         </FormItem>
         <FormItem>
           <FormItem name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Beni Hatırla</Checkbox>
+            <RememberMeCheckbox>Beni Hatırla</RememberMeCheckbox>
           </FormItem>
 
-          <a className="login-form-forgot" href="">
+          <LoginFormForgotButton className="login-form-forgot" href="">
             Şifremi Unuttum
-          </a>
+          </LoginFormForgotButton>
         </FormItem>
 
         <FormItem>
@@ -94,23 +84,6 @@ const Login = ({ nextPageLink, closeModal }) => {
           </ButtonSubmit>
         </FormItem>
       </Form>
-      {
-        // <MainDivider>veya</MainDivider>
-        // <Flex>
-        //   <GoogleButton onClick={() => alert("Hello")}>
-        //     <span>Google</span>
-        //   </GoogleButton>
-        //   <TwitterButton onClick={() => alert("Hello")}>
-        //     <span>Twitter</span>
-        //   </TwitterButton>
-        //   <FacebookButton onClick={() => alert("Hello")}>
-        //     <span>Facebook</span>
-        //   </FacebookButton>
-        //   <AppleButton onClick={() => alert("Hello")}>
-        //     <span>Apple</span>
-        //   </AppleButton>
-        // </Flex>
-      }
     </>
   );
 };

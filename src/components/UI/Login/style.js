@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { Form, Button, Divider } from "antd";
+import { Form, Button, Divider, Checkbox } from "antd";
 import {
   FacebookLoginButton,
   GoogleLoginButton,
@@ -35,6 +35,17 @@ const ButtonSubmit = styled(Button)`
   }
 `;
 
+const RememberMeCheckbox = styled(Checkbox)`
+  span {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: #262B37;
+  }
+`;
+
 const MainDivider = styled(Divider)`
   padding-top: 2.25rem;
   padding-bottom: 2.25rem;
@@ -46,6 +57,17 @@ const MainDivider = styled(Divider)`
     color: #262b37;
     opacity: 0.6;
   }
+`;
+
+const LoginFormForgotButton = styled.a`
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: right;
+  text-decoration-line: underline;
+  color: #2f6fb1;
 `;
 
 const FacebookButton = styled(FacebookLoginButton)`
@@ -132,4 +154,6 @@ export {
   GoogleButton,
   TwitterButton,
   AppleButton,
+  LoginFormForgotButton,
+  RememberMeCheckbox,
 };

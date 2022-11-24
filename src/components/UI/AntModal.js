@@ -6,7 +6,7 @@ const AntModal = ({ children, ...rest }) => {
     <Modal
       destroyOnClose
       footer={null}
-      bodyStyle={{ paddingTop: "64px", paddingBottom: "64px" }}
+      bodyStyle={{ padding: "54px" }}
       {...rest}
     >
       {children}

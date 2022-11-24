@@ -144,6 +144,7 @@ const SignUp = ({ nextPageLink, closeModal }) => {
           addonBefore={prefixSelector}
           style={{
             width: "100%",
+            height: "inherit"
           }}
         />
       </FormItem>

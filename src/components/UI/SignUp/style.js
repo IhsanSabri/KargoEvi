@@ -13,9 +13,22 @@ const FormItem = styled(Form.Item)`
       max-width: unset;
     }
   }
+
   .ant-form-item-control-input-content {
     display: inline-flex;
     justify-content: space-between;
+
+    .ant-input-group {
+      height: inherit;
+
+      .ant-input-group-addon {
+        height: inherit;
+      }
+
+      #register_phone {
+        height: inherit;
+      }
+    }
   }
   .ant-form-item-explain-error {
     text-align-last: initial;
