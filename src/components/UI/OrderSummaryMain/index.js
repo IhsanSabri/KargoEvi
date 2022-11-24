@@ -49,6 +49,10 @@ const OrderSummaryMain = ({ nextPageLink }) => {
     productDetailInfo: { total, description },
   } = useSelector(({ delivery }) => delivery);
 
+  const handleNewOrder = () => {
+    navigate("/productInfo");
+  };
+
   const handleOrderComplete = () => {
     token ? navigate(nextPageLink) : openModal();
   };
@@ -120,7 +124,7 @@ const OrderSummaryMain = ({ nextPageLink }) => {
       </Flex>
       <Footer prevLink={"/personalInfo"}>
         <FooterContainer>
-          <Button className="newOrderButton" danger>
+          <Button className="newOrderButton" danger onClick={handleNewOrder}>
             <PlusOutlined />
             Yeni Gönderi Ekle
           </Button>

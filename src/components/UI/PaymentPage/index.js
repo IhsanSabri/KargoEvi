@@ -25,6 +25,7 @@ import { modifiedData } from "../../../store/DeliveryDetail";
 const orderService = new OrderService();
 
 const PaymentPage = () => {
+  const [paymentMethod, setPaymentMethod] = useState(null);
   const [cardInfo, setCardInfo] = useState({
     cvc: "",
     expiry: "",
@@ -71,7 +72,13 @@ const PaymentPage = () => {
     {
       subKey: "creditCard",
       title: "Kredi Kartı İle Öde",
-      component: <CreditCard cardInfo={cardInfo} setCardInfo={setCardInfo} />,
+      component: (
+        <CreditCard
+          cardInfo={cardInfo}
+          setCardInfo={setCardInfo}
+          setPaymentMethod={setPaymentMethod}
+        />
+      ),
     },
     {
       subKey: "walletPayment",
@@ -102,55 +109,104 @@ const PaymentPage = () => {
     return directionArray;
   };
 
+  const payWithCreditCard = () => {
+    if (cardInfo.isCardSaved) {
+      //TODO: send request to save card
+    }
+
+    // orderService
+    //   .addOrder({
+    //     userId,
+    //     direction: setDirectionArray(),
+    //     description: productDetailInfo.description,
+    //     dimention: [
+    //       Number(deliveryDetail.length),
+    //       Number(deliveryDetail.width),
+    //       Number(deliveryDetail.height),
+    //     ],
+    //     weight: deliveryDetail.weight,
+    //     amount: deliveryPrice,
+    //     total: productDetailInfo.total,
+    //     GTIP: productDetailInfo.GTIP,
+    //     clientAdress: {
+    //       name: receiverInfo.name,
+    //       mail: receiverInfo.mail,
+    //       country: receiverInfo.country,
+    //       city: receiverInfo.city,
+    //       district: receiverInfo.district,
+    //       postCode: receiverInfo.postCode,
+    //       adress: receiverInfo.adress,
+    //       ETGB: receiverInfo.ETGB,
+    //       phone: receiverInfo.phone,
+    //     },
+    //     ispaymentadress: isPaymentAddress,
+    //   })
+    //   .then((res) => {
+    //     console.log("res", res);
+    //     if (res.success) {
+    //       //TODO: address will be added to state
+    //       console.log("success");
+
+    //       dispatch(modifiedData({ name: "orderId", data: res?.data?._id }));
+
+    //       setNotificationMessage({
+    //         type: "success",
+    //         message: "Siparişiniz Oluşturuldu",
+    //       });
+
+    //       //navigate("/thankYouPage");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log("err", err);
+    //   });
+  };
+
+  const payWithSavedCard = () => {
+    console.log("payWithSavedCard");
+  };
+
+  const payWithWallet = () => {
+    console.log("payWithWallet");
+  };
+
+  const payWithTransfer = () => {
+    console.log("payWithTransfer");
+  };
+
+  const payWithDelivery = () => {
+    console.log("payWithDelivery");
+  };
+
   const handleCompleteOrder = () => {
     console.log("cardInfo", cardInfo);
+    console.log("paymentMethod", paymentMethod);
 
-    orderService
-      .addOrder({
-        userId,
-        direction: setDirectionArray(),
-        description: productDetailInfo.description,
-        dimention: [
-          Number(deliveryDetail.length),
-          Number(deliveryDetail.width),
-          Number(deliveryDetail.height),
-        ],
-        weight: deliveryDetail.weight,
-        amount: deliveryPrice,
-        total: productDetailInfo.total,
-        GTIP: productDetailInfo.GTIP,
-        clientAdress: {
-          name: receiverInfo.name,
-          mail: receiverInfo.mail,
-          country: receiverInfo.country,
-          city: receiverInfo.city,
-          district: receiverInfo.district,
-          postCode: receiverInfo.postCode,
-          adress: receiverInfo.adress,
-          ETGB: receiverInfo.ETGB,
-          phone: receiverInfo.phone,
-        },
-        ispaymentadress: isPaymentAddress,
-      })
-      .then((res) => {
-        console.log("res", res);
-        if (res.success) {
-          //TODO: address will be added to state
-          console.log("success");
+    switch (paymentMethod) {
+      case "creditCard":
+        payWithCreditCard();
 
-          dispatch(modifiedData({ name: "orderId", data: res?.data?._id }));
+        break;
+      case "InstantPayment":
+        payWithCreditCard();
 
-          setNotificationMessage({
-            type: "success",
-            message: "Siparişiniz Oluşturuldu",
-          });
+        break;
+      case "SavedCardPayment":
+        payWithSavedCard();
 
-          //navigate("/thankYouPage");
-        }
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
+        break;
+      case "walletPayment":
+        payWithWallet();
+        break;
+      case "payWithTransfer":
+        payWithTransfer();
+        break;
+      case "payOnDelivery":
+        payWithDelivery();
+        break;
+      default:
+        console.log("Payment method is not selected");
+    }
   };
 
   return (
@@ -165,13 +221,13 @@ const PaymentPage = () => {
         </Flex>
         <Flex justifyContent="center" width={"60%"} m="30px auto">
           <Box width={1}>
-            <AntCollapse menus={menus} />
+            <AntCollapse menus={menus} setPaymentMethod={setPaymentMethod} />
           </Box>
         </Flex>
         <OrderSummary />
         <GdprBox />
       </PaymentPageMainWrapper>
-      <Footer prevLink={"/personalInfo"}>
+      <Footer prevLink={"/address"}>
         <FooterContainer>
           <Button
             className="completePayment"
@@ -179,6 +235,7 @@ const PaymentPage = () => {
             danger
             form="hook-form"
             onClick={handleCompleteOrder}
+            disabled={!paymentMethod}
           >
             <SafetyCertificateOutlined
               style={{

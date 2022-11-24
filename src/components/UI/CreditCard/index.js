@@ -9,14 +9,20 @@ import { CardContainer } from "./style";
 
 const { TabPane } = Tabs;
 
-const CreditCard = ({ cardInfo, setCardInfo }) => {
+const CreditCard = ({ cardInfo, setCardInfo, setPaymentMethod }) => {
+  const handleOnChange = (key) => {
+    console.log("key", key);
+
+    setPaymentMethod(key);
+  };
+
   return (
     <CardContainer id="PaymentForm">
-      <Tabs defaultActiveKey="1">
-        <TabPane tab="Yeni Kart" key="1">
+      <Tabs defaultActiveKey="InstantPayment" onChange={handleOnChange}>
+        <TabPane tab="Yeni Kart" key="InstantPayment">
           <InstantPayment cardInfo={cardInfo} setCardInfo={setCardInfo} />
         </TabPane>
-        <TabPane tab="Kayıtlı Kartlar" key="2">
+        <TabPane tab="Kayıtlı Kartlar" key="SavedCardPayment">
           <SavedCardPayment />
         </TabPane>
       </Tabs>

@@ -32,6 +32,12 @@ const FooterContainer = styled(Flex)`
       background-color: #bb2d3b;
       border-color: #b02a37;
     }
+
+    &:disabled {
+      background: #ea9a9d;
+      border-color: #ea9a9d;
+      cursor: unset !important;
+    }
   }
 `;
 

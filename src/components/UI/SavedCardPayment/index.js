@@ -24,8 +24,6 @@ const SavedCardPayment = () => {
     axios
       .get("/mockData/savedCreditCards.json")
       .then(function (response) {
-        console.log("response", response);
-
         setSavedCards(response?.data);
       })
       .catch(function (error) {

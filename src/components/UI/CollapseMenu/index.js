@@ -8,9 +8,10 @@ import { CollepseContainer, Title } from "./style";
 
 const { Panel } = Collapse;
 
-const AntCollapse = ({ menus }) => {
+const AntCollapse = ({ menus, setPaymentMethod }) => {
   const onChange = (key) => {
     console.log(key);
+    setPaymentMethod(key);
   };
 
   return (

@@ -19,23 +19,23 @@ import { Box, Flex } from "rebass";
 
 const items = [
   {
-    path: "/index",
+    path: "/services",
     name: "Hizmetlerimiz",
   },
   {
-    path: "/first",
+    path: "/news",
     name: "Blog Haberler",
   },
   {
-    path: "second",
+    path: "info",
     name: "Bilgi Bankası",
   },
   {
-    path: "/third",
+    path: "/deliverytracking",
     name: "Gönderi Takibi",
   },
   {
-    path: "/fourth",
+    path: "/contact",
     name: "İletişim",
   },
 ].map((index, key) => ({
@@ -72,7 +72,7 @@ const NavBar = () => {
       <Navbar justifyContent="space-between">
         <Box>
           <Link to="/" style={{ alignSelf: "center", marginRight: "1rem" }}>
-            <img src={logo} alt="brandImage" href="#Home.js" />
+            <img src={logo} alt="brandImage" />
           </Link>
         </Box>
         <MenuMain theme="dark" mode="horizontal" items={items}></MenuMain>
