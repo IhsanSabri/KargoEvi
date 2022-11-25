@@ -5,11 +5,15 @@ import { Checkbox } from "antd";
 
 import { GdprContainer } from "./style";
 
-const GdprBox = () => {
+const GdprBox = ({ setIsGdprAllowed }) => {
+  const handleChange = (event) => {
+    setIsGdprAllowed(event.target.checked);
+  };
+
   return (
     <GdprContainer width={"15%"}>
       <Box p={2}>
-        <Checkbox onChange={(e) => console.log(e)}>
+        <Checkbox onChange={handleChange}>
           <Text
             fontSize={13}
             textAlign={"left"}

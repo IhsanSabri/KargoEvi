@@ -26,6 +26,7 @@ const orderService = new OrderService();
 
 const PaymentPage = () => {
   const [paymentMethod, setPaymentMethod] = useState(null);
+  const [isGdprAllowed, setIsGdprAllowed] = useState(false);
   const [cardInfo, setCardInfo] = useState({
     cvc: "",
     expiry: "",
@@ -225,7 +226,7 @@ const PaymentPage = () => {
           </Box>
         </Flex>
         <OrderSummary />
-        <GdprBox />
+        <GdprBox setIsGdprAllowed={setIsGdprAllowed} />
       </PaymentPageMainWrapper>
       <Footer prevLink={"/address"}>
         <FooterContainer>
@@ -235,7 +236,7 @@ const PaymentPage = () => {
             danger
             form="hook-form"
             onClick={handleCompleteOrder}
-            disabled={!paymentMethod}
+            disabled={!paymentMethod || !isGdprAllowed}
           >
             <SafetyCertificateOutlined
               style={{
